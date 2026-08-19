@@ -1,0 +1,6102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-19 18:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Kişisel bilgiler"
+msgstr "Personal information"
+
+msgid "Görev"
+msgstr "Quest"
+
+msgid "Yetkiler"
+msgstr "Powers"
+
+msgid "Güvenlik"
+msgstr "Security"
+
+msgid "Tarihler"
+msgstr "Dates"
+
+msgid "Notlar"
+msgstr "Notes"
+
+msgid "İzin sayısı"
+msgstr "Number of permits"
+
+msgid "Kullanıcılar ve Roller"
+msgstr "Users and Roles"
+
+msgid "Kullanıcı adı"
+msgstr "Username"
+
+msgid "Parola"
+msgstr "password"
+
+msgid "Kullanıcı adı veya parola hatalı."
+msgstr "The username or password is incorrect."
+
+msgid "Bu hesap devre dışı bırakılmış."
+msgstr "This account has been disabled."
+
+#, python-format
+msgid ""
+"Hesap çok sayıda başarısız giriş nedeniyle geçici olarak kilitlendi. Lütfen "
+"%(minutes)s dakika sonra tekrar deneyin."
+msgstr ""
+"Account has been temporarily locked due to too many failed logins. Please "
+"try again in %(minutes)s minutes."
+
+msgid "Personel kodu"
+msgstr "Personnel code"
+
+msgid "PIN"
+msgstr "PIN"
+
+msgid "PIN yalnızca rakamlardan oluşmalıdır."
+msgstr "The PIN must consist of numbers only."
+
+msgid "Birincil rol"
+msgstr "primary role"
+
+msgid "Yeni parola"
+msgstr "new password"
+
+msgid "Boş bırakılırsa parola değiştirilmez."
+msgstr "If left blank, the password will not be changed."
+
+msgid "Yeni PIN (4-8 rakam)"
+msgstr "New PIN (4-8 digits)"
+
+msgid "POS terminalinde hızlı giriş için. Boş bırakılırsa değişmez."
+msgstr ""
+"For quick login at the POS terminal. If left blank, it will not change."
+
+msgid "En az 10 karakter olmalıdır."
+msgstr "It must be at least 10 characters."
+
+msgid "PIN 4-8 rakamdan oluşmalıdır."
+msgstr "PIN must consist of 4-8 digits."
+
+msgid "Karar"
+msgstr "decision"
+
+msgid "Onayla"
+msgstr "Confirm"
+
+msgid "Reddet"
+msgstr "reject"
+
+msgid "Not"
+msgstr "note"
+
+msgid "Türkçe"
+msgstr "Turkish"
+
+msgid "English"
+msgstr "English"
+
+msgid "Görünen ad"
+msgstr "display name"
+
+msgid "Fişlerde ve ekranlarda gösterilecek ad."
+msgstr "The name to be displayed on receipts and displays."
+
+msgid "Telefon"
+msgstr "phone"
+
+msgid "Tercih edilen dil"
+msgstr "Preferred language"
+
+msgid "PIN özeti"
+msgstr "PIN summary"
+
+msgid "PIN girişi açık"
+msgstr "PIN entry is on"
+
+msgid "Parola değiştirmeli"
+msgstr "Must change password"
+
+msgid "Parola değişim zamanı"
+msgstr "Password change time"
+
+msgid "Başarısız giriş"
+msgstr "Failed login"
+
+msgid "Kilit bitişi"
+msgstr "lock finish"
+
+msgid "İndirim yetkisi (%)"
+msgstr "Discount authority (%)"
+
+msgid "Bu oranın üzerindeki indirimler ikinci onay gerektirir."
+msgstr "Discounts above this rate require second approval."
+
+msgid "Kullanıcı"
+msgstr "User"
+
+msgid "Kullanıcılar"
+msgstr "Users"
+
+msgid "Rol ve yetki yönetebilir"
+msgstr "Can manage roles and authority"
+
+msgid "Denetim kaydını görüntüleyebilir"
+msgstr "Can view the audit trail"
+
+msgid "AI Development Studio kullanabilir"
+msgstr "Can use AI Development Studio"
+
+msgid "Kritik işlemleri onaylayabilir"
+msgstr "Can confirm critical transactions"
+
+msgid "Rol atanmamış"
+msgstr "Role not assigned"
+
+msgid "Grup"
+msgstr "group"
+
+msgid "Rol kodu"
+msgstr "Role code"
+
+msgid "Ad (TR)"
+msgstr "Name (TR)"
+
+msgid "Ad (EN)"
+msgstr "Name (EN)"
+
+msgid "Açıklama"
+msgstr "Description"
+
+msgid "Kademe"
+msgstr "Stage"
+
+msgid "Sistem rolü"
+msgstr "System role"
+
+msgid "Sistem rolleri arayüzden silinemez."
+msgstr "System roles cannot be deleted from the interface."
+
+msgid "Rol profili"
+msgstr "Role profile"
+
+msgid "Rol profilleri"
+msgstr "Role profiles"
+
+msgid "Onay bekliyor"
+msgstr "Pending approval"
+
+msgid "Onaylandı"
+msgstr "Approved"
+
+msgid "Reddedildi"
+msgstr "rejected"
+
+msgid "Süresi doldu"
+msgstr "expired"
+
+msgid "Uygulandı"
+msgstr "implemented"
+
+msgid "İşlem"
+msgstr "transaction"
+
+msgid "Talep eden"
+msgstr "requesting"
+
+msgid "Onaylayan"
+msgstr "Approved by"
+
+msgid "Durum"
+msgstr "Status"
+
+msgid "Gerekçe"
+msgstr "justification"
+
+msgid "Onay notu"
+msgstr "approval rating"
+
+msgid "İşlem verisi"
+msgstr "transaction data"
+
+msgid "Nesne türü"
+msgstr "object type"
+
+msgid "Nesne kimliği"
+msgstr "object ID"
+
+msgid "Onay zamanı"
+msgstr "Approval time"
+
+msgid "Geçerlilik bitişi"
+msgstr "Expires"
+
+msgid "Onay talebi"
+msgstr "Approval request"
+
+msgid "Onay talepleri"
+msgstr "Approval requests"
+
+msgid "Başarılı"
+msgstr "successful"
+
+msgid "IP adresi"
+msgstr "IP address"
+
+msgid "İstemci"
+msgstr "client"
+
+msgid "Yöntem"
+msgstr "Method"
+
+msgid "Zaman"
+msgstr "time"
+
+msgid "Giriş denemesi"
+msgstr "Login attempt"
+
+msgid "Giriş denemeleri"
+msgstr "Login attempts"
+
+msgid "İlk giriş yalnızca bu cihazdan yapılabilir."
+msgstr "The first login can only be made from this device."
+
+msgid "Güvenlik gereği parolanızı değiştirmeniz gerekiyor."
+msgstr "For security reasons, you need to change your password."
+
+msgid "Personel kodu veya PIN hatalı."
+msgstr "The personnel code or PIN is incorrect."
+
+msgid "Kullanıcı oluşturuldu."
+msgstr "User created."
+
+msgid "Kullanıcı güncellendi."
+msgstr "User updated."
+
+msgid "Geçersiz karar formu."
+msgstr "Invalid decision form."
+
+msgid "Talep onaylandı."
+msgstr "The request was approved."
+
+msgid "Talep reddedildi."
+msgstr "The request was denied."
+
+msgid "Yapay Zekâ"
+msgstr "Artificial Intelligence"
+
+msgid "Sommelier asistanı"
+msgstr "sommelier assistant"
+
+msgid "Yemek–şarap eşleştirme"
+msgstr "Food–wine pairing"
+
+msgid "Doğal dille rapor sorgulama"
+msgstr "Report query with natural language"
+
+msgid "Satış tahmini"
+msgstr "Sales forecast"
+
+msgid "Stok ve satın alma önerisi"
+msgstr "Stock and purchase recommendation"
+
+msgid "Fire / israf analizi"
+msgstr "Waste analysis"
+
+msgid "Anormal işlem tespiti"
+msgstr "Abnormal transaction detection"
+
+msgid "Müşteri tercih analizi"
+msgstr "Customer preference analysis"
+
+msgid "Menü açıklaması oluşturma"
+msgstr "Create a menu description"
+
+msgid "Çok dilli çeviri"
+msgstr "Multilingual translation"
+
+msgid "Etiket / görsel analizi"
+msgstr "Tag / image analysis"
+
+msgid "Personel eğitim asistanı"
+msgstr "Staff training assistant"
+
+msgid "Yönetici karar desteği"
+msgstr "Executive decision support"
+
+msgid "Gün sonu yönetici özeti"
+msgstr "End of day executive summary"
+
+msgid "AI Development Studio"
+msgstr "AI Development Studio"
+
+msgid "CAIO ajanı"
+msgstr "CAIO agent"
+
+msgid "Diğer"
+msgstr "Other"
+
+msgid "Başlık"
+msgstr "Title"
+
+msgid "İşlev"
+msgstr "Function"
+
+msgid "Sağlayıcı"
+msgstr "Provider"
+
+msgid "Model"
+msgstr "Model"
+
+msgid "Arşivlendi"
+msgstr "Archived"
+
+msgid "Yapay zekâ sohbeti"
+msgstr "AI chat"
+
+msgid "Yapay zekâ sohbetleri"
+msgstr "AI chats"
+
+msgid "Bulut yapay zekâ sağlayıcısı kullanabilir"
+msgstr "Could use cloud AI provider"
+
+msgid "Yapay zekâ ayarlarını değiştirebilir"
+msgstr "Can change artificial intelligence settings"
+
+msgid "Yapay zekâ önerisini uygulayabilir"
+msgstr "Artificial intelligence can implement its suggestion"
+
+msgid "Yapay zekâ maliyetlerini görebilir"
+msgstr "Artificial intelligence can see its costs"
+
+msgid "Sistem"
+msgstr "System"
+
+msgid "Asistan"
+msgstr "assistant"
+
+msgid "Sohbet"
+msgstr "chat"
+
+msgid "Rol"
+msgstr "Role"
+
+msgid "İçerik"
+msgstr "Content"
+
+msgid "Maskelenmiş içerik"
+msgstr "Masked content"
+
+msgid "Bulut sağlayıcıya fiilen gönderilen metin."
+msgstr "The text actually sent to the cloud provider."
+
+msgid "Maskeleme özeti"
+msgstr "Masking summary"
+
+msgid "Sıra"
+msgstr "sequence"
+
+msgid "Yapay zekâ mesajı"
+msgstr "AI message"
+
+msgid "Yapay zekâ mesajları"
+msgstr "AI messages"
+
+msgid "Başarısız"
+msgstr "fail"
+
+msgid "Yedek sağlayıcıya geçildi"
+msgstr "Switched to backup provider"
+
+msgid "İptal edildi"
+msgstr "canceled"
+
+msgid "Politika gereği engellendi"
+msgstr "Blocked by policy"
+
+msgid "Yerel sağlayıcı"
+msgstr "local provider"
+
+msgid "İstem belirteci"
+msgstr "prompt token"
+
+msgid "Yanıt belirteci"
+msgstr "response token"
+
+msgid "Tahmini maliyet (USD)"
+msgstr "Estimated cost (USD)"
+
+msgid "Gecikme (ms)"
+msgstr "Delay (ms)"
+
+msgid "Sonuç"
+msgstr "Conclusion"
+
+msgid "Hata türü"
+msgstr "Error type"
+
+msgid "Hata mesajı"
+msgstr "error message"
+
+msgid "Yedeklenen sağlayıcı"
+msgstr "Backed up provider"
+
+msgid "Kişisel veri maskelendi"
+msgstr "Personal data masked"
+
+msgid "Yapay zekâ çağrı kaydı"
+msgstr "AI call recording"
+
+msgid "Yapay zekâ çağrı kayıtları"
+msgstr "AI call recordings"
+
+msgid "Girdi (USD / 1M belirteç)"
+msgstr "Input (USD/1M tokens)"
+
+msgid "Çıktı (USD / 1M belirteç)"
+msgstr "Output (USD/1M tokens)"
+
+msgid "Geçerlilik başlangıcı"
+msgstr "Validity from"
+
+msgid "Kaynak notu"
+msgstr "Source note"
+
+msgid "Fiyatın alındığı resmî sayfa ve tarih."
+msgstr "Official page and date from which the price was taken."
+
+msgid "Etkin"
+msgstr "active"
+
+msgid "Sağlayıcı fiyatı"
+msgstr "Provider price"
+
+msgid "Sağlayıcı fiyatları"
+msgstr "Provider prices"
+
+msgid "Yıl"
+msgstr "Year"
+
+msgid "Ay"
+msgstr "Moon"
+
+msgid "Üst sınır (USD)"
+msgstr "Upper limit (USD)"
+
+msgid "Harcanan (USD)"
+msgstr "Spent (USD)"
+
+msgid "Uyarı eşiği (%)"
+msgstr "Warning threshold (%)"
+
+msgid "Kesin sınır"
+msgstr "definitive border"
+
+msgid "Açıkken sınır aşıldığında bulut çağrıları engellenir."
+msgstr "When on, cloud calls are blocked if the limit is exceeded."
+
+msgid "Yapay zekâ bütçesi"
+msgstr "AI budget"
+
+msgid "Yapay zekâ bütçeleri"
+msgstr "AI budgets"
+
+msgid "Uygulama başarısız"
+msgstr "Application failed"
+
+msgid "Şarap eşleştirmesi"
+msgstr "wine pairing"
+
+msgid "Menü açıklaması"
+msgstr "Menu description"
+
+msgid "Tadım notu"
+msgstr "tasting note"
+
+msgid "Satın alma önerisi"
+msgstr "Purchase recommendation"
+
+msgid "Fiyat değişikliği"
+msgstr "price change"
+
+msgid "Stok düzeltmesi"
+msgstr "stock correction"
+
+msgid "Çeviri"
+msgstr "Translation"
+
+msgid "Rapor içgörüsü"
+msgstr "Report insight"
+
+msgid "Kod değişikliği"
+msgstr "Code change"
+
+msgid "Tür"
+msgstr "Genre"
+
+msgid "Özet"
+msgstr "Summary"
+
+msgid "Öneri verisi"
+msgstr "Recommendation data"
+
+msgid "Önceki durum"
+msgstr "previous situation"
+
+msgid "Hedef türü"
+msgstr "Target type"
+
+msgid "Hedef kimliği"
+msgstr "target ID"
+
+msgid "Güven"
+msgstr "trust"
+
+msgid "Çağrı kaydı"
+msgstr "call recording"
+
+msgid "Öneri sahibi"
+msgstr "Suggestor"
+
+msgid "Uygulama zamanı"
+msgstr "Application time"
+
+msgid "Karar notu"
+msgstr "decision note"
+
+msgid "Hata"
+msgstr "Error"
+
+msgid "Yapay zekâ önerisi"
+msgstr "Artificial intelligence recommendation"
+
+msgid "Yapay zekâ önerileri"
+msgstr "AI recommendations"
+
+msgid "Kötü"
+msgstr "bad"
+
+msgid "Zayıf"
+msgstr "weak"
+
+msgid "İdare eder"
+msgstr "just fine"
+
+msgid "İyi"
+msgstr "good"
+
+msgid "Mükemmel"
+msgstr "excellent"
+
+msgid "Çağrı"
+msgstr "call"
+
+msgid "Mesaj"
+msgstr "Message"
+
+msgid "Puan"
+msgstr "Score"
+
+msgid "Sorun etiketleri"
+msgstr "Problem tags"
+
+msgid "Örn: ['yanlış_bilgi', 'alakasız', 'çok_uzun', 'dil_hatası']"
+msgstr "Ex: ['wrong_information', 'irrelevant', 'too_long', 'language_error']"
+
+msgid "Yorum"
+msgstr "Comment"
+
+msgid "Bildiren"
+msgstr "reported by"
+
+msgid "Yapay zekâ geri bildirimi"
+msgstr "AI feedback"
+
+msgid "Yapay zekâ geri bildirimleri"
+msgstr "AI feedback"
+
+msgid "Lütfen bir soru yazın."
+msgstr "Please write a question."
+
+msgid "Bulut yapay zekâ kullanma yetkiniz yok."
+msgstr "You are not authorized to use cloud AI."
+
+msgid ""
+"Yanıt Mock sağlayıcıdan geldi; gerçek bir dil modeli çalıştırılmadı. Ayarlar"
+" ekranından LM Studio'yu başlatın."
+msgstr ""
+"The response came from the Mock provider; No real language model was run. "
+"Launch LM Studio from the settings screen."
+
+#, python-format
+msgid "Birincil sağlayıcı yanıt vermedi; yedek sağlayıcı kullanıldı: %(p)s"
+msgstr "The primary provider did not respond; backup provider used: %(p)s"
+
+msgid "(otomatik seçilecek)"
+msgstr "(will be selected automatically)"
+
+msgid ""
+"API anahtarları bu ekrandan girilmez. Güvenlik gereği anahtarlar yalnızca "
+".env dosyasında veya işletim sistemi kimlik deposunda tutulur; uygulama "
+"bunları yalnızca okur ve asla kaydetmez."
+msgstr ""
+"API keys are not entered from this screen. For security purposes, keys are "
+"kept only in the .env file or operating system identity store; the app only "
+"reads them and never saves them."
+
+msgid "Bu işlem için yetkiniz yok."
+msgstr "You are not authorized for this operation."
+
+msgid "Lütfen bir yemek tarif edin veya seçin."
+msgstr "Please describe or choose a dish."
+
+msgid "Kavda stokta şarap bulunamadı; öneri üretilemedi."
+msgstr ""
+"Kavda could not find any wine in stock; The suggestion could not be "
+"produced."
+
+msgid "Öneri Mock sağlayıcıdan geldi; gerçek model çalıştırılmadı."
+msgstr ""
+"The suggestion came from the Mock provider; the actual model was not run."
+
+msgid ""
+"Yapay zekâ veritabanında doğrudan değişiklik yapmaz. Her öneri burada "
+"listelenir ve yalnızca açık onaydan sonra uygulanır."
+msgstr ""
+"AI does not make direct changes to the database. Each suggestion is listed "
+"here and implemented only after explicit approval."
+
+msgid ""
+"Maliyet yalnızca fiyatı elle tanımlanmış modeller için hesaplanır. Uygulama "
+"hiçbir sağlayıcının fiyatını varsaymaz."
+msgstr ""
+"The cost is calculated only for models whose price has been manually "
+"defined. The app does not assume any provider's prices."
+
+msgid "Yedekleme"
+msgstr "backup"
+
+msgid "El ile"
+msgstr "manually"
+
+msgid "Zamanlanmış"
+msgstr "scheduled"
+
+msgid "Geri yükleme öncesi"
+msgstr "Before restore"
+
+msgid "Güncelleme öncesi"
+msgstr "Before update"
+
+msgid "Alınıyor"
+msgstr "Receiving"
+
+msgid "Doğrulandı"
+msgstr "Verified"
+
+msgid "Bozuk"
+msgstr "broken"
+
+msgid "Dosya adı"
+msgstr "file name"
+
+msgid "Dosya yolu"
+msgstr "file path"
+
+msgid "Boyut (bayt)"
+msgstr "Size (bytes)"
+
+msgid "Şifreli"
+msgstr "encrypted"
+
+msgid "SHA-256 özeti"
+msgstr "SHA-256 summary"
+
+msgid "Başlangıç"
+msgstr "Home"
+
+msgid "Bitiş"
+msgstr "ending"
+
+msgid "Alan"
+msgstr "area"
+
+msgid "Uygulama sürümü"
+msgstr "App version"
+
+msgid "Veritabanı"
+msgstr "database"
+
+msgid "Kayıt sayıları"
+msgstr "Registration numbers"
+
+msgid "Doğrulama zamanı"
+msgstr "verification time"
+
+msgid "Yedek kaydı"
+msgstr "backup record"
+
+msgid "Yedek kayıtları"
+msgstr "Backup records"
+
+msgid "Yedek alabilir"
+msgstr "Can take backup"
+
+msgid "Yedekten geri yükleyebilir"
+msgstr "Can restore from backup"
+
+msgid "Yedekleme ayarlarını değiştirebilir"
+msgstr "Can change backup settings"
+
+msgid "Yükleniyor"
+msgstr "loading"
+
+msgid "Geri alındı"
+msgstr "withdrawn"
+
+msgid "Canlı veritabanı"
+msgstr "live database"
+
+msgid "Test veritabanı"
+msgstr "test database"
+
+msgid "Yedek"
+msgstr "spare"
+
+msgid "Hedef"
+msgstr "target"
+
+msgid "Hedef yol"
+msgstr "target path"
+
+msgid "Güvenlik yedeği"
+msgstr "security backup"
+
+msgid "Onay"
+msgstr "Approval"
+
+msgid "Doğrulama raporu"
+msgstr "verification report"
+
+msgid "Geri yükleme kaydı"
+msgstr "restore record"
+
+msgid "Geri yükleme kayıtları"
+msgstr "Restore records"
+
+msgid "Saatlik"
+msgstr "hourly"
+
+msgid "Günlük"
+msgstr "daily"
+
+msgid "Haftalık"
+msgstr "weekly"
+
+msgid "Ad"
+msgstr "Name"
+
+msgid "Sıklık"
+msgstr "frequency"
+
+msgid "Çalışma saati"
+msgstr "Working hours"
+
+msgid "Hedef klasör"
+msgstr "destination folder"
+
+msgid "Saklama süresi (gün)"
+msgstr "Storage period (days)"
+
+msgid "Şifrele"
+msgstr "encrypt"
+
+msgid "Yedek sonrası doğrula"
+msgstr "Verify after backup"
+
+msgid "Son çalışma"
+msgstr "latest work"
+
+msgid "Son durum"
+msgstr "latest situation"
+
+msgid "Yedekleme planı"
+msgstr "backup plan"
+
+msgid "Yedekleme planları"
+msgstr "Backup plans"
+
+msgid "Yedek alma yetkiniz yok."
+msgstr "You are not authorized to take backups."
+
+#, python-format
+msgid "Yedek alındı ve doğrulandı: %(name)s (%(size)s MB). %(detail)s"
+msgstr "Backup taken and verified: %(name)s (%(size)s MB). %(detail)s"
+
+#, python-format
+msgid "Yedek alındı ancak doğrulama başarısız: %(msg)s"
+msgstr "Backup taken but verification failed: %(msg)s"
+
+msgid "Geri yükleme ikinci onay gerektirir."
+msgstr "Restoring requires second confirmation."
+
+msgid "Yedek önce SHA-256 özetiyle doğrulanır; bozuksa işlem yapılmaz."
+msgstr ""
+"The backup is first verified with the SHA-256 digest; If it is corrupted, no"
+" action is taken."
+
+msgid "Canlı veritabanına yüklemeden önce otomatik güvenlik yedeği alınır."
+msgstr ""
+"An automatic security backup is taken before uploading to the live database."
+
+msgid "Varsayılan hedef test veritabanıdır."
+msgstr "The default target is the test database."
+
+#, python-format
+msgid ""
+"Geri yükleme talebi oluşturuldu (#%(id)s). Başka bir yetkilinin onaylaması "
+"gerekiyor; onaya kadar hiçbir veri değiştirilmez."
+msgstr ""
+"A restore request has been created (#%(id)s). Another official needs to "
+"approve; No data is changed until approval."
+
+msgid "CAIO Ajanı"
+msgstr "CAIO Agent"
+
+msgid "Gün sonu sonrası"
+msgstr "after end of day"
+
+msgid "Çalışıyor"
+msgstr "working"
+
+msgid "Tamamlandı"
+msgstr "completed"
+
+msgid "Tetikleyici"
+msgstr "trigger"
+
+msgid "Dönem başı"
+msgstr "Beginning of term"
+
+msgid "Dönem sonu"
+msgstr "end of term"
+
+msgid "Başlatan"
+msgstr "started by"
+
+msgid "İncelenen çağrı"
+msgstr "Reviewed call"
+
+msgid "Başarısız çağrı"
+msgstr "unsuccessful call"
+
+msgid "Yedeğe düşen çağrı"
+msgstr "Backup call"
+
+msgid "Düşük puanlı yanıt"
+msgstr "Low score answer"
+
+msgid "Toplam belirteç"
+msgstr "Total token"
+
+msgid "Toplam maliyet (USD)"
+msgstr "Total cost (USD)"
+
+msgid "Ortalama gecikme (ms)"
+msgstr "Average latency (ms)"
+
+msgid "Bulgu sayısı"
+msgstr "Number of findings"
+
+msgid "CAIO gözlem koşumu"
+msgstr "CAIO observation harness"
+
+msgid "CAIO gözlem koşumları"
+msgstr "CAIO observation harnesses"
+
+msgid "CAIO gözlemi başlatabilir"
+msgstr "CAIO can initiate observation"
+
+msgid "CAIO bulgularını inceleyebilir"
+msgstr "CAIO may review its findings"
+
+msgid "Yapay zekâ yanıt kalitesi"
+msgstr "AI response quality"
+
+msgid "Yapay zekâ maliyeti"
+msgstr "AI cost"
+
+msgid "Sağlayıcı güvenilirliği"
+msgstr "Provider reliability"
+
+msgid "Başarım"
+msgstr "My success"
+
+msgid "Tekrar eden hata"
+msgstr "recurring error"
+
+msgid "Kullanıcı deneyimi"
+msgstr "User experience"
+
+msgid "Veri kalitesi"
+msgstr "Data quality"
+
+msgid "Rapor doğruluğu"
+msgstr "Report accuracy"
+
+msgid "Yeni özellik önerisi"
+msgstr "New feature suggestion"
+
+msgid "Bilgi"
+msgstr "Information"
+
+msgid "Düşük"
+msgstr "low"
+
+msgid "Orta"
+msgstr "medium"
+
+msgid "Yüksek"
+msgstr "high"
+
+msgid "Kritik"
+msgstr "critical"
+
+msgid "Açık"
+msgstr "open"
+
+msgid "Görüldü"
+msgstr "seen"
+
+msgid "Planlandı"
+msgstr "planned"
+
+msgid "Üzerinde çalışılıyor"
+msgstr "being worked on"
+
+msgid "Çözüldü"
+msgstr "resolved"
+
+msgid "Kapatıldı"
+msgstr "closed"
+
+msgid "Koşum"
+msgstr "harness"
+
+msgid "Kategori"
+msgstr "Category"
+
+msgid "Önem"
+msgstr "importance"
+
+msgid "Kanıt"
+msgstr "evidence"
+
+msgid "Öneri"
+msgstr "Suggestion"
+
+msgid "Parmak izi"
+msgstr "fingerprint"
+
+msgid "Tekrar sayısı"
+msgstr "Number of repetitions"
+
+msgid "İlk görülme"
+msgstr "first seen"
+
+msgid "Son görülme"
+msgstr "last seen"
+
+msgid "Geliştirme oturumu"
+msgstr "development session"
+
+msgid "İnceleyen"
+msgstr "Reviewed by"
+
+msgid "İnceleme notu"
+msgstr "review note"
+
+msgid "CAIO bulgusu"
+msgstr "CAIO finding"
+
+msgid "CAIO bulguları"
+msgstr "CAIO findings"
+
+msgid "Normal"
+msgstr "normal"
+
+msgid "Acil"
+msgstr "urgent"
+
+msgid "Bekleyen"
+msgstr "waiting"
+
+msgid "Devam ediyor"
+msgstr "in progress"
+
+msgid "İptal"
+msgstr "Cancel"
+
+msgid "Öncelik"
+msgstr "priority"
+
+msgid "İlgili bulgular"
+msgstr "Related findings"
+
+msgid "Hedef sürüm"
+msgstr "target version"
+
+msgid "Tahmini efor (saat)"
+msgstr "Estimated effort (hours)"
+
+msgid "Geliştirme görevi"
+msgstr "Development task"
+
+msgid "Geliştirme görevleri"
+msgstr "Development tasks"
+
+msgid "Taslak"
+msgstr "draft"
+
+msgid "İncelendi"
+msgstr "Reviewed"
+
+msgid "Yayınlandı"
+msgstr "Published"
+
+msgid "Sürüm"
+msgstr "Version"
+
+msgid "İçerik (TR)"
+msgstr "Content (TR)"
+
+msgid "İçerik (EN)"
+msgstr "Content (EN)"
+
+msgid "Sürüm notu taslağı"
+msgstr "Release note draft"
+
+msgid "Sürüm notu taslakları"
+msgstr "Release note drafts"
+
+msgid "Geçti"
+msgstr "passed"
+
+msgid "Atlandı"
+msgstr "skipped"
+
+msgid "Rapor kodu"
+msgstr "Report code"
+
+msgid "Biçim"
+msgstr "format"
+
+msgid "Denetlenen satır"
+msgstr "Checked row"
+
+msgid "Uyuşmazlıklar"
+msgstr "Disputes"
+
+msgid "Türkçe karakterler doğru"
+msgstr "Turkish characters are correct"
+
+msgid "Toplamlar doğru"
+msgstr "Totals are correct"
+
+msgid "Ayrıntı"
+msgstr "detail"
+
+msgid "Dışa aktarım doğrulaması"
+msgstr "Export verification"
+
+msgid "Dışa aktarım doğrulamaları"
+msgstr "Export validations"
+
+msgid "CAIO üretim kodunu kendiliğinden değiştiremez."
+msgstr "CAIO cannot change production code on its own."
+
+msgid "Dal birleştiremez ve sürüm yayınlayamaz."
+msgstr "Branch cannot merge and release."
+
+msgid "Kullanıcı verisini buluta gönderemez."
+msgstr "The user cannot send his data to the cloud."
+
+msgid "Her çıktısı insan onayı bekleyen bir öneridir."
+msgstr "Each output is a suggestion awaiting human approval."
+
+msgid "CAIO gözlemi başlatma yetkiniz yok."
+msgstr "You are not authorized to initiate a CAIO observation."
+
+#, python-format
+msgid "Gözlem tamamlandı: %(findings)s bulgu, %(tasks)s yeni görev taslağı."
+msgstr ""
+"Observation completed: %(findings)s findings, %(tasks)s new task draft."
+
+msgid "Menü ve Reçete"
+msgstr "Menu and Recipe"
+
+msgid "Kod"
+msgstr "Code"
+
+msgid "Simge"
+msgstr "icon"
+
+msgid "Alerjen"
+msgstr "allergen"
+
+msgid "Alerjenler"
+msgstr "Allergens"
+
+msgid "Rozet sınıfı"
+msgstr "Badge class"
+
+msgid "Beslenme etiketi"
+msgstr "nutrition label"
+
+msgid "Beslenme etiketleri"
+msgstr "nutrition labels"
+
+msgid "Salon"
+msgstr "living room"
+
+msgid "Bar"
+msgstr "bar"
+
+msgid "Paket servis"
+msgstr "takeaway"
+
+msgid "Etkinlik"
+msgstr "event"
+
+msgid "Tümü"
+msgstr "All"
+
+msgid "Açıklama (TR)"
+msgstr "Description (TR)"
+
+msgid "Açıklama (EN)"
+msgstr "Description (EN)"
+
+msgid "Üst kategori"
+msgstr "parent category"
+
+msgid "Satış kanalı"
+msgstr "sales channel"
+
+msgid "Hazırlık istasyonu"
+msgstr "prep station"
+
+msgid "Mutfak"
+msgstr "kitchen"
+
+msgid "Şarap / Sommelier"
+msgstr "Wine / Sommelier"
+
+msgid "Hazırlık yok"
+msgstr "no preparation"
+
+msgid "QR menüde göster"
+msgstr "Show in QR menu"
+
+msgid "Menü kategorisi"
+msgstr "Menu category"
+
+msgid "Menü kategorileri"
+msgstr "Menu categories"
+
+msgid "Yemek"
+msgstr "food"
+
+msgid "İçecek"
+msgstr "beverage"
+
+msgid "Şarap"
+msgstr "wine"
+
+msgid "Kadeh şarap"
+msgstr "glass of wine"
+
+msgid "Set menü"
+msgstr "set menu"
+
+msgid "Şarap uçuşu"
+msgstr "wine flight"
+
+msgid "Servis / Ücret"
+msgstr "Service / Fee"
+
+msgid "Ürün kodu"
+msgstr "Product code"
+
+msgid "Satış fiyatı"
+msgstr "selling price"
+
+msgid "KDV oranı (%)"
+msgstr "VAT rate (%)"
+
+msgid "Maliyet"
+msgstr "Cost"
+
+msgid "Reçeteden otomatik hesaplanır; el ile de girilebilir."
+msgstr ""
+"It is calculated automatically from the recipe; It can also be entered "
+"manually."
+
+msgid "Maliyet el ile girildi"
+msgstr "Cost entered manually"
+
+msgid "Porsiyon"
+msgstr "serving"
+
+msgid "Hazırlık (dk)"
+msgstr "Preparation (min)"
+
+msgid "Kalori"
+msgstr "calories"
+
+msgid "Serviste"
+msgstr "in service"
+
+msgid "Geçici olarak tükendi/kapalı işaretleyin."
+msgstr "Mark temporarily sold out/closed."
+
+msgid "Şef önerisi"
+msgstr "Chef recommendation"
+
+msgid "Sommelier önerisi"
+msgstr "Sommelier recommendation"
+
+msgid "Görsel"
+msgstr "Visual"
+
+msgid "Stoktan düşer"
+msgstr "Drops from stock"
+
+msgid "Kapalıysa satışta stok hareketi oluşturulmaz."
+msgstr "If it is closed, no stock movement will be created on sale."
+
+msgid "Menü ürünü"
+msgstr "menu item"
+
+msgid "Menü ürünleri"
+msgstr "menu items"
+
+msgid "Fiyat değiştirebilir"
+msgstr "Price may change"
+
+msgid "Kampanya yönetebilir"
+msgstr "Can manage campaigns"
+
+msgid "Menü mühendisliği raporunu görebilir"
+msgstr "Can view menu engineering report"
+
+msgid "Verim (porsiyon)"
+msgstr "Yield (serving)"
+
+msgid "Hazırlama talimatı"
+msgstr "Preparation instruction"
+
+msgid "Sunum notu"
+msgstr "Presentation note"
+
+msgid "Fire payı (%)"
+msgstr "Waste share (%)"
+
+msgid "Reçete"
+msgstr "prescription"
+
+msgid "Reçeteler"
+msgstr "Prescriptions"
+
+msgid "Stok kalemi"
+msgstr "stock item"
+
+msgid "Miktar"
+msgstr "quantity"
+
+msgid "İsteğe bağlı"
+msgstr "optional"
+
+msgid "Reçete satırı"
+msgstr "prescription line"
+
+msgid "Reçete satırları"
+msgstr "prescription lines"
+
+msgid "Yüzde indirim"
+msgstr "percent discount"
+
+msgid "Tutar indirimi"
+msgstr "Amount discount"
+
+msgid "Sabit fiyat"
+msgstr "fixed price"
+
+msgid "Kampanya adı"
+msgstr "Campaign name"
+
+msgid "Ürünler"
+msgstr "Products"
+
+msgid "Kategoriler"
+msgstr "Categories"
+
+msgid "Kural türü"
+msgstr "Rule type"
+
+msgid "Değer"
+msgstr "Value"
+
+msgid "Başlangıç tarihi"
+msgstr "Start date"
+
+msgid "Bitiş tarihi"
+msgstr "end date"
+
+msgid "Günlük başlangıç saati"
+msgstr "Daily start time"
+
+msgid "Günlük bitiş saati"
+msgstr "Daily end time"
+
+msgid "Geçerli günler"
+msgstr "Valid days"
+
+msgid "Onay gerektirir"
+msgstr "Requires approval"
+
+msgid "İşaretliyse kampanya yönetici onayı olmadan uygulanmaz."
+msgstr ""
+"If checked, the campaign will not be implemented without administrator "
+"approval."
+
+msgid "Fiyat kuralı"
+msgstr "Price rule"
+
+msgid "Fiyat kuralları"
+msgstr "Price rules"
+
+msgid "Yıldız (yüksek kâr, yüksek satış)"
+msgstr "Star (high profit, high sales)"
+
+msgid "At (düşük kâr, yüksek satış)"
+msgstr "At (low profit, high sales)"
+
+msgid "Bilmece (yüksek kâr, düşük satış)"
+msgstr "Riddle (high profit, low sales)"
+
+msgid "Köpek (düşük kâr, düşük satış)"
+msgstr "Dog (low profit, low sales)"
+
+msgid "Satış adedi"
+msgstr "Number of sales"
+
+msgid "Popülerlik endeksi"
+msgstr "Popularity index"
+
+msgid "Katkı payı"
+msgstr "Contribution margin"
+
+msgid "Kadran"
+msgstr "dial"
+
+msgid "Menü mühendisliği kaydı"
+msgstr "Menu engineering record"
+
+msgid "Menü mühendisliği kayıtları"
+msgstr "Menu engineering records"
+
+msgid "Şarap Kavı"
+msgstr "Wine Cellar"
+
+msgid "Ülke"
+msgstr "Country"
+
+msgid "Bölge"
+msgstr "Region"
+
+msgid "Alt bölge"
+msgstr "lower region"
+
+msgid "Apelasyon"
+msgstr "appellation"
+
+msgid "Bağ"
+msgstr "vineyard"
+
+msgid "Üst bölge"
+msgstr "upper region"
+
+msgid "Ülke kodu"
+msgstr "Country code"
+
+msgid "Şarap bölgesi"
+msgstr "wine region"
+
+msgid "Şarap bölgeleri"
+msgstr "wine regions"
+
+msgid "Siyah / Kırmızı"
+msgstr "Black/Red"
+
+msgid "Beyaz"
+msgstr "White"
+
+msgid "Renk"
+msgstr "Color"
+
+msgid "Eş adlar"
+msgstr "homonyms"
+
+msgid "Virgülle ayırın."
+msgstr "Separate with commas."
+
+msgid "Köken"
+msgstr "origin"
+
+msgid "Yerli Türk çeşidi"
+msgstr "Native Turkish variety"
+
+msgid "Üzüm çeşidi"
+msgstr "grape variety"
+
+msgid "Üzüm çeşitleri"
+msgstr "grape varieties"
+
+msgid "Web sitesi"
+msgstr "website"
+
+msgid "Kuruluş yılı"
+msgstr "Founding year"
+
+msgid "Organik"
+msgstr "Organic"
+
+msgid "Biyodinamik"
+msgstr "biodynamics"
+
+msgid "Üretici"
+msgstr "Manufacturer"
+
+msgid "Üreticiler"
+msgstr "Manufacturers"
+
+msgid "Kırmızı"
+msgstr "red"
+
+msgid "Roze"
+msgstr "rosé"
+
+msgid "Köpüklü"
+msgstr "sparkling"
+
+msgid "Turuncu / Amber"
+msgstr "Orange/Amber"
+
+msgid "Tatlı"
+msgstr "sweet"
+
+msgid "Fortifiye"
+msgstr "fortified"
+
+msgid "Çok sek"
+msgstr "very dry"
+
+msgid "Sek"
+msgstr "Sec"
+
+msgid "Yarı sek"
+msgstr "semi dry"
+
+msgid "Yarı tatlı"
+msgstr "semi sweet"
+
+msgid "Piccolo (187 ml)"
+msgstr "Piccolo (187ml)"
+
+msgid "Yarım (375 ml)"
+msgstr "Half (375 ml)"
+
+msgid "Standart (750 ml)"
+msgstr "Standard (750 ml)"
+
+msgid "Magnum (1.5 L)"
+msgstr "Magnum (1.5L)"
+
+msgid "Çift Magnum (3 L)"
+msgstr "Double Magnum (3L)"
+
+msgid "Jeroboam (5 L)"
+msgstr "Jeroboam (5L)"
+
+msgid "Stok kodu"
+msgstr "stock code"
+
+msgid "Şarap adı"
+msgstr "wine name"
+
+msgid "Bölge / Apelasyon"
+msgstr "Region / Appellation"
+
+msgid "Rekolte"
+msgstr "yield"
+
+msgid "Boş bırakılırsa NV (rekoltesiz) kabul edilir."
+msgstr "If left blank, it is considered NV (non-yielding)."
+
+msgid "Tatlılık"
+msgstr "sweetness"
+
+msgid "Alkol (%)"
+msgstr "Alcohol (%)"
+
+msgid "Şişe hacmi (ml)"
+msgstr "Bottle volume (ml)"
+
+msgid "Vegan"
+msgstr "vegan"
+
+msgid "Sülfit içerir"
+msgstr "Contains sulfites"
+
+msgid "Servis sıcaklığı min (°C)"
+msgstr "Service temperature min (°C)"
+
+msgid "Servis sıcaklığı maks (°C)"
+msgstr "Service temperature max (°C)"
+
+msgid "Dekantasyon (dk)"
+msgstr "Decantation (min)"
+
+msgid "0 = dekantasyon gerekmez."
+msgstr "0 = no decantation required."
+
+msgid "Kadeh tipi"
+msgstr "goblet type"
+
+msgid "Gövde"
+msgstr "body"
+
+msgid "Asidite"
+msgstr "acidity"
+
+msgid "Tanen"
+msgstr "tannin"
+
+msgid "Tatlılık seviyesi"
+msgstr "sweetness level"
+
+msgid "Aroma profili"
+msgstr "aroma profile"
+
+msgid "Örn: ['kiraz', 'vanilya', 'deri']"
+msgstr "Ex: ['cherry', 'vanilla', 'leather']"
+
+msgid "İçim başlangıcı"
+msgstr "the beginning of drinking"
+
+msgid "İçim bitişi"
+msgstr "end of drink"
+
+msgid "Zirve yılı"
+msgstr "peak year"
+
+msgid "Alış fiyatı"
+msgstr "purchase price"
+
+msgid "Şişe satış fiyatı"
+msgstr "Bottle selling price"
+
+msgid "Kadeh satış fiyatı"
+msgstr "glass selling price"
+
+msgid "Kadeh servis hacmi (ml)"
+msgstr "Glass serving volume (ml)"
+
+msgid "Kadeh satışı yapılır"
+msgstr "Glasses are sold"
+
+msgid "Barkod"
+msgstr "barcode"
+
+msgid "İç QR kodu"
+msgstr "Internal QR code"
+
+msgid "Etiket fotoğrafı"
+msgstr "label photo"
+
+msgid "Şarap listesinde"
+msgstr "on the wine list"
+
+msgid "Minimum şişe"
+msgstr "minimum bottle"
+
+msgid "Bu sayının altına düşünce uyarı üretilir."
+msgstr "If it falls below this number, a warning is generated."
+
+msgid "İşletme tadım notu"
+msgstr "Business tasting note"
+
+msgid "Yemek uyumu özeti"
+msgstr "Food harmony summary"
+
+msgid "Şaraplar"
+msgstr "wines"
+
+msgid "Şişe açabilir"
+msgstr "can open bottle"
+
+msgid "Kadeh servis edebilir"
+msgstr "Can serve a glass"
+
+msgid "Şarap kusuru kaydedebilir"
+msgstr "Can save wine defect"
+
+msgid "Kav yerleşimini yönetebilir"
+msgstr "Can manage kav placement"
+
+msgid "Kav değerlemesini görebilir"
+msgstr "Kav can see the valuation"
+
+msgid "İçim aralığı belirtilmemiş"
+msgstr "Drinking range not specified"
+
+msgid "Erken — beklemeye devam"
+msgstr "Early — keep waiting"
+
+msgid "İçilebilir"
+msgstr "drinkable"
+
+msgid "Zirvede"
+msgstr "at the top"
+
+msgid "Yakında tüketilmeli"
+msgstr "Must be consumed soon"
+
+msgid "Zirveyi geçmiş — kontrol edin"
+msgstr "Past its peak — check"
+
+msgid "Üzüm"
+msgstr "grape"
+
+msgid "Oran (%)"
+msgstr "Rate (%)"
+
+msgid "Üzüm bileşimi"
+msgstr "grape composition"
+
+msgid "Üzüm bileşimleri"
+msgstr "Grape compositions"
+
+msgid "Kav"
+msgstr "tinder"
+
+msgid "Dolap"
+msgstr "closet"
+
+msgid "Raf"
+msgstr "shelf"
+
+msgid "Bölme"
+msgstr "partition"
+
+msgid "Vitrin"
+msgstr "showcase"
+
+msgid "Servis dolabı"
+msgstr "service cabinet"
+
+msgid "Üst konum"
+msgstr "top position"
+
+msgid "Kapasite (şişe)"
+msgstr "Capacity (bottle)"
+
+msgid "Hedef sıcaklık (°C)"
+msgstr "Target temperature (°C)"
+
+msgid "Sıcaklık toleransı (±°C)"
+msgstr "Temperature tolerance (±°C)"
+
+msgid "Hedef nem (%)"
+msgstr "Target humidity (%)"
+
+msgid "Nem toleransı (±%)"
+msgstr "Humidity tolerance (±%)"
+
+msgid "Kav konumu"
+msgstr "kav location"
+
+msgid "Kav konumları"
+msgstr "tinder locations"
+
+msgid "Sensör"
+msgstr "sensor"
+
+msgid "İçe aktarım"
+msgstr "import"
+
+msgid "Konum"
+msgstr "Location"
+
+msgid "Ölçüm zamanı"
+msgstr "measurement time"
+
+msgid "Sıcaklık (°C)"
+msgstr "Temperature (°C)"
+
+msgid "Nem (%)"
+msgstr "Humidity (%)"
+
+msgid "Kaynak"
+msgstr "Source"
+
+msgid "Kaydeden"
+msgstr "Saved by"
+
+msgid "Saklama ölçümü"
+msgstr "Storage measurement"
+
+msgid "Saklama ölçümleri"
+msgstr "Storage measurements"
+
+msgid "Parti kodu"
+msgstr "batch code"
+
+msgid "Tedarikçi"
+msgstr "Supplier"
+
+msgid "Giriş tarihi"
+msgstr "Check-in date"
+
+msgid "Tüketim önerisi tarihi"
+msgstr "Consumption recommendation date"
+
+msgid "FEFO sıralaması bu tarihe göre yapılır."
+msgstr "FEFO ranking is based on this date."
+
+msgid "Giren şişe"
+msgstr "entering bottle"
+
+msgid "Kalan şişe"
+msgstr "remaining bottle"
+
+msgid "Birim maliyet"
+msgstr "unit cost"
+
+msgid "Fatura referansı"
+msgstr "Invoice reference"
+
+msgid "Şarap partisi"
+msgstr "wine party"
+
+msgid "Şarap partileri"
+msgstr "wine parties"
+
+msgid "Standart (mantar açıldı)"
+msgstr "Standard (cork opened)"
+
+msgid "Koruma sistemi (argon/vakum)"
+msgstr "Protection system (argon/vacuum)"
+
+msgid "İğne sistemi (Coravin benzeri)"
+msgstr "Needle system (similar to Coravin)"
+
+msgid "Tadım / etkinlik"
+msgstr "Tasting / event"
+
+msgid "Bitti"
+msgstr "over"
+
+msgid "İmha edildi"
+msgstr "destroyed"
+
+msgid "Parti"
+msgstr "party"
+
+msgid "Açılma zamanı"
+msgstr "opening time"
+
+msgid "Açan"
+msgstr "blooming"
+
+msgid "Servis yöntemi"
+msgstr "Service method"
+
+msgid "Başlangıç hacmi (ml)"
+msgstr "Starting volume (ml)"
+
+msgid "Kalan hacim (ml)"
+msgstr "Remaining volume (ml)"
+
+msgid "Tazelik süresi (saat)"
+msgstr "Freshness period (hours)"
+
+msgid "Bu sürenin sonunda arayüzde 'kontrol edin' uyarısı gösterilir."
+msgstr ""
+"At the end of this period, a 'check' warning will be displayed on the "
+"interface."
+
+msgid "Kapanış zamanı"
+msgstr "closing time"
+
+msgid "Açılmış şişe"
+msgstr "opened bottle"
+
+msgid "Açılmış şişeler"
+msgstr "opened bottles"
+
+msgid "Kadeh satışı"
+msgstr "glass sale"
+
+msgid "Tadım ölçüsü"
+msgstr "tasting measure"
+
+msgid "İkram"
+msgstr "catering"
+
+msgid "Personel eğitimi"
+msgstr "Staff training"
+
+msgid "Dökülme"
+msgstr "spill"
+
+msgid "Fire / imha"
+msgstr "Fire / destruction"
+
+msgid "Servis türü"
+msgstr "Service type"
+
+msgid "Hacim (ml)"
+msgstr "Volume (ml)"
+
+msgid "Servis zamanı"
+msgstr "service time"
+
+msgid "Servis eden"
+msgstr "serving"
+
+msgid "Sipariş satırı"
+msgstr "order line"
+
+msgid "Servis kaydı"
+msgstr "Service registration"
+
+msgid "Servis kayıtları"
+msgstr "Service records"
+
+msgid "Mantar hatası (TCA)"
+msgstr "Fungal error (TCA)"
+
+msgid "Oksidasyon"
+msgstr "oxidation"
+
+msgid "Redüksiyon"
+msgstr "reduction"
+
+msgid "Isı hasarı"
+msgstr "heat damage"
+
+msgid "Yeniden fermantasyon"
+msgstr "re-fermentation"
+
+msgid "Brettanomyces"
+msgstr "Brettanomyces"
+
+msgid "Şişe kırılması"
+msgstr "bottle break"
+
+msgid "Etiket hasarı"
+msgstr "Label damage"
+
+msgid "Beklemede"
+msgstr "Pending"
+
+msgid "Tedarikçiye iade talebi"
+msgstr "Return request to supplier"
+
+msgid "Zayi yazıldı"
+msgstr "Zayi was written"
+
+msgid "Misafire yenisi verildi"
+msgstr "The guest was given a new one"
+
+msgid "Kabul edildi"
+msgstr "accepted"
+
+msgid "Kusur türü"
+msgstr "Defect type"
+
+msgid "Tespit zamanı"
+msgstr "detection time"
+
+msgid "Tespit eden"
+msgstr "detecting"
+
+msgid "Etkilenen şişe"
+msgstr "affected bottle"
+
+msgid "Kaybedilen hacim (ml)"
+msgstr "Volume lost (ml)"
+
+msgid "Tahmini kayıp"
+msgstr "Estimated loss"
+
+msgid "Çözüm"
+msgstr "Solution"
+
+msgid "Şarap kusuru"
+msgstr "wine defect"
+
+msgid "Şarap kusurları"
+msgstr "wine defects"
+
+msgid "Sommelier"
+msgstr "sommelier"
+
+msgid "Personel"
+msgstr "Staff"
+
+msgid "Misafir"
+msgstr "Guest"
+
+msgid "Uzman / Kritik"
+msgstr "Expert / Critical"
+
+msgid "Yazar türü"
+msgstr "Author type"
+
+msgid "Yazan"
+msgstr "Posted by"
+
+msgid "Yazar adı"
+msgstr "Author name"
+
+msgid "Tadım tarihi"
+msgstr "Tasting date"
+
+msgid "Görünüm"
+msgstr "Appearance"
+
+msgid "Burun / Aroma"
+msgstr "Nose / Aroma"
+
+msgid "Damak"
+msgstr "palate"
+
+msgid "Yapay zekâ tarafından oluşturuldu"
+msgstr "Created by artificial intelligence"
+
+msgid "Arayüzde açıkça işaretlenir; insan onayı gerekir."
+msgstr "It is clearly marked on the interface; human approval is required."
+
+msgid "Tadım notları"
+msgstr "Tasting notes"
+
+msgid "İşletme"
+msgstr "Business"
+
+msgid "Uzman"
+msgstr "expert"
+
+msgid "Kaynak adı"
+msgstr "Source name"
+
+msgid "Örn: kurum veya kişi adı."
+msgstr "For example: institution or person name."
+
+msgid "Ölçek üst sınırı"
+msgstr "Scale upper limit"
+
+msgid "Puan tarihi"
+msgstr "Score history"
+
+msgid "Şarap puanı"
+msgstr "wine score"
+
+msgid "Şarap puanları"
+msgstr "wine points"
+
+msgid "Peynir"
+msgstr "cheese"
+
+msgid "Genel"
+msgstr "General"
+
+msgid "Denenebilir"
+msgstr "can be tried"
+
+msgid "İyi uyum"
+msgstr "good fit"
+
+msgid "Mükemmel uyum"
+msgstr "perfect fit"
+
+msgid "Klasik eşleşme"
+msgstr "classic match"
+
+msgid "Eşleşme türü"
+msgstr "Match type"
+
+msgid "Serbest tanım"
+msgstr "free definition"
+
+msgid "Menüde olmayan yiyecekler için (ör. 'olgun kaşar')."
+msgstr "For foods not on the menu (e.g. 'mature cheddar')."
+
+msgid "Uyum gücü"
+msgstr "power of harmony"
+
+msgid "Sommelier onayına kadar arayüzde 'öneri' olarak gösterilir."
+msgstr ""
+"It is displayed as a 'suggestion' on the interface until the approval of the"
+" sommelier."
+
+msgid "Şarap eşleştirmeleri"
+msgstr "wine pairings"
+
+msgid "Fiyat"
+msgstr "Price"
+
+msgid "Ölçü başına hacim (ml)"
+msgstr "Volume per measure (ml)"
+
+msgid "Şarap uçuşları"
+msgstr "wine flights"
+
+msgid "Uçuş"
+msgstr "flight"
+
+msgid "Tadım ipucu"
+msgstr "tasting tip"
+
+msgid "Uçuş şarabı"
+msgstr "flight wine"
+
+msgid "Uçuş şarapları"
+msgstr "flight wines"
+
+msgid "Kayıt açık"
+msgstr "Registration is open"
+
+msgid "Kontenjan doldu"
+msgstr "Quota is full"
+
+msgid "Kontenjan"
+msgstr "quota"
+
+msgid "Kişi başı ücret"
+msgstr "Price per person"
+
+msgid "Sunan"
+msgstr "Presented by"
+
+msgid "Tadım etkinliği"
+msgstr "tasting event"
+
+msgid "Tadım etkinlikleri"
+msgstr "Tasting events"
+
+msgid "Müşteri"
+msgstr "customer"
+
+msgid "Kişi sayısı"
+msgstr "Number of people"
+
+msgid "Ödendi"
+msgstr "Paid"
+
+msgid "Etkinlik kaydı"
+msgstr "Event registration"
+
+msgid "Etkinlik kayıtları"
+msgstr "Event registrations"
+
+msgid "Aylık ücret"
+msgstr "monthly fee"
+
+msgid "İndirim (%)"
+msgstr "Discount (%)"
+
+msgid "Dönem başına şişe"
+msgstr "bottle per period"
+
+msgid "Ayrıcalıklar"
+msgstr "Privileges"
+
+msgid "Kulüp kademesi"
+msgstr "club tier"
+
+msgid "Kulüp kademeleri"
+msgstr "Club tiers"
+
+msgid "Duraklatıldı"
+msgstr "paused"
+
+msgid "Üye numarası"
+msgstr "Member number"
+
+msgid "Kulüp üyeliği"
+msgstr "club membership"
+
+msgid "Kulüp üyelikleri"
+msgstr "Club memberships"
+
+msgid "Müşteri kav kodu"
+msgstr "Customer tin code"
+
+msgid "Sözleşme başlangıcı"
+msgstr "Contract start"
+
+msgid "Sözleşme bitişi"
+msgstr "Contract end"
+
+msgid "Aylık saklama ücreti"
+msgstr "Monthly storage fee"
+
+msgid "Şişe açma ücreti"
+msgstr "Bottle opening fee"
+
+msgid "Ayrılan konumlar"
+msgstr "Reserved locations"
+
+msgid "Özel kav müşterisi"
+msgstr "Special tin customer"
+
+msgid "Özel kav müşterileri"
+msgstr "Special tinder customers"
+
+msgid "Etiket açıklaması"
+msgstr "Label description"
+
+msgid "Kavda kayıtlı olmayan şaraplar için."
+msgstr "For wines that are not registered in the cask."
+
+msgid "Adet"
+msgstr "quantity"
+
+msgid "Teslim tarihi"
+msgstr "delivery date"
+
+msgid "Beyan edilen değer"
+msgstr "declared value"
+
+msgid "Teslim alındı"
+msgstr "Received"
+
+msgid "Teslim alma tarihi"
+msgstr "Pick up date"
+
+msgid "Özel kav şişesi"
+msgstr "Special tinder bottle"
+
+msgid "Özel kav şişeleri"
+msgstr "Special tinder bottles"
+
+msgid "Aynı üretici, ad ve rekolte"
+msgstr "Same producer, name and yield"
+
+msgid "Aynı barkod"
+msgstr "same barcode"
+
+msgid "Çok benzer ad"
+msgstr "very similar name"
+
+msgid "Şüpheli rekolte"
+msgstr "Doubtful yield"
+
+msgid "Fiyat anomalisi"
+msgstr "price anomaly"
+
+msgid "İnceleme bekliyor"
+msgstr "Pending review"
+
+msgid "Mükerrer doğrulandı"
+msgstr "Double verified"
+
+msgid "Uyarı kapatıldı"
+msgstr "Warning closed"
+
+msgid "Karşılaştırılan şarap"
+msgstr "Comparing wine"
+
+msgid "Mükerrer kayıt uyarısı"
+msgstr "Duplicate registration warning"
+
+msgid "Mükerrer kayıt uyarıları"
+msgstr "Duplicate registration warnings"
+
+#, python-format
+msgid ""
+"Tarama tamamlandı: %(count)s uyarı. Hiçbir kayıt silinmedi; inceleme sizde."
+msgstr ""
+"Scan completed: %(count)s warnings. No records were deleted; You have the "
+"review."
+
+msgid "Şişe açma yetkiniz yok."
+msgstr "You are not authorized to open bottles."
+
+#, python-format
+msgid "Şişe açıldı. Servis edilebilir kadeh: %(count)s"
+msgstr "The bottle was opened. Serving glass: %(count)s"
+
+msgid "Kadeh servis yetkiniz yok."
+msgstr "You do not have glass service authority."
+
+msgid "Yeni şişe açıldı ve stoktan düşüldü."
+msgstr "The new bottle has been opened and deducted from the stock."
+
+#, python-format
+msgid "Servis kaydedildi. Şişede kalan kadeh: %(count)s"
+msgstr "The service has been recorded. Glass remaining in bottle: %(count)s"
+
+msgid "Uyum Motoru"
+msgstr "Compatibility Engine"
+
+msgid "Türkiye"
+msgstr "Turkey"
+
+msgid "AB/AEA"
+msgstr "EU/EEA"
+
+msgid "Hukuk bölgesi"
+msgstr "legal district"
+
+msgid "Resmî kaynak URL"
+msgstr "Official source URL"
+
+msgid "Otorite"
+msgstr "authority"
+
+msgid "Madde/karar"
+msgstr "article/decision"
+
+msgid "Erişim tarihi"
+msgstr "Access date"
+
+msgid "Kaynağın son doğrulandığı tarih; boşsa güncellik doğrulanmamıştır."
+msgstr ""
+"The date the source was last verified; If it is empty, currentness has not "
+"been verified."
+
+msgid "İçerik hash'i"
+msgstr "Content hash"
+
+msgid "Kaynak metnin SHA-256 özeti; boşsa metin henüz arşivlenmemiştir."
+msgstr ""
+"SHA-256 digest of the source text; If empty, the text has not been archived "
+"yet."
+
+msgid "Hukuki kaynak"
+msgstr "legal source"
+
+msgid "Hukuki kaynaklar"
+msgstr "Legal resources"
+
+msgid "Yürürlükte"
+msgstr "In force"
+
+msgid "Emekli"
+msgstr "retired"
+
+msgid "Mevzuat kodu"
+msgstr "Legislative code"
+
+msgid "Checksum"
+msgstr "checksum"
+
+msgid "İmza"
+msgstr "signature"
+
+msgid "Sürüm notu"
+msgstr "Release note"
+
+msgid "Hukuki kural paketi"
+msgstr "Legal rules package"
+
+msgid "Hukuki kural paketleri"
+msgstr "Legal rule packages"
+
+msgid "Saat"
+msgstr "clock"
+
+msgid "Takvim günü"
+msgstr "calendar day"
+
+msgid "İş günü"
+msgstr "business day"
+
+msgid "Paket"
+msgstr "Package"
+
+msgid "Kural kodu"
+msgstr "rule code"
+
+msgid "Başlık (TR)"
+msgstr "Title (TR)"
+
+msgid "Başlık (EN)"
+msgstr "Title (EN)"
+
+msgid "Resmî kaynak"
+msgstr "official source"
+
+msgid "Madde"
+msgstr "matter"
+
+msgid "Süre değeri"
+msgstr "Duration value"
+
+msgid "Süre birimi"
+msgstr "Duration unit"
+
+msgid "İnsan incelemesi gerekli"
+msgstr "Human review required"
+
+msgid "Kanıt gereksinimleri"
+msgstr "Evidence requirements"
+
+msgid "Hukuki kural"
+msgstr "legal rule"
+
+msgid "Hukuki kurallar"
+msgstr "legal rules"
+
+msgid "Çekirdek"
+msgstr "core"
+
+msgid "Parolanızı değiştirmeden bu kaynağa erişemezsiniz."
+msgstr "You cannot access this resource without changing your password."
+
+msgid ""
+"PIN girişi yalnızca salon, mutfak ve bar ekranları içindir. Bu ekran için "
+"parolanızla giriş yapın."
+msgstr ""
+"PIN entry is for lounge, kitchen and bar screens only. Log in with your "
+"password for this screen."
+
+msgid "Oluşturulma"
+msgstr "Creation"
+
+msgid "Güncellenme"
+msgstr "Updated"
+
+msgid "Oluşturan"
+msgstr "Created by"
+
+msgid "Güncelleyen"
+msgstr "Updated by"
+
+msgid "Silindi"
+msgstr "deleted"
+
+msgid "Silinme zamanı"
+msgstr "Deletion time"
+
+msgid "Silen"
+msgstr "deleted"
+
+msgid "Oluşturma"
+msgstr "Creating"
+
+msgid "Güncelleme"
+msgstr "Update"
+
+msgid "Silme"
+msgstr "Delete"
+
+msgid "Görüntüleme"
+msgstr "Views"
+
+msgid "Giriş"
+msgstr "Login"
+
+msgid "Çıkış"
+msgstr "exit"
+
+msgid "Yetki reddi"
+msgstr "authorization denial"
+
+msgid "Dışa aktarım"
+msgstr "export"
+
+msgid "Geri yükleme"
+msgstr "restore"
+
+msgid "Ödeme"
+msgstr "Payment"
+
+msgid "İade"
+msgstr "returns"
+
+msgid "İndirim"
+msgstr "discount"
+
+msgid "Stok düzeltme"
+msgstr "stock correction"
+
+msgid "Fire kaydı"
+msgstr "fire record"
+
+msgid "Yapay zekâ isteği"
+msgstr "AI request"
+
+msgid "Yapay zekâ önerisi uygulama"
+msgstr "Applying artificial intelligence recommendation"
+
+msgid "Geliştirici stüdyosu işlemi"
+msgstr "Developer studio process"
+
+msgid "Ayar değişikliği"
+msgstr "Setting change"
+
+msgid "Rıza kaydı"
+msgstr "consent record"
+
+msgid "Veri silme talebi"
+msgstr "Data deletion request"
+
+msgid "Dikkat"
+msgstr "Attention"
+
+msgid "Uyarı"
+msgstr "Warning"
+
+msgid "Kullanıcı etiketi"
+msgstr "User tag"
+
+msgid "Kullanıcı silinse bile iz kalması için kopyalanan kullanıcı adı."
+msgstr "Username copied to leave a trace even if the user is deleted."
+
+msgid "Nesne özeti"
+msgstr "object summary"
+
+msgid "Değişiklikler"
+msgstr "Changes"
+
+msgid "Önceki hash"
+msgstr "previous hash"
+
+msgid "Bütünlük hash'i"
+msgstr "Integrity hash"
+
+msgid "Denetim kaydı"
+msgstr "audit trail"
+
+msgid "Denetim kayıtları"
+msgstr "Audit records"
+
+msgid "Yapay zekâ"
+msgstr "artificial intelligence"
+
+msgid "Gizlilik"
+msgstr "Privacy"
+
+msgid "Yazdırma"
+msgstr "printing"
+
+msgid "Geliştirici stüdyosu"
+msgstr "developer studio"
+
+msgid "Anahtar"
+msgstr "key"
+
+msgid "Etiket"
+msgstr "Label"
+
+msgid "Gizli değer"
+msgstr "hidden value"
+
+msgid "Gizli"
+msgstr "secret"
+
+msgid "Deneysel"
+msgstr "experimental"
+
+msgid "Arayüzde 'Deneysel' rozetiyle gösterilir."
+msgstr "It is indicated by the 'Experimental' badge in the interface."
+
+msgid "Uygulama ayarı"
+msgstr "Application setting"
+
+msgid "Uygulama ayarları"
+msgstr "Application settings"
+
+msgid "Hazır"
+msgstr "Ready"
+
+msgid "Devre dışı"
+msgstr "disabled"
+
+msgid "Modül"
+msgstr "Module"
+
+msgid "Özellik bayrağı"
+msgstr "feature flag"
+
+msgid "Özellik bayrakları"
+msgstr "feature flags"
+
+msgid "Masa durumu"
+msgstr "table status"
+
+msgid "dolu masa"
+msgstr "full table"
+
+msgid "Açık adisyon"
+msgstr "open ticket"
+
+msgid "servis devam ediyor"
+msgstr "service continues"
+
+msgid "Bugünkü rezervasyon"
+msgstr "Today's reservation"
+
+msgid "onaylı"
+msgstr "approved"
+
+msgid "Kavdaki şişe"
+msgstr "bottle in tin"
+
+msgid "kapalı şişe"
+msgstr "closed bottle"
+
+msgid "Açık şişe"
+msgstr "open bottle"
+
+msgid "kadeh servisinde"
+msgstr "at the glass service"
+
+msgid "Son 7 gün net satış"
+msgstr "Last 7 days net sales"
+
+msgid "₺"
+msgstr "₺"
+
+#, python-format
+msgid "%(count)s açık şişe tazelik süresini aştı; kontrol edilmeli."
+msgstr "%(count)s open bottles exceeded freshness period; should be checked."
+
+#, python-format
+msgid "%(count)s kav ölçümü hedef aralığın dışında."
+msgstr "%(count)s tin measurement is outside target range."
+
+#, python-format
+msgid "%(count)s stok kalemi minimum seviyenin altında."
+msgstr "%(count)s inventory items are below the minimum level."
+
+#, python-format
+msgid "%(count)s işlem ikinci onay bekliyor."
+msgstr "%(count)s transactions are awaiting second confirmation."
+
+msgid "Desteklenmeyen dil."
+msgstr "Unsupported language."
+
+msgid "Müşteri İlişkileri"
+msgstr "Customer Relations"
+
+msgid "Yeni"
+msgstr "new"
+
+msgid "Düzenli"
+msgstr "regular"
+
+msgid "VIP"
+msgstr "VIP"
+
+msgid "Kurumsal"
+msgstr "Corporate"
+
+msgid "Pasif"
+msgstr "passive"
+
+msgid "Müşteri kodu"
+msgstr "Customer code"
+
+msgid "Soyad"
+msgstr "Surname"
+
+msgid "Firma"
+msgstr "Company"
+
+msgid "Telefon arama özeti"
+msgstr "Phone call summary"
+
+msgid "E-posta"
+msgstr "Email"
+
+msgid "E-posta arama özeti"
+msgstr "Email search summary"
+
+msgid "Doğum tarihi"
+msgstr "date of birth"
+
+msgid "GG.AA.YYYY biçiminde."
+msgstr "In the format DD.MM.YYYY."
+
+msgid "Doğum günü"
+msgstr "birthday"
+
+msgid "Doğum ayı"
+msgstr "birth month"
+
+msgid "Segment"
+msgstr "segment"
+
+msgid "Favori şaraplar"
+msgstr "favorite wines"
+
+msgid "Favori yemekler"
+msgstr "favorite dishes"
+
+msgid "Tercih edilen bölüm"
+msgstr "preferred department"
+
+msgid "Beslenme tercihleri"
+msgstr "dietary preferences"
+
+msgid "Alerji notları"
+msgstr "Allergy notes"
+
+msgid ""
+"Misafirin beyanına dayanır. Tıbbi tavsiye değildir; mutfak her durumda kendi"
+" kontrolünü yapmalıdır."
+msgstr ""
+"It is based on the guest's statement. It is not medical advice; The kitchen "
+"must do its own control in every situation."
+
+msgid "Genel notlar"
+msgstr "General notes"
+
+msgid "Kara liste"
+msgstr "blacklist"
+
+msgid "Kara liste gerekçesi"
+msgstr "Blacklist reason"
+
+msgid "İlk ziyaret"
+msgstr "first visit"
+
+msgid "Son ziyaret"
+msgstr "last visit"
+
+msgid "Müşteriler"
+msgstr "Customers"
+
+msgid "Müşteri verisini dışa aktarabilir"
+msgstr "Can export customer data"
+
+msgid "Müşteri verisini silebilir (KVKK)"
+msgstr "Can delete customer data (KVKK)"
+
+msgid "Müşteri iletişim bilgilerini görebilir"
+msgstr "Customer can see contact information"
+
+msgid "Hizmet sunumu (rezervasyon, sipariş)"
+msgstr "Service provision (reservation, order)"
+
+msgid "E-posta ile pazarlama"
+msgstr "Email marketing"
+
+msgid "SMS ile pazarlama"
+msgstr "SMS marketing"
+
+msgid "Tercih analizi / kişiselleştirme"
+msgstr "Preference analysis / personalization"
+
+msgid "Yapay zekâ ile analiz"
+msgstr "Analysis with artificial intelligence"
+
+msgid "Fotoğraf / görüntü kullanımı"
+msgstr "Photo/image use"
+
+msgid "Amaç"
+msgstr "Purpose"
+
+msgid "Rıza verildi"
+msgstr "consent given"
+
+msgid "Rıza zamanı"
+msgstr "consent time"
+
+msgid "Geri çekilme zamanı"
+msgstr "time to retreat"
+
+msgid "Alınma yöntemi"
+msgstr "Method of receipt"
+
+msgid "Alan personel"
+msgstr "field staff"
+
+msgid "Aydınlatma metni sürümü"
+msgstr "Information text version"
+
+msgid "Rıza kayıtları"
+msgstr "Consent records"
+
+msgid "verildi"
+msgstr "given"
+
+msgid "yok"
+msgstr "no"
+
+msgid "Alındı"
+msgstr "received"
+
+msgid "Talep tarihi"
+msgstr "Request date"
+
+msgid "Tamamlanma"
+msgstr "completion"
+
+msgid "Ret gerekçesi"
+msgstr "Reason for rejection"
+
+msgid "Saklanan kayıtlar"
+msgstr "Stored records"
+
+msgid "Yasal zorunluluk nedeniyle korunan kayıtların açıklaması."
+msgstr "A description of records protected by legal obligation."
+
+msgid "Veri silme talepleri"
+msgstr "Data deletion requests"
+
+msgid "Birim harcama başına puan"
+msgstr "Points per unit spend"
+
+msgid "Puan başına indirim tutarı"
+msgstr "Discount amount per point"
+
+msgid "Asgari kullanım puanı"
+msgstr "Minimum usage score"
+
+msgid "Puan geçerliliği (gün)"
+msgstr "Point validity (days)"
+
+msgid "0 = süresiz."
+msgstr "0 = indefinite."
+
+msgid "Sadakat programı"
+msgstr "loyalty program"
+
+msgid "Sadakat programları"
+msgstr "loyalty programs"
+
+msgid "Program"
+msgstr "program"
+
+msgid "Kart numarası"
+msgstr "card number"
+
+msgid "Puan bakiyesi"
+msgstr "Point balance"
+
+msgid "Katılım tarihi"
+msgstr "Join date"
+
+msgid "Sadakat hesabı"
+msgstr "loyalty account"
+
+msgid "Sadakat hesapları"
+msgstr "loyalty accounts"
+
+msgid "Kazanım"
+msgstr "gain"
+
+msgid "Kullanım"
+msgstr "Usage"
+
+msgid "Düzeltme"
+msgstr "correction"
+
+msgid "Süre dolumu"
+msgstr "Expiration"
+
+msgid "Bonus"
+msgstr "Bonus"
+
+msgid "Hesap"
+msgstr "Account"
+
+msgid "Kazanım pozitif, kullanım negatif."
+msgstr "Gain is positive, usage is negative."
+
+msgid "Adisyon"
+msgstr "Ticket"
+
+msgid "Geçerlilik"
+msgstr "Validity"
+
+msgid "Sadakat hareketi"
+msgstr "loyalty movement"
+
+msgid "Sadakat hareketleri"
+msgstr "Loyalty movements"
+
+msgid "Sona erdi"
+msgstr "ended"
+
+msgid "İşletme içi (personel bilgilendirmesi)"
+msgstr "In-house (staff information)"
+
+msgid "SMS"
+msgstr "SMS"
+
+msgid "Kanal"
+msgstr "channel"
+
+msgid "Hedef segmentler"
+msgstr "Target segments"
+
+msgid "Bağlı fiyat kuralı"
+msgstr "Tied price rule"
+
+msgid "Rıza gerektirir"
+msgstr "Requires consent"
+
+msgid "Kampanya"
+msgstr "Campaign"
+
+msgid "Kampanyalar"
+msgstr "Campaigns"
+
+msgid "Tercih"
+msgstr "preference"
+
+msgid "Şikâyet"
+msgstr "complaint"
+
+msgid "Övgü"
+msgstr "praise"
+
+msgid "Olay"
+msgstr "incident"
+
+msgid "Ziyaret notu"
+msgstr "Visit note"
+
+msgid "Ziyaret notları"
+msgstr "Visit notes"
+
+msgid "Plan hazırlanıyor"
+msgstr "The plan is being prepared"
+
+msgid "Öneri hazır"
+msgstr "The proposal is ready"
+
+msgid "Test ediliyor"
+msgstr "being tested"
+
+msgid "Testler geçti"
+msgstr "Tests passed"
+
+msgid "Testler başarısız"
+msgstr "Tests fail"
+
+msgid "Ana dala birleştirildi"
+msgstr "Merged into master branch"
+
+msgid "İstek"
+msgstr "request"
+
+msgid "Kullanıcının doğal dilde tarifi."
+msgstr "The user's description in natural language."
+
+msgid "Plan"
+msgstr "plan"
+
+msgid "Kaynak dal"
+msgstr "source branch"
+
+msgid "Çalışma dalı"
+msgstr "branch of study"
+
+msgid "Commit"
+msgstr "Commit"
+
+msgid "Geri alma noktası"
+msgstr "rollback point"
+
+msgid "Test çalıştırıldı"
+msgstr "Test run"
+
+msgid "Test çıktısı"
+msgstr "test output"
+
+msgid "Kod kalitesi geçti"
+msgstr "Code quality passed"
+
+msgid "Kalite çıktısı"
+msgstr "Quality output"
+
+msgid "Geliştirme oturumları"
+msgstr "Development sessions"
+
+msgid "AI Development Studio açabilir"
+msgstr "AI Development Studio can open"
+
+msgid "Kod değişikliği uygulayabilir"
+msgstr "Can apply code changes"
+
+msgid "Çalışma dalını birleştirebilir"
+msgstr "Can merge study branch"
+
+msgid "Denetlenmiş komut çalıştırabilir"
+msgstr "Can run audited commands"
+
+msgid "Dosya oluştur"
+msgstr "Create file"
+
+msgid "Dosya düzenle"
+msgstr "Edit file"
+
+msgid "Dosya sil"
+msgstr "delete file"
+
+msgid "Komut çalıştır"
+msgstr "run command"
+
+msgid "Test çalıştır"
+msgstr "run test"
+
+msgid "Kod kalitesi denetimi"
+msgstr "Code quality audit"
+
+msgid "Dal oluştur"
+msgstr "Create branch"
+
+msgid "Commit oluştur"
+msgstr "create commit"
+
+msgid "Değişikliği geri al"
+msgstr "Undo change"
+
+msgid "Önerildi"
+msgstr "Recommended"
+
+msgid "Politika engelledi"
+msgstr "Policy blocked"
+
+msgid "Oturum"
+msgstr "session"
+
+msgid "Eylem türü"
+msgstr "Action type"
+
+msgid "Hedef dosya"
+msgstr "target file"
+
+msgid "Komut"
+msgstr "command"
+
+msgid "Önerilen içerik"
+msgstr "Recommended content"
+
+msgid "Önceki içerik"
+msgstr "Previous content"
+
+msgid "Fark (diff)"
+msgstr "difference (diff)"
+
+msgid "Politika kararı"
+msgstr "Policy decision"
+
+msgid "Politika gerekçesi"
+msgstr "Policy justification"
+
+msgid "Eşleşen kural"
+msgstr "Matching rule"
+
+msgid "Uygulayan"
+msgstr "Implemented by"
+
+msgid "Çıkış kodu"
+msgstr "Exit code"
+
+msgid "Çıktı"
+msgstr "output"
+
+msgid "Hata çıktısı"
+msgstr "Error output"
+
+msgid "Geliştirme eylemi"
+msgstr "development action"
+
+msgid "Geliştirme eylemleri"
+msgstr "Development actions"
+
+msgid "Eylem"
+msgstr "action"
+
+msgid "Güvenlikle ilgili"
+msgstr "security related"
+
+msgid "Stüdyo denetim kaydı"
+msgstr "Studio audit recording"
+
+msgid "Stüdyo denetim kayıtları"
+msgstr "Studio audit records"
+
+msgid ""
+"AI Development Studio yalnızca sistem yöneticisi ve işletme sahibi rollerine"
+" açıktır."
+msgstr ""
+"AI Development Studio is open to system administrator and business owner "
+"roles only."
+
+msgid ""
+"AI Development Studio bu ortamda kapalıdır. Üretim modunda varsayılan olarak"
+" devre dışıdır (WINEHOUSE_DEVSTUDIO_ENABLED)."
+msgstr ""
+"AI Development Studio is closed in this environment. Disabled by default in "
+"production mode (WINEHOUSE_DEVSTUDIO_ENABLED)."
+
+msgid "Yapay zekâ komutları doğrudan çalıştıramaz; yalnızca öneri üretir."
+msgstr "AI cannot execute commands directly; It only produces suggestions."
+
+msgid "Her öneri politika motorundan geçirilir; yasak desenler reddedilir."
+msgstr ""
+"Each proposal is passed through the policy engine; Prohibited patterns are "
+"rejected."
+
+msgid "Yazma işlemi yalnızca yapılandırılmış çalışma alanında yapılabilir."
+msgstr "Writing can only be done in the configured workspace."
+
+msgid "Her değişiklik ayrı bir Git dalında yapılır."
+msgstr "Each change is made in a separate Git branch."
+
+msgid "Testler geçmeden ve kullanıcı onayı olmadan ana dala birleştirilmez."
+msgstr ""
+"It will not be merged into the main branch without testing and user "
+"approval."
+
+msgid "API anahtarları terminal çıktılarında otomatik maskelenir."
+msgstr "API keys are automatically masked in terminal outputs."
+
+msgid "Tüm eylemler değiştirilemez denetim kaydına yazılır."
+msgstr "All actions are written to the immutable audit trail."
+
+msgid ""
+"Bu araç yalnızca değerlendirme yapar; hiçbir komut çalıştırılmaz ve hiçbir "
+"dosya değiştirilmez."
+msgstr ""
+"This tool only evaluates; no commands are run and no files are modified."
+
+msgid "İnsan Kaynakları"
+msgstr "Human Resources"
+
+msgid "Tam zamanlı"
+msgstr "full time"
+
+msgid "Yarı zamanlı"
+msgstr "part time"
+
+msgid "Sezonluk"
+msgstr "seasonal"
+
+msgid "Stajyer"
+msgstr "intern"
+
+msgid "Sözleşmeli"
+msgstr "Contracted"
+
+msgid "İzinde"
+msgstr "on leave"
+
+msgid "Askıda"
+msgstr "suspended"
+
+msgid "Ayrıldı"
+msgstr "left"
+
+msgid "Sistem kullanıcısı"
+msgstr "system user"
+
+msgid "Departman"
+msgstr "department"
+
+msgid "Servis"
+msgstr "service"
+
+msgid "Yönetim"
+msgstr "Management"
+
+msgid "Arka ofis"
+msgstr "back office"
+
+msgid "Çalışma şekli"
+msgstr "How it works"
+
+msgid "Kimlik numarası"
+msgstr "identification number"
+
+msgid "Acil durum iletişim"
+msgstr "emergency contact"
+
+msgid "Adres"
+msgstr "Address"
+
+msgid "IBAN"
+msgstr "IBAN"
+
+msgid "İşe giriş"
+msgstr "Getting started"
+
+msgid "Çıkış tarihi"
+msgstr "Release date"
+
+msgid "Saatlik ücret"
+msgstr "hourly wage"
+
+msgid "Yıllık izin hakkı (gün)"
+msgstr "Annual leave entitlement (days)"
+
+msgid "Personel hassas bilgilerini görebilir"
+msgstr "Staff can see sensitive information"
+
+msgid "Bordro bilgilerini yönetebilir"
+msgstr "Can manage payroll information"
+
+msgid "Başlangıç saati"
+msgstr "Start time"
+
+msgid "Bitiş saati"
+msgstr "end time"
+
+msgid "Mola (dk)"
+msgstr "Break (min)"
+
+msgid "Vardiya şablonu"
+msgstr "Shift template"
+
+msgid "Vardiya şablonları"
+msgstr "Shift templates"
+
+msgid "Şablon"
+msgstr "template"
+
+msgid "Tarih"
+msgstr "date"
+
+msgid "Gerekli personel"
+msgstr "Required personnel"
+
+msgid "Vardiya"
+msgstr "shift"
+
+msgid "Vardiyalar"
+msgstr "shifts"
+
+msgid "Görev rolü"
+msgstr "task role"
+
+msgid "Atanan masalar"
+msgstr "Assigned desks"
+
+msgid "Giriş saati"
+msgstr "Check-in time"
+
+msgid "Çıkış saati"
+msgstr "Check-out time"
+
+msgid "Vardiya ataması"
+msgstr "Shift assignment"
+
+msgid "Vardiya atamaları"
+msgstr "Shift assignments"
+
+msgid "Yıllık izin"
+msgstr "annual leave"
+
+msgid "Hastalık izni"
+msgstr "sick leave"
+
+msgid "Ücretsiz izin"
+msgstr "unpaid leave"
+
+msgid "Doğum izni"
+msgstr "maternity leave"
+
+msgid "Ölüm izni"
+msgstr "bereavement leave"
+
+msgid "İzin türü"
+msgstr "Permission type"
+
+msgid "Karar veren"
+msgstr "decision maker"
+
+msgid "İzin talebi"
+msgstr "leave request"
+
+msgid "İzin talepleri"
+msgstr "Leave requests"
+
+msgid "Adisyon sayısı"
+msgstr "Number of tickets"
+
+msgid "Misafir sayısı"
+msgstr "Number of guests"
+
+msgid "Toplam satış"
+msgstr "total sales"
+
+msgid "Ortalama adisyon"
+msgstr "Average add"
+
+msgid "Şarap satışı"
+msgstr "wine sales"
+
+msgid "Şarap ekleme oranı (%)"
+msgstr "Wine adding rate (%)"
+
+msgid "Şarap içeren adisyonların toplam adisyona oranı."
+msgstr "The ratio of tickets containing wine to the total ticket."
+
+msgid "İptal sayısı"
+msgstr "Number of cancellations"
+
+msgid "Verilen indirim"
+msgstr "discount given"
+
+msgid "Ortalama servis süresi (dk)"
+msgstr "Average service time (min)"
+
+msgid "Yönetici değerlendirmesi (1-5)"
+msgstr "Manager rating (1-5)"
+
+msgid "Yönetici yorumu"
+msgstr "Admin comment"
+
+msgid "Performans göstergesi"
+msgstr "Performance indicator"
+
+msgid "Performans göstergeleri"
+msgstr "Performance indicators"
+
+msgid "Eğitim modülü"
+msgstr "Training module"
+
+msgid "Sertifika no"
+msgstr "Certificate number"
+
+msgid "Eğitim kaydı"
+msgstr "Education record"
+
+msgid "Eğitim kayıtları"
+msgstr "Educational records"
+
+msgid "Human Sovereignty Protocol"
+msgstr "Human Sovereignty Protocol"
+
+msgid "Kurum içi"
+msgstr "in-house"
+
+msgid "Kısıtlı"
+msgstr "restricted"
+
+msgid "Bilinmiyor"
+msgstr "unknown"
+
+msgid "Kişisel değil"
+msgstr "It's not personal"
+
+msgid "Kişisel"
+msgstr "personal"
+
+msgid "Özel nitelikli"
+msgstr "specially qualified"
+
+msgid "İzin"
+msgstr "permission"
+
+msgid "Sınırlı izin"
+msgstr "limited leave"
+
+msgid "Yalnızca yerel"
+msgstr "local only"
+
+msgid "Red"
+msgstr "rejection"
+
+msgid "AI işlevi"
+msgstr "AI function"
+
+msgid "aiservices.AIFeature kodu; '*' tüm işlevler demektir."
+msgstr "aiservices.AIFeature code; '*' means all functions."
+
+msgid "Aktif"
+msgstr "active"
+
+msgid "HSP politika kuralı"
+msgstr "HSP policy rule"
+
+msgid "HSP politika kuralları"
+msgstr "HSP policy rules"
+
+msgid "Karar zamanı"
+msgstr "decision time"
+
+msgid "Onay geçerlilik sonu"
+msgstr "Approval expires"
+
+msgid "Onay bu andan sonra geçersizdir; yeni inceleme gerekir."
+msgstr "Consent is invalid from now on; A new review is required."
+
+msgid "HSP inceleme talebi"
+msgstr "HSP review request"
+
+msgid "HSP inceleme talepleri"
+msgstr "HSP review requests"
+
+msgid "Aktör"
+msgstr "actor"
+
+msgid "Veri sınıfı"
+msgstr "Data class"
+
+msgid "Kişisel veri sınıfı"
+msgstr "Personal data class"
+
+msgid "Uygulanan kurallar"
+msgstr "Rules applied"
+
+msgid "Uygulanan sınırlar"
+msgstr "Limits applied"
+
+msgid "Haklar makbuzu"
+msgstr "rights receipt"
+
+msgid "Haklar makbuzları"
+msgstr "rights receipts"
+
+msgid "Stok ve Satın Alma"
+msgstr "Stock and Purchasing"
+
+msgid "Kütle"
+msgstr "mass"
+
+msgid "Hacim"
+msgstr "volume"
+
+msgid "Boyut"
+msgstr "Size"
+
+msgid "Temel birime katsayı"
+msgstr "Coefficient to base unit"
+
+msgid "Ölçü birimi"
+msgstr "unit of measurement"
+
+msgid "Ölçü birimleri"
+msgstr "Units of measurement"
+
+msgid "Tedarikçi kodu"
+msgstr "Supplier code"
+
+msgid "Unvan"
+msgstr "Title"
+
+msgid "Yetkili kişi"
+msgstr "authorized person"
+
+msgid "Vergi dairesi"
+msgstr "tax office"
+
+msgid "Vergi numarası"
+msgstr "tax number"
+
+msgid "Ödeme vadesi (gün)"
+msgstr "Payment term (days)"
+
+msgid "Teslim süresi (gün)"
+msgstr "Delivery time (days)"
+
+msgid "Asgari sipariş tutarı"
+msgstr "Minimum order amount"
+
+msgid "Şarap tedarik eder"
+msgstr "supplies wine"
+
+msgid "Değerlendirme (1-5)"
+msgstr "Rating (1-5)"
+
+msgid "Tedarikçiler"
+msgstr "Suppliers"
+
+msgid "Varsayılan"
+msgstr "Default"
+
+msgid "Sorumlu"
+msgstr "Responsible"
+
+msgid "Depo"
+msgstr "Warehouse"
+
+msgid "Depolar"
+msgstr "Warehouses"
+
+msgid "Stok kategorisi"
+msgstr "Stock category"
+
+msgid "Stok kategorileri"
+msgstr "Stock categories"
+
+msgid "FIFO — ilk giren ilk çıkar"
+msgstr "FIFO — first in, first out"
+
+msgid "FEFO — son kullanma tarihine göre"
+msgstr "FEFO — by expiration date"
+
+msgid "Birim"
+msgstr "unit"
+
+msgid "Çıkış yöntemi"
+msgstr "Exit method"
+
+msgid "Bağlı şarap"
+msgstr "bound wine"
+
+msgid "Minimum stok"
+msgstr "minimum stock"
+
+msgid "Sipariş miktarı"
+msgstr "Order quantity"
+
+msgid "Raf ömrü (gün)"
+msgstr "Shelf life (days)"
+
+msgid "Varsayılan tedarikçi"
+msgstr "default supplier"
+
+msgid "Stok kalemleri"
+msgstr "stock items"
+
+msgid "Stok düzeltmesi yapabilir"
+msgstr "Can make stock correction"
+
+msgid "Stok sayımı yapabilir"
+msgstr "Can do stock count"
+
+msgid "Stok değerlemesini görebilir"
+msgstr "Can see stock valuation"
+
+msgid "Son kullanma tarihi"
+msgstr "expiration date"
+
+msgid "Giren miktar"
+msgstr "amount entering"
+
+msgid "Kalan miktar"
+msgstr "Remaining amount"
+
+msgid "Stok partisi"
+msgstr "stock batch"
+
+msgid "Stok partileri"
+msgstr "stock batches"
+
+msgid "Mal kabul"
+msgstr "Accept goods"
+
+msgid "Satış çıkışı"
+msgstr "sales outlet"
+
+msgid "Fire / zayi"
+msgstr "fire / loss"
+
+msgid "Transfer çıkışı"
+msgstr "transfer output"
+
+msgid "Transfer girişi"
+msgstr "Transfer entry"
+
+msgid "Sayım düzeltmesi"
+msgstr "count correction"
+
+msgid "Tedarikçiye iade"
+msgstr "Return to supplier"
+
+msgid "Üretim girişi"
+msgstr "Production entry"
+
+msgid "Üretim tüketimi"
+msgstr "Production consumption"
+
+msgid "Açılış bakiyesi"
+msgstr "opening balance"
+
+msgid "Hareket türü"
+msgstr "Movement type"
+
+msgid "İşlemi yapan"
+msgstr "Transaction made by"
+
+msgid "Referans türü"
+msgstr "Reference type"
+
+msgid "Referans kimliği"
+msgstr "Reference ID"
+
+msgid "Stok hareketi"
+msgstr "stock movement"
+
+msgid "Stok hareketleri"
+msgstr "Stock movements"
+
+msgid "Gönderildi"
+msgstr "sent"
+
+msgid "Siparişe dönüştürüldü"
+msgstr "Converted to order"
+
+msgid "Talep no"
+msgstr "Request no."
+
+msgid "İhtiyaç tarihi"
+msgstr "Need date"
+
+msgid "Satın alma talebi"
+msgstr "purchase requisition"
+
+msgid "Satın alma talepleri"
+msgstr "Purchase requests"
+
+msgid "Talep"
+msgstr "Request"
+
+msgid "Talep satırı"
+msgstr "Request line"
+
+msgid "Talep satırları"
+msgstr "Request lines"
+
+msgid "Teklif tarihi"
+msgstr "Offer date"
+
+msgid "Toplam tutar"
+msgstr "Total amount"
+
+msgid "Seçildi"
+msgstr "elected"
+
+msgid "Tedarikçi teklifi"
+msgstr "Supplier offer"
+
+msgid "Tedarikçi teklifleri"
+msgstr "Supplier offers"
+
+msgid "Tedarikçiye gönderildi"
+msgstr "Sent to supplier"
+
+msgid "Kısmen teslim alındı"
+msgstr "Partially received"
+
+msgid "Sipariş no"
+msgstr "Order no."
+
+msgid "Teslim deposu"
+msgstr "delivery warehouse"
+
+msgid "Kaynak talep"
+msgstr "resource request"
+
+msgid "Sipariş tarihi"
+msgstr "Order date"
+
+msgid "Beklenen teslim"
+msgstr "expected delivery"
+
+msgid "Para birimi"
+msgstr "currency"
+
+msgid "Satın alma siparişi"
+msgstr "purchase order"
+
+msgid "Satın alma siparişleri"
+msgstr "purchase orders"
+
+msgid "Sipariş"
+msgstr "Order"
+
+msgid "Teslim alınan"
+msgstr "received"
+
+msgid "Birim fiyat"
+msgstr "unit price"
+
+msgid "KDV (%)"
+msgstr "VAT (%)"
+
+msgid "Sipariş satırları"
+msgstr "Order lines"
+
+msgid "Kabul no"
+msgstr "Admission number"
+
+msgid "Kabul tarihi"
+msgstr "Acceptance date"
+
+msgid "Teslim alan"
+msgstr "recipient"
+
+msgid "Fatura no"
+msgstr "Invoice number"
+
+msgid "Soğuk zincir uygun"
+msgstr "Cold chain suitable"
+
+msgid "Soğuk zincir ürünleri için."
+msgstr "For cold chain products."
+
+msgid "Mal kabulleri"
+msgstr "Goods acceptance"
+
+msgid "Oluşan parti"
+msgstr "formed party"
+
+msgid "Son kullanma"
+msgstr "expiry"
+
+msgid "Reddedilen miktar"
+msgstr "Rejected amount"
+
+msgid "Mal kabul satırı"
+msgstr "goods receiving line"
+
+msgid "Mal kabul satırları"
+msgstr "Goods acceptance lines"
+
+msgid "Bozulma"
+msgstr "distortion"
+
+msgid "Son kullanma tarihi geçti"
+msgstr "Expiration date has passed"
+
+msgid "Kırılma"
+msgstr "fracture"
+
+msgid "Hazırlık firesi"
+msgstr "Preparation waste"
+
+msgid "Pişirme hatası"
+msgstr "cooking error"
+
+msgid "Müşteri iadesi"
+msgstr "customer refund"
+
+msgid "Kayıp / hırsızlık şüphesi"
+msgstr "Loss/suspected theft"
+
+msgid "Personel yemeği"
+msgstr "staff dinner"
+
+msgid "Eğitim"
+msgstr "Education"
+
+msgid "Tahmini maliyet"
+msgstr "Estimated cost"
+
+msgid "Fire kayıtları"
+msgstr "fire records"
+
+msgid "Yolda"
+msgstr "on the road"
+
+msgid "Transfer no"
+msgstr "Transfer number"
+
+msgid "Kaynak depo"
+msgstr "source repository"
+
+msgid "Hedef depo"
+msgstr "target warehouse"
+
+msgid "Transfer tarihi"
+msgstr "Transfer date"
+
+msgid "Stok transferi"
+msgstr "stock transfer"
+
+msgid "Stok transferleri"
+msgstr "Stock transfers"
+
+msgid "Transfer"
+msgstr "Transfer"
+
+msgid "Transfer satırı"
+msgstr "transfer line"
+
+msgid "Transfer satırları"
+msgstr "Transfer lines"
+
+msgid "Sayıldı"
+msgstr "counted"
+
+msgid "Muhasebeleştirildi"
+msgstr "Accounted"
+
+msgid "Sayım no"
+msgstr "Census number"
+
+msgid "Sayım tarihi"
+msgstr "Census date"
+
+msgid "Sayan"
+msgstr "Sayan"
+
+msgid "Stok sayımı"
+msgstr "stocktaking"
+
+msgid "Stok sayımları"
+msgstr "stock counts"
+
+msgid "Sayım"
+msgstr "count"
+
+msgid "Sistem miktarı"
+msgstr "System quantity"
+
+msgid "Sayılan miktar"
+msgstr "counted amount"
+
+msgid "Sayım satırı"
+msgstr "count line"
+
+msgid "Sayım satırları"
+msgstr "count rows"
+
+msgid "Salon Operasyonu"
+msgstr "Operation Hall"
+
+msgid "Sigara içilebilir"
+msgstr "smoking allowed"
+
+msgid "Açık alan"
+msgstr "open space"
+
+msgid "Özel alan"
+msgstr "private area"
+
+msgid "Salon bölümü"
+msgstr "living room section"
+
+msgid "Salon bölümleri"
+msgstr "living room partitions"
+
+msgid "Boş"
+msgstr "empty"
+
+msgid "Rezerve"
+msgstr "reserved"
+
+msgid "Misafir oturdu"
+msgstr "guest sat down"
+
+msgid "Sipariş alındı"
+msgstr "Order received"
+
+msgid "Servis edildi"
+msgstr "served"
+
+msgid "Hesap istendi"
+msgstr "Account requested"
+
+msgid "Temizleniyor"
+msgstr "being cleaned"
+
+msgid "Servis dışı"
+msgstr "out of service"
+
+msgid "Bölüm"
+msgstr "Section"
+
+msgid "Masa no"
+msgstr "table number"
+
+msgid "Kişi kapasitesi"
+msgstr "Person capacity"
+
+msgid "Asgari kişi"
+msgstr "minimum person"
+
+msgid "X konumu (%)"
+msgstr "X position (%)"
+
+msgid "Y konumu (%)"
+msgstr "Y position (%)"
+
+msgid "Şekil"
+msgstr "Figure"
+
+msgid "Kare"
+msgstr "square"
+
+msgid "Yuvarlak"
+msgstr "round"
+
+msgid "Dikdörtgen"
+msgstr "rectangular"
+
+msgid "Birleştirilebilir"
+msgstr "can be combined"
+
+msgid "QR menü belirteci"
+msgstr "QR menu token"
+
+msgid "Masaya özel QR menü bağlantısı için."
+msgstr "For table specific QR menu link."
+
+msgid "Masa"
+msgstr "table"
+
+msgid "Masalar"
+msgstr "tables"
+
+msgid "Masa açabilir"
+msgstr "can open table"
+
+msgid "Masa devredebilir"
+msgstr "Table can be transferred"
+
+msgid "Misafir yerleştirebilir"
+msgstr "Can place guests"
+
+msgid "Misafir geldi"
+msgstr "Guest has arrived"
+
+msgid "Gelmedi"
+msgstr "didn't come"
+
+msgid "Kapıdan"
+msgstr "through the door"
+
+msgid "Web"
+msgstr "web"
+
+msgid "İş ortağı"
+msgstr "business partner"
+
+msgid "Rezervasyon kodu"
+msgstr "reservation code"
+
+msgid "Misafir adı"
+msgstr "Guest name"
+
+msgid "Rezervasyon zamanı"
+msgstr "booking time"
+
+msgid "Süre (dk)"
+msgstr "Duration (min)"
+
+msgid "Özel istekler"
+msgstr "special requests"
+
+msgid "Mutfağa iletilir. Tıbbi tavsiye yerine geçmez."
+msgstr ""
+"It is delivered to the kitchen. It is not a substitute for medical advice."
+
+msgid "Özel gün"
+msgstr "special day"
+
+msgid "Kapora"
+msgstr "deposit"
+
+msgid "Oturma zamanı"
+msgstr "sitting time"
+
+msgid "İptal gerekçesi"
+msgstr "Reason for cancellation"
+
+msgid "Rezervasyon"
+msgstr "Reservation"
+
+msgid "Rezervasyonlar"
+msgstr "Reservations"
+
+msgid "Bekliyor"
+msgstr "waiting"
+
+msgid "Çağrıldı"
+msgstr "called"
+
+msgid "Yerleştirildi"
+msgstr "placed"
+
+msgid "Listeye giriş"
+msgstr "Login to the list"
+
+msgid "Tahmini bekleme (dk)"
+msgstr "Estimated wait (min)"
+
+msgid "Çağrı zamanı"
+msgstr "call time"
+
+msgid "Yerleşme zamanı"
+msgstr "settling in time"
+
+msgid "Bekleme listesi kaydı"
+msgstr "Waitlist registration"
+
+msgid "Bekleme listesi"
+msgstr "waiting list"
+
+msgid "Mutfağa gönderildi"
+msgstr "Sent to the kitchen"
+
+msgid "Hesap çıkarıldı"
+msgstr "Account removed"
+
+msgid "Adisyon no"
+msgstr "Ticket number"
+
+msgid "Garson"
+msgstr "waiter"
+
+msgid "Açılış"
+msgstr "opening"
+
+msgid "Kapanış"
+msgstr "Closing"
+
+msgid "Ara toplam"
+msgstr "Subtotal"
+
+msgid "Servis bedeli"
+msgstr "service fee"
+
+msgid "KDV"
+msgstr "VAT"
+
+msgid "Genel toplam"
+msgstr "grand total"
+
+msgid "Servis bedeli (%)"
+msgstr "Service fee (%)"
+
+msgid "Ana adisyon"
+msgstr "Main addition"
+
+msgid "Birleştirildiği adisyon"
+msgstr "The combined addition"
+
+msgid "İptal onayı"
+msgstr "Cancellation confirmation"
+
+msgid "Adisyonlar"
+msgstr "Additions"
+
+msgid "Ödeme alabilir"
+msgstr "Can receive payment"
+
+msgid "Hesap bölebilir"
+msgstr "Can split account"
+
+msgid "Adisyon birleştirebilir"
+msgstr "You can combine the bill"
+
+msgid "Adisyon iptal edebilir"
+msgstr "Ticket can be canceled"
+
+msgid "İndirim uygulayabilir"
+msgstr "Can apply discount"
+
+msgid "İkram yapabilir"
+msgstr "can make treats"
+
+msgid "Fiş yazdırabilir"
+msgstr "Can print receipt"
+
+msgid "Gün sonu kapatabilir"
+msgstr "May close at the end of the day"
+
+msgid "Şişe"
+msgstr "bottle"
+
+msgid "Kadeh"
+msgstr "goblet"
+
+msgid "Uçuş / tadım seti"
+msgstr "Flight / tasting set"
+
+msgid "Servis birimi"
+msgstr "service unit"
+
+msgid "Ürün adı"
+msgstr "Product name"
+
+msgid "İndirim gerekçesi"
+msgstr "Reason for discount"
+
+msgid "İndirim onayı"
+msgstr "Discount confirmation"
+
+msgid "Koltuk no"
+msgstr "Seat number"
+
+msgid "Hesap bölüştürmede kullanılır."
+msgstr "It is used in account division."
+
+msgid "Servis sırası"
+msgstr "service order"
+
+msgid "1=başlangıç, 2=ana yemek, 3=tatlı…"
+msgstr "1=starter, 2=main course, 3=dessert…"
+
+msgid "Özel istek"
+msgstr "special request"
+
+msgid "Gönderim zamanı"
+msgstr "shipping time"
+
+msgid "Adisyon satırı"
+msgstr "bill line"
+
+msgid "Adisyon satırları"
+msgstr "Bill lines"
+
+msgid "Pastane"
+msgstr "patisserie"
+
+msgid "Sırada"
+msgstr "next"
+
+msgid "Hazırlanıyor"
+msgstr "getting ready"
+
+msgid "Acele"
+msgstr "rush"
+
+msgid "Fiş no"
+msgstr "Receipt number"
+
+msgid "İstasyon"
+msgstr "station"
+
+msgid "Gönderim"
+msgstr "shipping"
+
+msgid "Başlama"
+msgstr "start"
+
+msgid "Hedef süre (dk)"
+msgstr "Target time (min)"
+
+msgid "Bu süreyi aşan fişler ekranda kırmızı gösterilir."
+msgstr "Receipts exceeding this period are shown in red on the screen."
+
+msgid "Hazırlayan"
+msgstr "Prepared by"
+
+msgid "Hazırlık fişi"
+msgstr "preparation slip"
+
+msgid "Hazırlık fişleri"
+msgstr "Preparation slips"
+
+msgid "Fişi ilerletebilir (bump)"
+msgstr "Can advance the plug (bump)"
+
+msgid "Mutfak ekranını görebilir"
+msgstr "Can see the kitchen screen"
+
+msgid "Bar ekranını görebilir"
+msgstr "Can see the bar screen"
+
+msgid "Şarap ekranını görebilir"
+msgstr "Can see the wine display"
+
+msgid "Fiş"
+msgstr "plug"
+
+msgid "Ürün"
+msgstr "Product"
+
+msgid "Alerjen uyarısı"
+msgstr "Allergen warning"
+
+msgid "Fiş satırı"
+msgstr "plug line"
+
+msgid "Fiş satırları"
+msgstr "voucher rows"
+
+msgid "Nakit"
+msgstr "cash"
+
+msgid "Kredi / banka kartı"
+msgstr "Credit/debit card"
+
+msgid "Yemek kartı"
+msgstr "meal card"
+
+msgid "Havale / EFT"
+msgstr "Wire Transfer / EFT"
+
+msgid "Hediye çeki"
+msgstr "gift voucher"
+
+msgid "Sadakat puanı"
+msgstr "loyalty score"
+
+msgid "Cari hesaba"
+msgstr "current account"
+
+msgid "Referans zorunlu"
+msgstr "Reference required"
+
+msgid "Kasa çekmecesini açar"
+msgstr "Opens the cash drawer"
+
+msgid "Komisyon (%)"
+msgstr "Commission (%)"
+
+msgid "Ödeme yöntemi"
+msgstr "Payment method"
+
+msgid "Ödeme yöntemleri"
+msgstr "Payment methods"
+
+msgid "Sandbox (gerçek işlem yok)"
+msgstr "Sandbox (no real action)"
+
+msgid "Canlı"
+msgstr "live"
+
+msgid "Tutar"
+msgstr "Amount"
+
+msgid "Bahşiş"
+msgstr "tip"
+
+msgid "Tahsilat zamanı"
+msgstr "Collection time"
+
+msgid "Tahsil eden"
+msgstr "collector"
+
+msgid "Referans"
+msgstr "Reference"
+
+msgid "Ağ geçidi modu"
+msgstr "gateway mode"
+
+msgid "Bölüm etiketi"
+msgstr "Chapter label"
+
+msgid "İptal/iade onayı"
+msgstr "Cancellation/refund confirmation"
+
+msgid "Ödemeler"
+msgstr "Payments"
+
+msgid "İade zamanı"
+msgstr "return time"
+
+msgid "İadeyi yapan"
+msgstr "Refunder"
+
+msgid "İadeler"
+msgstr "Refunds"
+
+msgid "Kapanış yapılıyor"
+msgstr "Closing in progress"
+
+msgid "Kapandı"
+msgstr "Closed"
+
+msgid "Kapatan"
+msgstr "Closed by"
+
+msgid "Brüt satış"
+msgstr "gross sales"
+
+msgid "İndirimler"
+msgstr "Discounts"
+
+msgid "Net satış"
+msgstr "net sales"
+
+msgid "Tahsil edilen KDV"
+msgstr "Collected VAT"
+
+msgid "Beklenen nakit"
+msgstr "expected cash"
+
+msgid "Sayılan nakit"
+msgstr "cash counted"
+
+msgid "Ödeme dağılımı"
+msgstr "Payment distribution"
+
+msgid "İş günleri"
+msgstr "business days"
+
+msgid "Eşitlendi"
+msgstr "Synced"
+
+msgid "Çakışma"
+msgstr "conflict"
+
+msgid "İşlem türü"
+msgstr "Transaction type"
+
+msgid "Veri"
+msgstr "Data"
+
+msgid "Cihaz kimliği"
+msgstr "Device ID"
+
+msgid "Çevrimdışı oluşturma zamanı"
+msgstr "Offline rendering time"
+
+msgid "Eşitlenme zamanı"
+msgstr "Sync time"
+
+msgid "Deneme sayısı"
+msgstr "Number of attempts"
+
+msgid "Son hata"
+msgstr "last error"
+
+msgid "İdempotans anahtarı"
+msgstr "Idempotency switch"
+
+msgid "Çevrimdışı işlem"
+msgstr "offline transaction"
+
+msgid "Çevrimdışı işlemler"
+msgstr "Offline transactions"
+
+msgid "Raporlama"
+msgstr "Reporting"
+
+msgid "Satış"
+msgstr "sales"
+
+msgid "Stok"
+msgstr "stock"
+
+msgid "Satın alma"
+msgstr "purchase"
+
+msgid "Operasyon"
+msgstr "operation"
+
+msgid "Mali"
+msgstr "financial"
+
+msgid "İzinli roller"
+msgstr "Permitted roles"
+
+msgid "Varsayılan parametreler"
+msgstr "Default parameters"
+
+msgid "PDF desteği"
+msgstr "PDF support"
+
+msgid "Excel desteği"
+msgstr "Excel support"
+
+msgid "CSV desteği"
+msgstr "CSV support"
+
+msgid "Rapor tanımı"
+msgstr "Report definition"
+
+msgid "Rapor tanımları"
+msgstr "Report definitions"
+
+msgid "Rapor dışa aktarabilir"
+msgstr "Can export report"
+
+msgid "Mali raporları görebilir"
+msgstr "Can view financial reports"
+
+msgid "Personel raporlarını görebilir"
+msgstr "Can view staff reports"
+
+msgid "Ekran"
+msgstr "screen"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "Excel"
+msgstr "Excel"
+
+msgid "CSV"
+msgstr "CSV"
+
+msgid "Rapor"
+msgstr "Report"
+
+msgid "Çalıştıran"
+msgstr "running"
+
+msgid "Parametreler"
+msgstr "Parameters"
+
+msgid "Satır sayısı"
+msgstr "number of rows"
+
+msgid "Süre (ms)"
+msgstr "Duration (ms)"
+
+msgid "Rapor koşumu"
+msgstr "report harness"
+
+msgid "Rapor koşumları"
+msgstr "Report harnesses"
+
+msgid "Satış maliyeti"
+msgstr "cost of sales"
+
+msgid "Yemek satışı"
+msgstr "food sales"
+
+msgid "İçecek satışı"
+msgstr "beverage sales"
+
+msgid "Şişe şarap satışı"
+msgstr "Bottled wine sales"
+
+msgid "Kadeh şarap satışı"
+msgstr "Sale of wine by the glass"
+
+msgid "Satılan şişe"
+msgstr "sold bottle"
+
+msgid "Satılan kadeh"
+msgstr "sold glass"
+
+msgid "İptal tutarı"
+msgstr "Cancellation amount"
+
+msgid "İade tutarı"
+msgstr "Refund amount"
+
+msgid "Fire maliyeti"
+msgstr "Waste cost"
+
+msgid "Masa devir hızı"
+msgstr "Table turnover rate"
+
+msgid "Gelmeyen"
+msgstr "not coming"
+
+msgid "Günlük satış özeti"
+msgstr "Daily sales summary"
+
+msgid "Günlük satış özetleri"
+msgstr "Daily sales summaries"
+
+msgid "Hareketli ortalama"
+msgstr "moving average"
+
+msgid "Haftanın günü mevsimselliği"
+msgstr "Day of the week seasonality"
+
+msgid "Yapay zekâ destekli"
+msgstr "Artificial intelligence powered"
+
+msgid "Hedef tarih"
+msgstr "target date"
+
+msgid "Tahmini misafir"
+msgstr "Estimated guest"
+
+msgid "Tahmini satış"
+msgstr "Estimated sales"
+
+msgid "Alt sınır"
+msgstr "lower limit"
+
+msgid "Üst sınır"
+msgstr "upper limit"
+
+msgid "Örneklem (gün)"
+msgstr "Sample (day)"
+
+msgid "Gerçekleşen satış"
+msgstr "Realized sales"
+
+msgid "Yapay zekâ yorumu"
+msgstr "Artificial intelligence review"
+
+msgid "Üretim zamanı"
+msgstr "Production time"
+
+msgid "Satış tahminleri"
+msgstr "Sales forecasts"
+
+msgid "Bu raporu görüntüleme yetkiniz yok."
+msgstr "You are not authorized to view this report."
+
+msgid "Bu raporu dışa aktarma yetkiniz yok."
+msgstr "You are not authorized to export this report."
+
+msgid "Rapor dışa aktarma yetkiniz yok."
+msgstr "You do not have permission to export reports."
+
+msgid "Eğitim Merkezi"
+msgstr "Education Center"
+
+msgid "Temel"
+msgstr "Basic"
+
+msgid "İleri"
+msgstr "Next"
+
+msgid "Özet (TR)"
+msgstr "Summary (TR)"
+
+msgid "Özet (EN)"
+msgstr "Summary (EN)"
+
+msgid "Hedef roller"
+msgstr "Target roles"
+
+msgid "Seviye"
+msgstr "Level"
+
+msgid "Tahmini süre (dk)"
+msgstr "Estimated time (min)"
+
+msgid "Zorunlu"
+msgstr "mandatory"
+
+msgid "Yayında"
+msgstr "on air"
+
+msgid "Eğitim modülleri"
+msgstr "Training modules"
+
+msgid "İlgili ekran"
+msgstr "Related screen"
+
+msgid "Eğitim dersi"
+msgstr "training lesson"
+
+msgid "Eğitim dersleri"
+msgstr "training lessons"
+
+msgid "Ders"
+msgstr "Lesson"
+
+msgid "Ders ilerlemesi"
+msgstr "Lesson progress"
+
+msgid "Ders ilerlemeleri"
+msgstr "Course progressions"
+
+msgid "Bu eğitim modülü rolünüze açık değil."
+msgstr "This training module is not clear for your role."
+
+msgid "Bu ders rolünüze açık değil."
+msgstr "This course is not specific to your role."
+
+msgid "Ders tamamlandı olarak işaretlendi."
+msgstr "Lesson marked complete."
+
+msgid "Onay kuyruğu"
+msgstr "Approval queue"
+
+msgid ""
+"Kritik işlemler ikinci onay gerektirir. Görevler ayrılığı gereği kullanıcı "
+"kendi talebini onaylayamaz."
+msgstr ""
+"Critical operations require second confirmation. Due to the separation of "
+"duties, the user cannot approve his own request."
+
+msgid "Kayıt bulunamadı."
+msgstr "No record found."
+
+msgid "Sayfalama"
+msgstr "pagination"
+
+msgid ""
+"Denetim kayıtları değiştirilemez ve uygulama içinden silinemez. Saklama "
+"süresi dolan kayıtlar arşivlenir."
+msgstr ""
+"Audit records cannot be modified or deleted from within the application. "
+"Records whose retention period has expired are archived."
+
+msgid "Tüm işlemler"
+msgstr "All transactions"
+
+msgid "Yalnızca başarısız"
+msgstr "just fail"
+
+msgid "Filtrele"
+msgstr "Filter"
+
+msgid "Temizle"
+msgstr "clear"
+
+msgid "Nesne"
+msgstr "object"
+
+msgid "Giriş yap"
+msgstr "Log in"
+
+msgid "POS terminali: personel kodu + PIN"
+msgstr "POS terminal: staff code + PIN"
+
+msgid "Parola değiştir"
+msgstr "change password"
+
+msgid "Kaydet"
+msgstr "Save"
+
+msgid "Parola değiştirildi"
+msgstr "Password changed"
+
+msgid "Parolanız güncellendi."
+msgstr "Your password has been updated."
+
+msgid "Ana panele dön"
+msgstr "Return to main panel"
+
+msgid "PIN girişi"
+msgstr "PIN entry"
+
+msgid "POS Hızlı Giriş"
+msgstr "POS Fast Login"
+
+msgid "Parola ile giriş"
+msgstr "Login with password"
+
+msgid "Profilim"
+msgstr "My Profile"
+
+msgid "Hesap bilgileri"
+msgstr "Account information"
+
+msgid "Kapalı"
+msgstr "Closed"
+
+msgid "İndirim yetkisi"
+msgstr "discount authority"
+
+msgid "Dil"
+msgstr "language"
+
+msgid "Son giriş"
+msgstr "last login"
+
+msgid "Rolüm"
+msgstr "My role"
+
+msgid "Son giriş denemeleri"
+msgstr "Last login attempts"
+
+msgid "Kayıt yok."
+msgstr "No record."
+
+msgid "Rol izinleri"
+msgstr "Role permissions"
+
+msgid "Toplam izin"
+msgstr "Total leave"
+
+msgid "Bu roldeki kullanıcı"
+msgstr "User in this role"
+
+msgid "Bu role izin atanmamış."
+msgstr "No permissions have been assigned to this role."
+
+msgid "Bu roldeki kullanıcılar"
+msgstr "Users in this role"
+
+msgid "Kullanıcı yok."
+msgstr "There are no users."
+
+msgid "Roller ve yetkiler"
+msgstr "Roles and powers"
+
+msgid ""
+"Roller en az yetki ilkesine göre tanımlanmıştır: her rol yalnızca görevini "
+"yapmak için gereken izinlere sahiptir."
+msgstr ""
+"Roles are defined according to the principle of least privilege: each role "
+"has only the permissions necessary to perform its task."
+
+msgid "İzinler"
+msgstr "Permissions"
+
+msgid "Kullanıcı düzenle"
+msgstr "Edit user"
+
+msgid "Yeni kullanıcı"
+msgstr "new user"
+
+msgid "Vazgeç"
+msgstr "Cancel"
+
+msgid "Ad, kullanıcı adı veya personel kodu"
+msgstr "Name, username or personnel code"
+
+msgid "Tüm roller"
+msgstr "All roles"
+
+msgid "Kilitli"
+msgstr "locked"
+
+msgid "Düzenle"
+msgstr "Edit"
+
+msgid "Yapay Zekâ Konsolu"
+msgstr "Artificial Intelligence Console"
+
+msgid "Buluta gönderilecek metin her zaman size gösterilir"
+msgstr "The text to be sent to the cloud is always shown to you"
+
+msgid "Soru sor"
+msgstr "ask a question"
+
+msgid "Otomatik (yedekleme zinciri)"
+msgstr "Automatic (backup chain)"
+
+msgid "yetki yok"
+msgstr "no authority"
+
+msgid "Sorunuz"
+msgstr "Ask"
+
+msgid "Gönder"
+msgstr "Send"
+
+msgid "Yanıt"
+msgstr "Reply"
+
+msgid "Mock — gerçek model değil"
+msgstr "Mock — not the real model"
+
+msgid "Yedek sağlayıcı"
+msgstr "backup provider"
+
+msgid "Sağlayıcıya fiilen gönderilen metni göster"
+msgstr "Show text actually sent to provider"
+
+msgid "Belirteç"
+msgstr "token"
+
+msgid "Denenen sağlayıcılar"
+msgstr "Tried providers"
+
+msgid "Etkin yapılandırma"
+msgstr "Active configuration"
+
+msgid "Varsayılan sağlayıcı"
+msgstr "Default provider"
+
+msgid "Gizlilik modu"
+msgstr "privacy mode"
+
+msgid "Evet"
+msgstr "Yes"
+
+msgid "Hayır"
+msgstr "no"
+
+msgid "Yedekleme sırası"
+msgstr "Backup order"
+
+msgid "Son çağrılarım"
+msgstr "my last calls"
+
+msgid "Henüz çağrı yok."
+msgstr "No calls yet."
+
+msgid "Yapay Zekâ Maliyeti"
+msgstr "Artificial Intelligence Cost"
+
+msgid "bu ay harcanan"
+msgstr "spent this month"
+
+msgid "aylık sınır"
+msgstr "monthly limit"
+
+msgid "toplam çağrı"
+msgstr "total call"
+
+msgid "başarısızlık oranı"
+msgstr "failure rate"
+
+msgid "Sağlayıcıya göre"
+msgstr "By provider"
+
+msgid "USD"
+msgstr "USD"
+
+msgid "Yerel"
+msgstr "local"
+
+msgid "Bulut"
+msgstr "cloud"
+
+msgid "Veri yok."
+msgstr "No data."
+
+msgid "İşleve göre"
+msgstr "By function"
+
+msgid "Çağrı sonuçları"
+msgstr "Call results"
+
+msgid "Yapay Zekâ Sağlayıcıları"
+msgstr "Artificial Intelligence Providers"
+
+msgid "Bağlantıları sına"
+msgstr "Test connections"
+
+msgid "Genel ayarlar"
+msgstr "General settings"
+
+msgid "Yerel öncelik"
+msgstr "local priority"
+
+msgid "Aylık maliyet sınırı"
+msgstr "Monthly cost limit"
+
+msgid "Bu ayki bütçe"
+msgstr "This month's budget"
+
+msgid "Sağlayıcılar"
+msgstr "Providers"
+
+msgid "Zaman aşımı"
+msgstr "timeout"
+
+msgid "API anahtarı"
+msgstr "API key"
+
+msgid "Tanımlı"
+msgstr "Defined"
+
+msgid "Yok"
+msgstr "None"
+
+msgid "Sommelier Asistanı"
+msgstr "Sommelier Assistant"
+
+msgid "Öneriler yalnızca kavda stokta olan şaraplardan seçilir"
+msgstr "Recommendations are selected only from wines in stock at the cellar"
+
+msgid "Yemek–şarap eşleştirmesi"
+msgstr "Food–wine pairing"
+
+msgid "Menüden seç"
+msgstr "choose from menu"
+
+msgid "— seçiniz —"
+msgstr "— select —"
+
+msgid "Yemek tarifi"
+msgstr "recipe"
+
+msgid "Örn: kuzu tandır, közlenmiş patlıcan püresiyle"
+msgstr "Ex: tandoori lamb with roasted eggplant puree"
+
+msgid "Öneri al"
+msgstr "Get suggestions"
+
+msgid "Mock"
+msgstr "mock"
+
+#, python-format
+msgid "%(wines_considered)s şarap değerlendirildi."
+msgstr "%(wines_considered)s wines evaluated."
+
+msgid "Bu öneri sommelier onayı olmadan eşleştirme kaydına işlenmez."
+msgstr ""
+"This suggestion will not be recorded in the pairing record without the "
+"approval of the sommelier."
+
+msgid "Bir yemek tarif edin; kavdaki şaraplardan öneri üretilecek."
+msgstr ""
+"Describe a meal; Suggestions will be produced from the wines in the cellar."
+
+msgid "Yapay Zekâ Öneri Kuyruğu"
+msgstr "Artificial Intelligence Recommendation Queue"
+
+msgid "Öneri yok."
+msgstr "No suggestions."
+
+msgid "Şimdi yedek al"
+msgstr "Backup now"
+
+msgid "Geri yükle"
+msgstr "restore"
+
+msgid "Yapılandırma"
+msgstr "Configuration"
+
+msgid "Yedek klasörü"
+msgstr "backup folder"
+
+msgid "Şifreleme"
+msgstr "encryption"
+
+msgid "Anahtar tanımsız"
+msgstr "Key undefined"
+
+msgid "Saklama süresi"
+msgstr "Storage period"
+
+msgid "gün (en az 3 yedek daima korunur)"
+msgstr "days (at least 3 backups are always maintained)"
+
+msgid "Yedekler"
+msgstr "Reserves"
+
+msgid "Dosya"
+msgstr "File"
+
+msgid "Boyut MB"
+msgstr "Size MB"
+
+msgid "Doğrula"
+msgstr "verify"
+
+msgid "Henüz yedek alınmamış."
+msgstr "No backup has been taken yet."
+
+msgid "Son geri yüklemeler"
+msgstr "Recent restores"
+
+msgid "Geri Yükleme"
+msgstr "Restore"
+
+msgid "Geri yükleme talebi"
+msgstr "restore request"
+
+msgid "Onay talebi oluştur"
+msgstr "Create approval request"
+
+msgid "GELİŞTİRME MODU"
+msgstr "DEVELOPMENT MODE"
+
+msgid "Ödeme: Sandbox (gerçek işlem yok)"
+msgstr "Payment: Sandbox (no real transactions)"
+
+msgid "e-Fatura: Sandbox"
+msgstr "e-Invoice: Sandbox"
+
+msgid "Yapay zekâ: yalnızca yerel"
+msgstr "AI: local only"
+
+msgid "Gizlilik modu açık"
+msgstr "Privacy mode is on"
+
+msgid "Şarap Restoranı Yönetimi"
+msgstr "Wine Restaurant Management"
+
+msgid "Menüyü aç/kapat"
+msgstr "Open/close menu"
+
+msgid "Masa planı"
+msgstr "table plan"
+
+msgid "Gün sonu"
+msgstr "end of day"
+
+msgid "Hazırlık"
+msgstr "preparation"
+
+msgid "Mutfak ekranı"
+msgstr "kitchen display"
+
+msgid "Bar ekranı"
+msgstr "bar display"
+
+msgid "Şarap ekranı"
+msgstr "wine display"
+
+msgid "Açık şişeler"
+msgstr "open bottles"
+
+msgid "Değerleme"
+msgstr "Valuation"
+
+msgid "Mükerrer kayıtlar"
+msgstr "duplicate records"
+
+msgid "Menü"
+msgstr "Menu"
+
+msgid "Menü mühendisliği"
+msgstr "menu engineering"
+
+msgid "QR menü ön izleme"
+msgstr "QR menu preview"
+
+msgid "Partiler / SKT"
+msgstr "Parties / SKT"
+
+msgid "Fire"
+msgstr "fire"
+
+msgid "Sipariş önerileri"
+msgstr "Order suggestions"
+
+msgid "Raporlar"
+msgstr "Reports"
+
+msgid "Konsol"
+msgstr "console"
+
+msgid "Öneri kuyruğu"
+msgstr "Suggestion queue"
+
+msgid "Sağlayıcı ayarları"
+msgstr "Provider settings"
+
+msgid "Özellik durumu"
+msgstr "feature status"
+
+msgid "Çıkış yap"
+msgstr "Log out"
+
+msgid "Kapat"
+msgstr "Close"
+
+msgid "Yerel kurulum · çevrimdışı çalışabilir"
+msgstr "Local installation · can work offline"
+
+msgid "Gözlem çalıştır"
+msgstr "run observation"
+
+msgid "Deneysel modül."
+msgstr "Experimental module."
+
+msgid "incelenen çağrı"
+msgstr "reviewed call"
+
+msgid "toplam belirteç"
+msgstr "total token"
+
+msgid "bulgu"
+msgstr "finding"
+
+msgid "Açık bulgular"
+msgstr "clear findings"
+
+msgid "Açık bulgu yok."
+msgstr "No obvious findings."
+
+msgid "Görev taslakları"
+msgstr "Quest drafts"
+
+msgid "Görev yok."
+msgstr "There is no mission."
+
+msgid "Son koşumlar"
+msgstr "last harnesses"
+
+msgid "Koşum yok."
+msgstr "I don't have a harness."
+
+msgid "CAIO Bulguları"
+msgstr "CAIO Findings"
+
+msgid "Tüm kategoriler"
+msgstr "All categories"
+
+msgid "Bulgu"
+msgstr "finding"
+
+msgid "Tekrar"
+msgstr "again"
+
+msgid "Bulgu yok."
+msgstr "No findings."
+
+msgid "Geliştirme Görevleri"
+msgstr "Development Tasks"
+
+msgid "Görevler yalnızca öneridir; hiçbiri insan onayı olmadan uygulanmaz."
+msgstr ""
+"Tasks are suggestions only; None of them are implemented without human "
+"approval."
+
+msgid "Menü Mühendisliği"
+msgstr "Menu Engineering"
+
+msgid "Yıldız / At / Bilmece / Köpek kadranları"
+msgstr "Star/Horse/Riddle/Dog dials"
+
+msgid "adet"
+msgstr "quantity"
+
+msgid "Bu kadranda ürün yok."
+msgstr "There are no products in this dial."
+
+msgid "Henüz kadran anlık görüntüsü üretilmemiş."
+msgstr "No dial snapshots have been produced yet."
+
+msgid "Canlı menü mühendisliği raporunu aç"
+msgstr "Open live menu engineering report"
+
+msgid "Fiyat ve maliyet"
+msgstr "Price and cost"
+
+msgid "KDV dahil"
+msgstr "VAT included"
+
+msgid "Geçerli fiyat"
+msgstr "current price"
+
+msgid "Brüt kâr"
+msgstr "gross profit"
+
+msgid "Marj"
+msgstr "margin"
+
+msgid "Maliyet oranı"
+msgstr "cost ratio"
+
+msgid "Alerjen ve beslenme"
+msgstr "Allergen and nutrition"
+
+msgid "Alerjen bildirilmemiş."
+msgstr "No allergen reported."
+
+msgid ""
+"Alerjen bilgisi işletme beyanına dayanır ve tıbbi tavsiye yerine geçmez. "
+"Mutfak her siparişte kendi kontrolünü yapmalıdır."
+msgstr ""
+"Allergen information is based on the business declaration and is not a "
+"substitute for medical advice. The kitchen must do its own checks on each "
+"order."
+
+msgid "porsiyon"
+msgstr "portion"
+
+msgid "Malzeme"
+msgstr "Material"
+
+msgid "Maliyet ₺"
+msgstr "Cost ₺"
+
+msgid "Bu ürün için reçete tanımlanmamış."
+msgstr "No prescription has been defined for this product."
+
+msgid "Menü Ürünleri"
+msgstr "Menu Products"
+
+msgid "Ürün adı veya kodu"
+msgstr "Product name or code"
+
+msgid "Tüm türler"
+msgstr "All genres"
+
+msgid "Fiyat ₺"
+msgstr "Price ₺"
+
+msgid "KDV dahil ₺"
+msgstr "₺ including VAT"
+
+#, python-format
+msgid "Maliyet %%"
+msgstr "Cost %%"
+
+msgid "Tükendi"
+msgstr "out of stock"
+
+msgid "Aç"
+msgstr "open"
+
+msgid "Menü henüz hazırlanmadı."
+msgstr "The menu has not been prepared yet."
+
+msgid ""
+"Alerjen bilgisi işletme beyanına dayanır. Alerjiniz varsa lütfen servis "
+"personelini bilgilendirin."
+msgstr ""
+"Allergen information is based on the business declaration. If you have "
+"allergies, please inform the service staff."
+
+msgid "Mükerrer Kayıt Uyarıları"
+msgstr "Duplicate Registration Warnings"
+
+msgid "Taramayı çalıştır"
+msgstr "Run scan"
+
+msgid ""
+"Sistem hiçbir kaydı kendiliğinden silmez veya birleştirmez; yalnızca "
+"inceleme için uyarı üretir."
+msgstr ""
+"The system does not automatically delete or merge any records; It only "
+"generates alerts for review."
+
+msgid "Karşılaştırılan"
+msgstr "compared"
+
+msgid "Açık uyarı yok."
+msgstr "No clear warning."
+
+msgid "Açık Şişeler"
+msgstr "Open Bottles"
+
+msgid "Kadeh servisi yapılan şişeler ve gerçekleşen verim"
+msgstr "Bottles served and actual yield"
+
+#, python-format
+msgid ""
+"%(stale_count)s şişe tazelik süresini aştı; servisten önce kontrol edin."
+msgstr ""
+"%(stale_count)s bottles have exceeded their freshness period; Check before "
+"service."
+
+msgid "Servisteki şişeler"
+msgstr "Bottles in service"
+
+#, python-format
+msgid "Toplam %(total_glasses)s kadeh servis edilebilir"
+msgstr "A total of %(total_glasses)s glasses can be served"
+
+msgid "Kalan ml"
+msgstr "Remaining ml"
+
+msgid "Verim"
+msgstr "Yield"
+
+msgid "saat"
+msgstr "clock"
+
+msgid "Kav Konumları"
+msgstr "Kav Locations"
+
+msgid "Sıcaklık ve nem takibi"
+msgstr "Temperature and humidity monitoring"
+
+msgid "Doluluk"
+msgstr "occupancy"
+
+msgid "Hedef °C"
+msgstr "Target °C"
+
+msgid "Son ölçüm"
+msgstr "last measurement"
+
+msgid "Aralık dışı"
+msgstr "out of range"
+
+msgid "Uygun"
+msgstr "suitable"
+
+msgid "Ölçüm yok"
+msgstr "no measurement"
+
+msgid "Son ölçümler"
+msgstr "Latest measurements"
+
+msgid "Sıcaklık"
+msgstr "temperature"
+
+msgid "Nem"
+msgstr "humidity"
+
+msgid "Kav Değerlemesi"
+msgstr "Kav Valuation"
+
+msgid "Kapalı şişe"
+msgstr "closed bottle"
+
+msgid "Maliyet değeri ₺"
+msgstr "Cost value ₺"
+
+msgid "Satış değeri ₺"
+msgstr "Sales value ₺"
+
+msgid "Potansiyel kâr ₺"
+msgstr "Potential profit ₺"
+
+msgid ""
+"Özel kav müşterilerine ait şişeler bu değerlemeye dâhil edilmez; müşteri "
+"mülkiyetindedir."
+msgstr ""
+"Bottles belonging to private kav customers are not included in this "
+"valuation; is the property of the customer."
+
+msgid "İçim aralığı uyarıları"
+msgstr "Drinking interval warnings"
+
+msgid "Değer ₺"
+msgstr "Value ₺"
+
+msgid "Uyarı gerektiren şarap yok."
+msgstr "No wine that needs warning."
+
+msgid "Künye"
+msgstr "imprint"
+
+msgid "Alkol"
+msgstr "alcohol"
+
+msgid "Şişe hacmi"
+msgstr "bottle volume"
+
+msgid "Üzümler"
+msgstr "grapes"
+
+msgid "Servis sıcaklığı"
+msgstr "serving temperature"
+
+msgid "Dekantasyon"
+msgstr "Decantation"
+
+msgid "Gerekmez"
+msgstr "not necessary"
+
+msgid "İçim aralığı"
+msgstr "smoking range"
+
+msgid "Tadım profili"
+msgstr "Tasting profile"
+
+msgid "Stok ve servis"
+msgstr "Stock and service"
+
+msgid "şişe"
+msgstr "bottle"
+
+msgid "kadeh"
+msgstr "goblet"
+
+msgid "Standart"
+msgstr "Standard"
+
+msgid "Koruma sistemi"
+msgstr "protection system"
+
+msgid "İğne sistemi"
+msgstr "needle system"
+
+msgid "Tadım"
+msgstr "tasting"
+
+msgid "Şişe aç"
+msgstr "open bottle"
+
+msgid "Kadeh servis et"
+msgstr "serve glass"
+
+msgid "Kalan"
+msgstr "remaining"
+
+msgid "Parti kaydı yok."
+msgstr "There is no party registration."
+
+msgid "Kontrol et"
+msgstr "check"
+
+msgid "Açık şişe yok."
+msgstr "No open bottles."
+
+msgid "Yemek eşleştirmeleri"
+msgstr "food pairings"
+
+msgid "Yapay zekâ önerisi — onay bekliyor"
+msgstr "Artificial intelligence proposal — awaiting approval"
+
+msgid "Eşleştirme tanımlanmamış."
+msgstr "Pairing is not defined."
+
+msgid "Kusur kayıtları"
+msgstr "Defect records"
+
+msgid "Şişe ve kadeh stoğu, içim aralığı ve fiyatlandırma"
+msgstr "Bottle and glass stock, drinking range and pricing"
+
+msgid "Şarap, üretici, SKU veya barkod"
+msgstr "Wine, producer, SKU or barcode"
+
+msgid "Kritik stok"
+msgstr "critical stock"
+
+msgid "Bölge / Üzüm"
+msgstr "Region / Grape"
+
+msgid "Şişe ₺"
+msgstr "Bottle ₺"
+
+msgid "Kadeh ₺"
+msgstr "Glass ₺"
+
+msgid "İçim"
+msgstr "inside me"
+
+msgid "Ana panel"
+msgstr "main panel"
+
+msgid "Hoş geldiniz"
+msgstr "welcome"
+
+msgid "İncele"
+msgstr "Review"
+
+msgid ""
+"Rolünüz için gösterilecek özet bulunmuyor. Menüden ilgili bölüme "
+"geçebilirsiniz."
+msgstr ""
+"There are no synopses to display for your role. You can go to the relevant "
+"section from the menu."
+
+msgid "Deneysel ve planlanan özellikler"
+msgstr "Experimental and planned features"
+
+msgid ""
+"Aşağıdaki özellikler henüz tamamlanmamıştır ve arayüzde bu şekilde "
+"işaretlenir."
+msgstr ""
+"The following features are not yet complete and are marked as such in the "
+"interface."
+
+msgid "Hazır / Deneysel / Planlandı dökümü"
+msgstr "Ready/Experimental/Planned breakdown"
+
+msgid ""
+"Bu tablo hangi modülün hazır, hangisinin deneysel veya planlandı olduğunu "
+"açıkça gösterir. Tamamlanmamış bir özellik hiçbir ekranda tamamlanmış gibi "
+"sunulmaz."
+msgstr ""
+"This table clearly shows which module is ready and which is experimental or "
+"planned. An incomplete feature is not presented as completed on any screen."
+
+msgid "Özellik"
+msgstr "feature"
+
+msgid ""
+"Henüz özellik bayrağı tanımlanmamış. 'python manage.py seed_demo' komutunu "
+"çalıştırın."
+msgstr ""
+"No feature flags defined yet. Run the command 'python manage.py seed_demo'."
+
+msgid ""
+"Gizli değerler (API anahtarları) burada düz metin gösterilmez; yalnızca "
+"kısaltılmış biçimde görünür."
+msgstr ""
+"Secret values (API keys) are not shown in plain text here; appears only in "
+"abbreviated form."
+
+msgid "Veritabanında ayar kaydı yok. Yapılandırma .env dosyasından okunuyor."
+msgstr ""
+"There is no settings record in the database. The configuration is read from "
+"the .env file."
+
+msgid "Dönem"
+msgstr "Period"
+
+msgid "Uygun kitle"
+msgstr "suitable audience"
+
+msgid "Rıza"
+msgstr "consent"
+
+msgid "Bilgiler"
+msgstr "Information"
+
+msgid "yetki gerekli"
+msgstr "authorization required"
+
+msgid "Ziyaret sayısı"
+msgstr "Number of visits"
+
+msgid "Ortalama harcama"
+msgstr "Average spend"
+
+msgid "Alerji notu"
+msgstr "Allergy note"
+
+msgid "Misafir beyanına dayanır; mutfak kendi kontrolünü yapmalıdır."
+msgstr "Based on guest declaration; The kitchen should do its own control."
+
+msgid "KVKK rıza durumu"
+msgstr "KVKK consent status"
+
+msgid "Rıza var"
+msgstr "there is consent"
+
+msgid "Rıza yok"
+msgstr "no consent"
+
+msgid "Rıza kaydı yok."
+msgstr "There is no record of consent."
+
+msgid "Sadakat"
+msgstr "loyalty"
+
+msgid "Kart"
+msgstr "card"
+
+msgid "kullanılabilir"
+msgstr "available"
+
+msgid "Son ziyaretler"
+msgstr "Recent visits"
+
+msgid "Kişi"
+msgstr "person"
+
+msgid "Tutar ₺"
+msgstr "Amount ₺"
+
+msgid "Ziyaret kaydı yok."
+msgstr "No visitation record."
+
+msgid "Tercihler"
+msgstr "Preferences"
+
+msgid "Beslenme"
+msgstr "Nutrition"
+
+msgid ""
+"Müşteri telefon ve e-posta bilgileri şifreli saklanır. Listede yalnızca son "
+"iki hane gösterilir; tam numarayı görmek için yetkili rolle kaydı açın."
+msgstr ""
+"Customer telephone and e-mail information is stored encrypted. Only the last"
+" two digits are shown in the list; To see the exact number, open the record "
+"with the authorized role."
+
+msgid "Ad, firma veya kod"
+msgstr "Name, company or code"
+
+msgid "Telefon (tam eşleşme)"
+msgstr "Phone (exact match)"
+
+msgid "Tüm segmentler"
+msgstr "All segments"
+
+msgid "Ziyaret"
+msgstr "Visit"
+
+msgid "Yaşam boyu ₺"
+msgstr "₺ for life"
+
+msgid "İletişim"
+msgstr "Contact"
+
+msgid "gizli"
+msgstr "secret"
+
+msgid "KVKK / GDPR Merkezi"
+msgstr "KVKK / GDPR Center"
+
+msgid "Hassas alan şifrelemesi"
+msgstr "Sensitive field encryption"
+
+msgid "Yapay zekâ gizlilik modu"
+msgstr "AI stealth mode"
+
+msgid "Yalnızca yerel yapay zekâ"
+msgstr "Local AI only"
+
+msgid "Rıza özeti"
+msgstr "consent summary"
+
+msgid "Geri çekilmiş"
+msgstr "withdrawn"
+
+msgid "Onay talebi yok"
+msgstr "No approval requests"
+
+msgid "Talep yok."
+msgstr "There is no demand."
+
+msgid "Veri saklama politikası"
+msgstr "Data retention policy"
+
+msgid "gün"
+msgstr "day"
+
+msgid "Pasif müşteri verisi"
+msgstr "Passive customer data"
+
+msgid ""
+"Silme talebi onaylandığında kişisel veriler anonimleştirilir; mali kayıtlar "
+"yasal saklama süresi boyunca kişi bağlantısı koparılarak korunur."
+msgstr ""
+"Once the erasure request is confirmed, personal data is anonymised; "
+"Financial records are protected by severing personal contact during the "
+"legal retention period."
+
+msgid "Stüdyo Denetim Kaydı"
+msgstr "Studio Audit Log"
+
+msgid "Yalnızca güvenlikle ilgili kayıtlar"
+msgstr "Security-related records only"
+
+msgid "Çalışma alanı"
+msgstr "work area"
+
+msgid ""
+"Bu modül yalnızca sistem yöneticisi ve işletme sahibi rollerine açıktır ve "
+"üretim modunda varsayılan olarak kapalıdır."
+msgstr ""
+"This module is only available to system administrator and owner roles and is"
+" off by default in production mode."
+
+msgid "Güvenlik sınırları"
+msgstr "Security limits"
+
+msgid "Etkin politika"
+msgstr "effective policy"
+
+msgid "Kuralları gör ve sına"
+msgstr "See and test the rules"
+
+msgid "Komut çalıştırma"
+msgstr "run command"
+
+msgid "Kapalı (yalnızca öneri üretilir)"
+msgstr "Off (only suggestions are generated)"
+
+msgid "Yasak komut sayısı"
+msgstr "Number of prohibited commands"
+
+msgid "Yasak desen sayısı"
+msgstr "Number of prohibited patterns"
+
+msgid "Dal"
+msgstr "branch"
+
+msgid "Testler"
+msgstr "Tests"
+
+msgid "Çalıştırılmadı"
+msgstr "Not run"
+
+msgid "Henüz geliştirme oturumu yok."
+msgstr "No development sessions yet."
+
+msgid "Politika Motoru"
+msgstr "Policy Engine"
+
+msgid "Yapay zekânın önerdiği her eylem bu kurallardan geçer"
+msgstr ""
+"Every action suggested by artificial intelligence passes through these rules"
+
+msgid "Kural denemesi"
+msgstr "rule attempt"
+
+msgid "Değerlendir"
+msgstr "Evaluate"
+
+msgid "Kural"
+msgstr "rule"
+
+msgid "Onaysız çalışabilen komutlar"
+msgstr "Commands that can run without approval"
+
+msgid "Onay gerektiren komutlar"
+msgstr "Commands that require confirmation"
+
+msgid "Kesin yasak komutlar"
+msgstr "Strictly prohibited commands"
+
+msgid "Korumalı dosyalar"
+msgstr "Protected files"
+
+msgid "Geliştirme Oturumu"
+msgstr "Development Session"
+
+msgid "Birleştirme engelli"
+msgstr "Merge disabled"
+
+msgid ""
+"Birleştirme koşulları sağlandı. Birleştirme yine de açık kullanıcı onayı "
+"gerektirir."
+msgstr ""
+"Merging conditions are met. Merging still requires explicit user consent."
+
+msgid "Önerilen eylemler"
+msgstr "Recommended actions"
+
+msgid "Politika"
+msgstr "Politics"
+
+msgid "Eylem önerilmemiş."
+msgstr "No action recommended."
+
+msgid "Yetkiniz yok"
+msgstr "You have no authority"
+
+msgid "Bu sayfayı görüntülemek için gereken yetkiye sahip değilsiniz."
+msgstr "You do not have the required permissions to view this page."
+
+msgid ""
+"Bu erişim denemesi denetim kaydına yazıldı. Yetki gerekiyorsa yöneticinize "
+"başvurun."
+msgstr ""
+"This access attempt was written to the audit log. If authorization is "
+"required, contact your administrator."
+
+msgid "Sayfa bulunamadı"
+msgstr "Page not found"
+
+msgid "Aradığınız sayfa taşınmış veya hiç var olmamış olabilir."
+msgstr ""
+"The page you are looking for may have been moved or may not exist at all."
+
+msgid "Adresi kontrol edin veya menüden ilerleyin."
+msgstr "Check the address or proceed from the menu."
+
+msgid "Sunucu hatası"
+msgstr "Server error"
+
+msgid "Beklenmeyen bir hata oluştu. İşleminiz tamamlanmamış olabilir."
+msgstr ""
+"An unexpected error occurred. Your transaction may not have been completed."
+
+msgid "Hata günlüğe kaydedildi. Sorun sürerse yöneticinize bildirin."
+msgstr "Error logged. If the problem persists, notify your administrator."
+
+msgid "Görev bilgileri"
+msgstr "Mission information"
+
+msgid "Kullanılan"
+msgstr "used"
+
+msgid "Hassas bilgiler"
+msgstr "Sensitive information"
+
+msgid "Kimlik no"
+msgstr "ID number"
+
+msgid "Acil durum"
+msgstr "emergency"
+
+msgid "Performans"
+msgstr "Performance"
+
+msgid "Ciro ₺"
+msgstr "Turnover ₺"
+
+msgid "Ort. adisyon"
+msgstr "Avg. addition"
+
+msgid "Şarap oranı"
+msgstr "wine ratio"
+
+msgid "Performans kaydı yok."
+msgstr "There is no performance record."
+
+msgid "Son vardiyalar"
+msgstr "last shifts"
+
+msgid "Vardiya kaydı yok."
+msgstr "There is no shift record."
+
+msgid "Eğitim kaydı yok."
+msgstr "There is no educational record."
+
+msgid ""
+"Kimlik numarası, IBAN ve adres gibi özel nitelikli veriler şifreli saklanır "
+"ve yalnızca İK rolü görebilir."
+msgstr ""
+"Sensitive data such as ID number, IBAN and address are stored encrypted and "
+"can only be seen by the HR role."
+
+msgid "Ad veya personel kodu"
+msgstr "Name or personnel code"
+
+msgid "Tüm departmanlar"
+msgstr "All departments"
+
+msgid "Çalışma"
+msgstr "Study"
+
+msgid "Kalan izin"
+msgstr "remaining leave"
+
+msgid "İzin Talepleri"
+msgstr "Leave Requests"
+
+msgid "Tüm durumlar"
+msgstr "All occasions"
+
+msgid "Onay bekleyen"
+msgstr "pending approval"
+
+msgid "Gün"
+msgstr "day"
+
+msgid "Personel Performansı"
+msgstr "Staff Performance"
+
+msgid "Şarap ₺"
+msgstr "Wine ₺"
+
+msgid "Yönetici puanı"
+msgstr "Admin score"
+
+msgid "Henüz performans göstergesi hesaplanmamış."
+msgstr "No performance indicators have been calculated yet."
+
+msgid "Canlı personel raporunu aç"
+msgstr "Open live staff report"
+
+msgid "Vardiya Planı"
+msgstr "Shift Plan"
+
+#, python-format
+msgid "%(counter)s vardiyada personel eksik."
+msgid_plural "%(counter)s vardiyada personel eksik."
+msgstr[0] "%(counter)s shifts are missing staff."
+msgstr[1] "%(counter)s shifts are missing staff."
+
+msgid "Atanan"
+msgstr "appointed"
+
+msgid "Gerekli"
+msgstr "Required"
+
+msgid "Partiler ve Son Kullanma"
+msgstr "Batches and Expiration"
+
+msgid "FEFO sıralaması: en erken tüketilmesi gereken parti önce çıkar"
+msgstr ""
+"FEFO order: the batch that needs to be consumed earliest comes out first"
+
+msgid "Yalnızca 14 gün içinde tükenecekler"
+msgstr "They will sell out in just 14 days"
+
+msgid "Kalem"
+msgstr "pencil"
+
+msgid "SKT"
+msgstr "SKT"
+
+msgid "Kalan gün"
+msgstr "remaining days"
+
+msgid "Süresi geçti"
+msgstr "expired"
+
+msgid "Yaklaşıyor"
+msgstr "approaching"
+
+msgid "Satın Alma Siparişleri"
+msgstr "Purchase Orders"
+
+msgid "Beklenen"
+msgstr "expected"
+
+msgid "Satır"
+msgstr "row"
+
+msgid "Sipariş Önerileri"
+msgstr "Ordering Suggestions"
+
+msgid ""
+"Bunlar yalnızca öneridir; sistem hiçbir satın alma siparişini kendiliğinden "
+"oluşturmaz."
+msgstr ""
+"These are suggestions only; The system does not automatically create any "
+"purchase orders."
+
+msgid "Minimum seviyenin altındaki kalemler"
+msgstr "Items below minimum level"
+
+msgid "Eldeki"
+msgstr "in hand"
+
+msgid "Minimum"
+msgstr "Minimum"
+
+msgid "Eksik"
+msgstr "missing"
+
+msgid "Önerilen"
+msgstr "Recommended"
+
+msgid "Tahmini ₺"
+msgstr "Estimated ₺"
+
+msgid "Minimum seviyenin altında kalem yok."
+msgstr "No items below the minimum level."
+
+msgid "Son kullanma tarihi yaklaşan partiler"
+msgstr "Batches approaching expiration date"
+
+msgid "Yaklaşan son kullanma tarihi yok."
+msgstr "There is no upcoming expiration date."
+
+msgid "eldeki"
+msgstr "at hand"
+
+msgid "ortalama birim maliyet"
+msgstr "average unit cost"
+
+msgid "stok değeri"
+msgstr "stock value"
+
+msgid "Partiler"
+msgstr "parties"
+
+msgid "Parti yok."
+msgstr "There is no party."
+
+msgid "Kullanıldığı reçeteler"
+msgstr "Prescriptions used"
+
+msgid "Son hareketler"
+msgstr "last movements"
+
+msgid "Hareket yok."
+msgstr "No movement."
+
+msgid "Stok Kalemleri"
+msgstr "Stock Items"
+
+msgid "Kalem adı, kodu veya barkod"
+msgstr "Item name, code or barcode"
+
+msgid "Minimum altı"
+msgstr "below minimum"
+
+msgid "Ort. maliyet"
+msgstr "Avg. cost"
+
+msgid ""
+"Tedarikçi iletişim bilgileri (telefon, e-posta, vergi no) şifreli saklanır."
+msgstr ""
+"Supplier contact information (phone, e-mail, tax number) is stored "
+"encrypted."
+
+msgid "Unvan veya kod"
+msgstr "Title or code"
+
+msgid "Ara"
+msgstr "Search"
+
+msgid "Yetkili"
+msgstr "authorized"
+
+msgid "Vade (gün)"
+msgstr "Maturity (days)"
+
+msgid "Teslim (gün)"
+msgstr "Delivery (days)"
+
+msgid "Değerlendirme"
+msgstr "Evaluation"
+
+msgid "Stok Değerlemesi"
+msgstr "Stock Valuation"
+
+msgid "toplam stok değeri"
+msgstr "total stock value"
+
+msgid "aktif parti"
+msgstr "active party"
+
+msgid "Kategoriye göre dağılım"
+msgstr "Distribution by category"
+
+msgid "Stok yok."
+msgstr "No stock."
+
+msgid "Fire Kayıtları"
+msgstr "Fire Records"
+
+msgid "Tüm gerekçeler"
+msgstr "All justifications"
+
+msgid "Toplam fire maliyeti"
+msgstr "Total wastage cost"
+
+msgid "Gün Sonu"
+msgstr "End of Day"
+
+#, python-format
+msgid ""
+"Bugün %(open_order_count)s adisyon hâlâ açık. Gün sonu kapanışı, tüm "
+"adisyonlar kapanmadan yapılamaz."
+msgstr ""
+"Today %(open_order_count)s tickets are still open. End of day closing cannot"
+" be done before all bills are closed."
+
+msgid "Net satış ₺"
+msgstr "Net sales ₺"
+
+msgid "Sayılan"
+msgstr "counted"
+
+msgid "Fark"
+msgstr "Difference"
+
+msgid "aktif fiş"
+msgstr "active plug"
+
+msgid "gecikmiş"
+msgstr "overdue"
+
+msgid "Ekran 30 saniyede bir yenilenir"
+msgstr "Screen refreshes every 30 seconds"
+
+msgid "hedef"
+msgstr "target"
+
+msgid "Gecikti"
+msgstr "late"
+
+msgid "İlerlet"
+msgstr "advance"
+
+msgid "Bu istasyonda bekleyen fiş yok."
+msgstr "There are no receipts waiting at this station."
+
+msgid "kişi"
+msgstr "person"
+
+msgid "Satırlar"
+msgstr "rows"
+
+msgid "Birim ₺"
+msgstr "Unit ₺"
+
+msgid "Toplam ₺"
+msgstr "Total ₺"
+
+msgid "Koltuk"
+msgstr "seat"
+
+msgid "Satır yok."
+msgstr "There are no lines."
+
+msgid "Hazırlık fişleri (KOT)"
+msgstr "Preparation slips (KOT)"
+
+msgid "Süre"
+msgstr "Duration"
+
+msgid "Fiş üretilmemiş."
+msgstr "The receipt was not produced."
+
+msgid "Ödenen"
+msgstr "Paid"
+
+msgid "Sandbox"
+msgstr "sandbox"
+
+msgid "Ödeme alınmamış."
+msgstr "Payment has not been received."
+
+msgid "Adisyon veya masa no"
+msgstr "Bill or table number"
+
+msgid "Açık adisyonlar"
+msgstr "Open additions"
+
+msgid "Kalan ₺"
+msgstr "Remaining ₺"
+
+msgid "Bugün"
+msgstr "today"
+
+msgid "Yaklaşan"
+msgstr "upcoming"
+
+msgid "Masa Planı"
+msgstr "Table Plan"
+
+msgid "Masa durumları ve açık adisyonlar"
+msgstr "Table situations and open tickets"
+
+msgid "boş"
+msgstr "empty"
+
+msgid "kişilik"
+msgstr "personality"
+
+msgid "Salon bölümü tanımlanmamış."
+msgstr "The living room section is not defined."
+
+msgid "Bekleme Listesi"
+msgstr "Waiting List"
+
+msgid "Bekleme"
+msgstr "standby"
+
+msgid "Tahmin"
+msgstr "guess"
+
+msgid "Satış Tahmini"
+msgstr "Sales Forecast"
+
+msgid "Uygula"
+msgstr "Apply"
+
+msgid "Bu dönemde veri yok."
+msgstr "There is no data during this period."
+
+#, python-format
+msgid "%(duration_ms)s ms içinde üretildi."
+msgstr "Produced in %(duration_ms)s ms."
+
+msgid "PDF, Excel ve CSV olarak dışa aktarılabilir"
+msgstr "Can be exported to PDF, Excel and CSV"
+
+msgid "Dönemi uygula"
+msgstr "Apply period"
+
+msgid "Rolünüzün erişebileceği rapor bulunmuyor."
+msgstr "There are no reports that your role can access."
+
+msgid "Rolünüze uygun dersler"
+msgstr "Lessons suitable for your role"
+
+msgid "Tamamlanmamış zorunlu eğitimleriniz var:"
+msgstr "You have incomplete mandatory training:"
+
+msgid "ders"
+msgstr "lesson"
+
+msgid "dk"
+msgstr "min"
+
+msgid "Başla"
+msgstr "start"
+
+msgid "Rolünüz için yayınlanmış eğitim modülü bulunmuyor."
+msgstr "There are no training modules published for your role."
+
+msgid "Modüle dön"
+msgstr "Return to module"
+
+msgid "Önceki"
+msgstr "Previous"
+
+msgid "Sonraki"
+msgstr "Next"
+
+msgid "Tamamlandı olarak işaretle"
+msgstr "Mark as completed"
+
+msgid "Eğitim Modülü"
+msgstr "Training Module"
+
+msgid "Dersler"
+msgstr "Lessons"
+
+msgid "Bu modülde ders yok."
+msgstr "There are no lectures in this module."
