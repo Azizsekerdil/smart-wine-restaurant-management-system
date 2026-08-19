@@ -1,0 +1,15 @@
+# ---------------------------------------------------------------------------
+# Wine House - Cok kullanicili / isletme kurulumu icin PostgreSQL surucusu
+#
+# Varsayilan kurulum SQLite kullanir ve bu dosyaya IHTIYAC DUYMAZ.
+# Yalnizca WINEHOUSE_DB_ENGINE=postgres secildiginde kurun:
+#     pip install -r requirements-postgres.txt
+#
+# LISANS NOTU: psycopg 3 LGPL-3.0 lisanslidir. Uygulamaya statik olarak
+# gomulmez, ayri bir kutuphane olarak dinamik kullanilir; bu nedenle kapali
+# kaynak ticari dagitim icin LGPL'in "ayrik kullanim" istisnasi gecerlidir.
+# Ayrinti: docs/DEPENDENCY_LICENSES.md
+# ---------------------------------------------------------------------------
+-r requirements.txt
+
+psycopg[binary]==3.2.9

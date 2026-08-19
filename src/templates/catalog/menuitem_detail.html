@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{{ item.name_tr }}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{{ item.name_tr }}</h1>
+    <p class="text-body-secondary mb-0">{{ item.category.name_tr }} · {{ item.code }} · {{ item.get_item_type_display }}</p></div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-5">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Fiyat ve maliyet" %}</strong></div>
+      <div class="wh-card__body">
+        <dl class="row mb-0">
+          <dt class="col-7">{% trans "Satış fiyatı" %}</dt><dd class="col-5 text-end">{{ item.base_price|floatformat:2 }} ₺</dd>
+          <dt class="col-7">{% trans "KDV" %}</dt><dd class="col-5 text-end">%{{ item.tax_rate }}</dd>
+          <dt class="col-7">{% trans "KDV dahil" %}</dt><dd class="col-5 text-end">{{ item.price_with_tax|floatformat:2 }} ₺</dd>
+          <dt class="col-7">{% trans "Geçerli fiyat" %}</dt><dd class="col-5 text-end">{{ item.effective_price|floatformat:2 }} ₺</dd>
+          {% if can_view_cost %}
+          <dt class="col-7">{% trans "Maliyet" %}</dt><dd class="col-5 text-end">{{ item.cost_price|floatformat:2 }} ₺</dd>
+          <dt class="col-7">{% trans "Brüt kâr" %}</dt><dd class="col-5 text-end">{{ item.margin|floatformat:2 }} ₺</dd>
+          <dt class="col-7">{% trans "Marj" %}</dt><dd class="col-5 text-end">%{{ item.margin_percent }}</dd>
+          <dt class="col-7">{% trans "Maliyet oranı" %}</dt><dd class="col-5 text-end">%{{ item.food_cost_percent }}</dd>
+          {% endif %}
+        </dl>
+      </div>
+    </div>
+
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Alerjen ve beslenme" %}</strong></div>
+      <div class="wh-card__body">
+        <div class="d-flex flex-wrap gap-1 mb-2">
+          {% for allergen in item.allergens.all %}<span class="badge bg-danger">{{ allergen.icon }} {{ allergen.name_tr }}</span>
+          {% empty %}<span class="text-body-secondary">{% trans "Alerjen bildirilmemiş." %}</span>{% endfor %}
+        </div>
+        <div class="d-flex flex-wrap gap-1">
+          {% for tag in item.dietary_tags.all %}<span class="badge {{ tag.badge_class }}">{{ tag.name_tr }}</span>{% endfor %}
+        </div>
+        <p class="small text-body-secondary mt-3 mb-0">
+          {% trans "Alerjen bilgisi işletme beyanına dayanır ve tıbbi tavsiye yerine geçmez. Mutfak her siparişte kendi kontrolünü yapmalıdır." %}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-7">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header">
+        <strong>{% trans "Reçete" %}</strong>
+        {% if recipe %}<span class="badge bg-secondary">{{ recipe.yield_portions }} {% trans "porsiyon" %}</span>{% endif %}
+      </div>
+      {% if recipe %}
+      <div class="wh-table-wrap">
+        <table class="table table-sm mb-0">
+          <thead><tr><th>{% trans "Malzeme" %}</th><th class="wh-num">{% trans "Miktar" %}</th><th>{% trans "Birim" %}</th>
+            {% if can_view_cost %}<th class="wh-num">{% trans "Maliyet ₺" %}</th>{% endif %}</tr></thead>
+          <tbody>
+          {% for line in recipe_lines %}
+            <tr>
+              <td>{{ line.stock_item.name }}{% if line.is_optional %} <span class="badge bg-secondary">{% trans "İsteğe bağlı" %}</span>{% endif %}</td>
+              <td class="wh-num">{{ line.quantity|floatformat:"-4" }}</td>
+              <td>{{ line.stock_item.unit.code }}</td>
+              {% if can_view_cost %}<td class="wh-num">{{ line.line_cost|floatformat:4 }}</td>{% endif %}
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="wh-card__body text-body-secondary">{% trans "Bu ürün için reçete tanımlanmamış." %}</div>
+      {% endif %}
+    </div>
+
+    {% if pairings %}
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Şarap eşleştirmeleri" %}</strong></div>
+      <ul class="list-group list-group-flush">
+        {% for pairing in pairings %}
+          <li class="list-group-item d-flex justify-content-between">
+            <a href="{% url 'cellar:wine-detail' pairing.wine.pk %}">{{ pairing.wine }}</a>
+            <span class="badge bg-secondary">{{ pairing.get_strength_display }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

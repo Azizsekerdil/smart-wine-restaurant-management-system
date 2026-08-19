@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{{ wine.name }}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{{ wine.name }} <span class="badge bg-secondary align-middle">{{ wine.display_vintage }}</span></h1>
+    <p class="text-body-secondary mb-0">{{ wine.producer.name }} · {{ wine.region.full_path }} · {{ wine.sku }}</p>
+  </div>
+</div>
+
+{% for alert in duplicate_alerts %}
+  <div class="alert alert-warning">
+    <strong>{% trans "Mükerrer kayıt uyarısı" %}:</strong> {{ alert.get_reason_display }} — {{ alert.detail }}
+  </div>
+{% endfor %}
+
+<div class="wh-notice mb-3">{{ responsible_notice }}</div>
+
+<div class="row g-3">
+  <div class="col-lg-5">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Künye" %}</strong></div>
+      <div class="wh-card__body">
+        <dl class="row mb-0 small">
+          <dt class="col-6">{% trans "Tür" %}</dt><dd class="col-6">{{ wine.get_wine_type_display }}</dd>
+          <dt class="col-6">{% trans "Tatlılık" %}</dt><dd class="col-6">{{ wine.get_sweetness_display }}</dd>
+          <dt class="col-6">{% trans "Alkol" %}</dt><dd class="col-6">%{{ wine.alcohol_percent|default:"—" }}</dd>
+          <dt class="col-6">{% trans "Şişe hacmi" %}</dt><dd class="col-6">{{ wine.bottle_size_ml }} ml</dd>
+          <dt class="col-6">{% trans "Üzümler" %}</dt><dd class="col-6">{{ wine.grape_summary|default:"—" }}</dd>
+          <dt class="col-6">{% trans "Bağ" %}</dt><dd class="col-6">{{ wine.vineyard|default:"—" }}</dd>
+          <dt class="col-6">{% trans "Servis sıcaklığı" %}</dt><dd class="col-6">{{ wine.serving_temp_display }}</dd>
+          <dt class="col-6">{% trans "Dekantasyon" %}</dt><dd class="col-6">{% if wine.decant_minutes %}{{ wine.decant_minutes }} dk{% else %}{% trans "Gerekmez" %}{% endif %}</dd>
+          <dt class="col-6">{% trans "İçim aralığı" %}</dt><dd class="col-6">{{ wine.drink_from_year|default:"—" }} – {{ wine.drink_until_year|default:"—" }}</dd>
+          <dt class="col-6">{% trans "Durum" %}</dt><dd class="col-6">{{ wine.drink_window_label }}</dd>
+          <dt class="col-6">{% trans "Barkod" %}</dt><dd class="col-6"><code>{{ wine.barcode|default:"—" }}</code></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Tadım profili" %}</strong></div>
+      <div class="wh-card__body wh-wine-profile">
+        {% for label, value in profile_rows %}{% endfor %}
+        <div class="wh-meter"><span>{% trans "Gövde" %}</span>
+          <span class="wh-meter__track"><span class="wh-meter__fill" style="width:{{ wine.body }}0%"></span></span>
+          <span class="wh-meter__value">{{ wine.body }}/5</span></div>
+        <div class="wh-meter"><span>{% trans "Asidite" %}</span>
+          <span class="wh-meter__track"><span class="wh-meter__fill" style="width:{{ wine.acidity }}0%"></span></span>
+          <span class="wh-meter__value">{{ wine.acidity }}/5</span></div>
+        <div class="wh-meter"><span>{% trans "Tanen" %}</span>
+          <span class="wh-meter__track"><span class="wh-meter__fill" style="width:{{ wine.tannin }}0%"></span></span>
+          <span class="wh-meter__value">{{ wine.tannin }}/5</span></div>
+        <div class="wh-meter"><span>{% trans "Tatlılık" %}</span>
+          <span class="wh-meter__track"><span class="wh-meter__fill" style="width:{{ wine.sweetness_level }}0%"></span></span>
+          <span class="wh-meter__value">{{ wine.sweetness_level }}/5</span></div>
+        {% if wine.aroma_profile %}
+          <div class="mt-2 d-flex flex-wrap gap-1">
+            {% for aroma in wine.aroma_profile %}<span class="badge bg-body-secondary text-body">{{ aroma }}</span>{% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-7">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header">
+        <strong>{% trans "Stok ve servis" %}</strong>
+        <span>
+          <span class="badge bg-primary">{{ wine.bottles_on_hand }} {% trans "şişe" %}</span>
+          {% if wine.sold_by_glass %}<span class="badge bg-info text-dark">{{ wine.glasses_available }} {% trans "kadeh" %}</span>{% endif %}
+        </span>
+      </div>
+      <div class="wh-card__body">
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          {% if perms.cellar.can_open_bottle %}
+          <form method="post" action="{% url 'cellar:open-bottle' wine.pk %}" class="d-flex gap-2">
+            {% csrf_token %}
+            <select name="service_method" class="form-select form-select-sm w-auto">
+              <option value="standard">{% trans "Standart" %}</option>
+              <option value="preservation">{% trans "Koruma sistemi" %}</option>
+              <option value="coravin">{% trans "İğne sistemi" %}</option>
+              <option value="tasting">{% trans "Tadım" %}</option>
+            </select>
+            <button class="btn btn-sm btn-primary">{% trans "Şişe aç" %}</button>
+          </form>
+          {% endif %}
+          {% if perms.cellar.can_pour_glass %}
+          <form method="post" action="{% url 'cellar:pour-glass' wine.pk %}" class="d-flex gap-2">
+            {% csrf_token %}
+            <input type="number" name="volume_ml" class="form-control form-control-sm" style="width:90px"
+                   placeholder="{{ wine.glass_pour_ml }}" min="10" max="{{ wine.bottle_size_ml }}">
+            <select name="pour_type" class="form-select form-select-sm w-auto">
+              <option value="glass_sale">{% trans "Kadeh satışı" %}</option>
+              <option value="tasting">{% trans "Tadım" %}</option>
+              <option value="comp">{% trans "İkram" %}</option>
+              <option value="spillage">{% trans "Dökülme" %}</option>
+            </select>
+            <button class="btn btn-sm btn-outline-primary">{% trans "Kadeh servis et" %}</button>
+          </form>
+          {% endif %}
+        </div>
+
+        <div class="wh-table-wrap">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>{% trans "Parti" %}</th><th>{% trans "Konum" %}</th><th>{% trans "Giriş" %}</th>
+              <th class="wh-num">{% trans "Kalan" %}</th>{% if can_view_cost %}<th class="wh-num">{% trans "Birim maliyet" %}</th>{% endif %}</tr></thead>
+            <tbody>
+            {% for lot in lots %}
+              <tr>
+                <td>{{ lot.lot_code }}</td>
+                <td class="small">{{ lot.location.code|default:"—" }}</td>
+                <td class="small">{{ lot.received_on|date:"d.m.Y" }}</td>
+                <td class="wh-num">{{ lot.bottles_remaining }}</td>
+                {% if can_view_cost %}<td class="wh-num">{{ lot.unit_cost|floatformat:2 }}</td>{% endif %}
+              </tr>
+            {% empty %}<tr><td colspan="5" class="text-center text-body-secondary py-3">{% trans "Parti kaydı yok." %}</td></tr>{% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Açılmış şişeler" %}</strong></div>
+      <div class="wh-table-wrap">
+        <table class="table table-sm mb-0">
+          <thead><tr><th>{% trans "Açılış" %}</th><th>{% trans "Yöntem" %}</th><th class="wh-num">{% trans "Kalan ml" %}</th>
+            <th class="wh-num">{% trans "Kadeh" %}</th><th class="wh-num">{% trans "Verim" %}</th><th>{% trans "Durum" %}</th></tr></thead>
+          <tbody>
+          {% for opening in openings %}
+            <tr class="{% if opening.is_past_freshness %}table-warning{% endif %}">
+              <td class="small">{{ opening.opened_at|date:"d.m.Y H:i" }}</td>
+              <td class="small">{{ opening.get_service_method_display }}</td>
+              <td class="wh-num">{{ opening.remaining_ml }}</td>
+              <td class="wh-num">{{ opening.glasses_remaining }}</td>
+              <td class="wh-num">%{{ opening.yield_percent }}</td>
+              <td>{{ opening.get_status_display }}{% if opening.is_past_freshness %} <span class="badge bg-warning text-dark">{% trans "Kontrol et" %}</span>{% endif %}</td>
+            </tr>
+          {% empty %}<tr><td colspan="6" class="text-center text-body-secondary py-3">{% trans "Açık şişe yok." %}</td></tr>{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Yemek eşleştirmeleri" %}</strong></div>
+      <ul class="list-group list-group-flush">
+        {% for pairing in pairings %}
+          <li class="list-group-item d-flex justify-content-between align-items-start gap-2">
+            <div>
+              <strong>{{ pairing.target_label }}</strong>
+              {% if pairing.is_ai_suggested and not pairing.is_approved %}<span class="badge bg-warning text-dark">{% trans "Yapay zekâ önerisi — onay bekliyor" %}</span>{% endif %}
+              {% if pairing.rationale %}<div class="small text-body-secondary">{{ pairing.rationale }}</div>{% endif %}
+            </div>
+            <span class="badge bg-secondary">{{ pairing.get_strength_display }}</span>
+          </li>
+        {% empty %}<li class="list-group-item text-body-secondary">{% trans "Eşleştirme tanımlanmamış." %}</li>{% endfor %}
+      </ul>
+    </div>
+
+    {% if faults %}
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Kusur kayıtları" %}</strong></div>
+      <ul class="list-group list-group-flush">
+        {% for fault in faults %}
+          <li class="list-group-item small">
+            {{ fault.detected_at|date:"d.m.Y" }} · <strong>{{ fault.get_fault_type_display }}</strong>
+            · {{ fault.bottles_affected }} {% trans "şişe" %} · {{ fault.get_resolution_display }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

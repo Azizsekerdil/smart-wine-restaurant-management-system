@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ station_title }}{% endblock %}
+{% block head_extra %}<meta http-equiv="refresh" content="30">{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{{ station_title }}</h1>
+    <p class="text-body-secondary mb-0">
+      {{ tickets|length }} {% trans "aktif fiş" %}
+      {% if overdue_count %}· <span class="text-danger">{{ overdue_count }} {% trans "gecikmiş" %}</span>{% endif %}
+      · {% trans "Ekran 30 saniyede bir yenilenir" %}
+    </p>
+  </div>
+</div>
+
+<div class="wh-kds">
+  {% for ticket in tickets %}
+    <div class="wh-ticket {{ ticket.urgency_class }}">
+      <div class="wh-ticket__head">
+        <div>
+          <strong>{{ ticket.order.number }}</strong>
+          {% if ticket.order.table %}<br><small>{{ ticket.order.table.section.name }} · {{ ticket.order.table.label }}</small>{% endif %}
+        </div>
+        <div class="text-end">
+          <div class="fw-bold">{{ ticket.elapsed_minutes }}′</div>
+          <small class="text-body-secondary">{% trans "hedef" %} {{ ticket.target_minutes }}′</small>
+        </div>
+      </div>
+      <ul class="wh-ticket__lines">
+        {% for line in ticket.lines.all %}
+          <li class="{% if line.is_done %}text-decoration-line-through text-body-secondary{% endif %}">
+            <strong>{{ line.quantity|floatformat:"-3" }}×</strong> {{ line.item_name }}
+            {% if line.special_instructions %}<div class="small fst-italic">↳ {{ line.special_instructions }}</div>{% endif %}
+            {% if line.allergen_warning %}<div class="wh-allergen">⚠ {% trans "Alerjen" %}: {{ line.allergen_warning }}</div>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="wh-ticket__foot d-flex justify-content-between align-items-center gap-2">
+        <span class="badge bg-secondary">{{ ticket.get_status_display }}</span>
+        {% if ticket.is_overdue %}<span class="badge bg-danger">{% trans "Gecikti" %}</span>{% endif %}
+        {% if can_bump %}
+          <form method="post" action="/api/v1/operations/tickets/{{ ticket.pk }}/bump/" class="ms-auto">
+            {% csrf_token %}
+            <button class="btn btn-sm btn-primary">{% trans "İlerlet" %} →</button>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+  {% empty %}
+    <div class="wh-card" style="grid-column:1/-1"><div class="wh-card__body text-center text-body-secondary py-5">
+      {% trans "Bu istasyonda bekleyen fiş yok." %}</div></div>
+  {% endfor %}
+</div>
+{% endblock %}

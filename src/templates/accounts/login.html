@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Giriş" %}{% endblock %}
+{% block container_class %}container{% endblock %}
+{% block content %}
+<div class="wh-card mx-auto" style="max-width:420px">
+  <div class="wh-card__body">
+    <div class="text-center mb-4">
+      <div style="font-size:2.5rem">🍷</div>
+      <h1 class="h4 mb-1">{{ APP_NAME }}</h1>
+      <p class="text-body-secondary small mb-0">{{ APP_SUBTITLE_TR }}</p>
+    </div>
+
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">{% for error in form.non_field_errors %}<div>{{ error }}</div>{% endfor %}</div>
+    {% endif %}
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label" for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+        {{ form.username }}
+        {% for error in form.username.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+        {{ form.password }}
+        {% for error in form.password.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+      </div>
+      <input type="hidden" name="next" value="{{ next }}">
+      <button type="submit" class="btn btn-primary w-100">{% trans "Giriş yap" %}</button>
+    </form>
+
+    <hr class="my-4">
+    <a class="btn btn-outline-secondary w-100" href="{% url 'accounts:pin-login' %}">
+      {% trans "POS terminali: personel kodu + PIN" %}
+    </a>
+  </div>
+</div>
+{% endblock %}

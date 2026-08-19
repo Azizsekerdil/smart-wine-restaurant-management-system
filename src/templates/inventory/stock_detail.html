@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{{ item.name }}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{{ item.name }}</h1>
+    <p class="text-body-secondary mb-0">{{ item.code }} · {{ item.category.name }} · {{ item.get_tracking_mode_display }}</p></div>
+</div>
+
+<div class="wh-stats mb-3">
+  <div class="wh-stat"><div class="wh-stat__value">{{ item.quantity_on_hand|floatformat:"-3" }}</div><div class="wh-stat__label">{{ item.unit.code }} {% trans "eldeki" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ item.average_unit_cost|floatformat:4 }}</div><div class="wh-stat__label">{% trans "ortalama birim maliyet" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ item.stock_value|floatformat:2 }}</div><div class="wh-stat__label">₺ {% trans "stok değeri" %}</div></div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Partiler" %}</strong></div>
+      <div class="wh-table-wrap"><table class="table table-sm mb-0">
+        <thead><tr><th>{% trans "Parti" %}</th><th>{% trans "Depo" %}</th><th>{% trans "SKT" %}</th><th class="wh-num">{% trans "Kalan" %}</th></tr></thead>
+        <tbody>
+        {% for lot in lots %}
+          <tr class="{% if lot.is_expired %}table-danger{% elif lot.is_expiring_soon %}table-warning{% endif %}">
+            <td>{{ lot.lot_code }}</td><td class="small">{{ lot.warehouse.code }}</td>
+            <td class="small">{{ lot.expires_on|date:"d.m.Y"|default:"—" }}{% if lot.days_to_expiry != None %}<br><span class="text-body-secondary">{{ lot.days_to_expiry }} {% trans "gün" %}</span>{% endif %}</td>
+            <td class="wh-num">{{ lot.quantity_remaining|floatformat:"-3" }}</td>
+          </tr>
+        {% empty %}<tr><td colspan="4" class="text-center text-body-secondary py-3">{% trans "Parti yok." %}</td></tr>{% endfor %}
+        </tbody></table></div>
+    </div>
+
+    {% if recipe_usage %}
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Kullanıldığı reçeteler" %}</strong></div>
+      <ul class="list-group list-group-flush">
+        {% for line in recipe_usage %}<li class="list-group-item d-flex justify-content-between">
+          <span>{{ line.recipe.menu_item.name_tr }}</span><span class="text-body-secondary">{{ line.quantity|floatformat:"-4" }} {{ item.unit.code }}</span></li>{% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="col-lg-6">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Son hareketler" %}</strong></div>
+      <div class="wh-table-wrap"><table class="table table-sm mb-0">
+        <thead><tr><th>{% trans "Zaman" %}</th><th>{% trans "Tür" %}</th><th class="wh-num">{% trans "Miktar" %}</th><th>{% trans "Not" %}</th></tr></thead>
+        <tbody>
+        {% for movement in movements %}
+          <tr>
+            <td class="small">{{ movement.occurred_at|date:"d.m H:i" }}</td>
+            <td class="small">{{ movement.get_movement_type_display }}</td>
+            <td class="wh-num {% if movement.quantity < 0 %}text-danger{% else %}text-success{% endif %}">{{ movement.quantity|floatformat:"-3" }}</td>
+            <td class="small text-body-secondary">{{ movement.note|truncatechars:40 }}</td>
+          </tr>
+        {% empty %}<tr><td colspan="4" class="text-center text-body-secondary py-3">{% trans "Hareket yok." %}</td></tr>{% endfor %}
+        </tbody></table></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

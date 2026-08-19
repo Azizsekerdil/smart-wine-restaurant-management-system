@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Yapay Zekâ Konsolu" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Yapay Zekâ Konsolu" %}</h1><p class="text-body-secondary mb-0">{% trans "Buluta gönderilecek metin her zaman size gösterilir" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="row g-3">
+  <div class="col-lg-7">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Soru sor" %}</strong></div>
+      <div class="wh-card__body">
+        <form method="post">
+          {% csrf_token %}
+          <div class="row g-2 mb-3">
+            <div class="col-md-6">
+              <label class="form-label small">{% trans "İşlev" %}</label>
+              <select class="form-select" name="feature">
+                {% for value, label in features %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small">{% trans "Sağlayıcı" %}</label>
+              <select class="form-select" name="provider">
+                <option value="">{% trans "Otomatik (yedekleme zinciri)" %}</option>
+                {% for provider in providers %}
+                  <option value="{{ provider.code }}" {% if not provider.is_local and not can_use_cloud %}disabled{% endif %}>
+                    {{ provider.label }}{% if not provider.is_local and not can_use_cloud %} — {% trans "yetki yok" %}{% endif %}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small">{% trans "Sorunuz" %}</label>
+            <textarea class="form-control" name="prompt" rows="4" required>{{ prompt|default:"" }}</textarea>
+          </div>
+          <button class="btn btn-primary">{% trans "Gönder" %}</button>
+        </form>
+      </div>
+    </div>
+
+    {% if result %}
+    <div class="wh-card mt-3">
+      <div class="wh-card__header">
+        <strong>{% trans "Yanıt" %}</strong>
+        <span>
+          <span class="badge bg-secondary">{{ result.response.provider }}</span>
+          <span class="badge bg-body-secondary text-body">{{ result.response.model }}</span>
+          {% if result.is_mock %}<span class="badge bg-warning text-dark">{% trans "Mock — gerçek model değil" %}</span>{% endif %}
+          {% if result.used_fallback %}<span class="badge bg-info text-dark">{% trans "Yedek sağlayıcı" %}</span>{% endif %}
+        </span>
+      </div>
+      <div class="wh-card__body">
+        <div style="white-space:pre-wrap">{{ result.text }}</div>
+      </div>
+      <div class="wh-card__body border-top">
+        <p class="small mb-1"><strong>{% trans "Gizlilik" %}:</strong> {{ result.privacy_notice }}</p>
+        {% if result.masking and result.masking.was_masked %}
+          <details class="small">
+            <summary>{% trans "Sağlayıcıya fiilen gönderilen metni göster" %}</summary>
+            <pre class="bg-body-tertiary p-2 rounded mt-2" style="white-space:pre-wrap">{{ result.masking.text }}</pre>
+          </details>
+        {% endif %}
+        <p class="small text-body-secondary mb-0">
+          {% trans "Belirteç" %}: {{ result.response.usage.total_tokens }}
+          ({{ result.response.usage.prompt_tokens }} + {{ result.response.usage.completion_tokens }})
+          · {{ result.response.latency_ms }} ms
+          · {% trans "Denenen sağlayıcılar" %}: {{ result.attempted_providers|join:", " }}
+        </p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="col-lg-5">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Etkin yapılandırma" %}</strong></div>
+      <div class="wh-card__body">
+        <dl class="row mb-0 small">
+          <dt class="col-6">{% trans "Varsayılan sağlayıcı" %}</dt><dd class="col-6"><code>{{ default_provider }}</code></dd>
+          <dt class="col-6">{% trans "Gizlilik modu" %}</dt><dd class="col-6">{% if privacy_mode %}{% trans "Açık" %}{% else %}{% trans "Kapalı" %}{% endif %}</dd>
+          <dt class="col-6">{% trans "Yalnızca yerel" %}</dt><dd class="col-6">{% if local_only %}{% trans "Evet" %}{% else %}{% trans "Hayır" %}{% endif %}</dd>
+          <dt class="col-6">{% trans "Yedekleme sırası" %}</dt><dd class="col-6"><code>{{ fallback_chain|join:" → " }}</code></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Son çağrılarım" %}</strong></div>
+      <ul class="list-group list-group-flush">
+        {% for call in recent_calls %}
+          <li class="list-group-item small d-flex justify-content-between">
+            <span>{{ call.get_feature_display }}<br><span class="text-body-secondary">{{ call.occurred_at|date:"d.m H:i" }}</span></span>
+            <span class="text-end">{{ call.provider }}<br>
+              <span class="badge bg-{% if call.outcome == 'success' %}success{% else %}secondary{% endif %}">{{ call.get_outcome_display }}</span></span>
+          </li>
+        {% empty %}<li class="list-group-item text-body-secondary small">{% trans "Henüz çağrı yok." %}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

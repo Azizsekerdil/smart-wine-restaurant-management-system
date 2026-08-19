@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Roller ve yetkiler" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{% trans "Roller ve yetkiler" %}</h1>
+    
+  </div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-notice mb-3">
+  {% trans "Roller en az yetki ilkesine göre tanımlanmıştır: her rol yalnızca görevini yapmak için gereken izinlere sahiptir." %}
+</div>
+<div class="wh-card">
+  <div class="wh-table-wrap">
+    <table class="table table-hover mb-0 align-middle">
+      <thead><tr><th>{% trans "Kademe" %}</th><th>{% trans "Rol" %}</th><th>English</th><th>{% trans "Açıklama" %}</th><th></th></tr></thead>
+      <tbody>
+      {% for role in roles %}
+        <tr>
+          <td><span class="badge bg-secondary">{{ role.level }}</span></td>
+          <td><strong>{{ role.name_tr }}</strong><br><code class="small">{{ role.code }}</code></td>
+          <td class="text-body-secondary">{{ role.name_en }}</td>
+          <td class="small">{{ role.description }}</td>
+          <td class="text-end"><a class="btn btn-sm btn-outline-primary" href="{% url 'accounts:role-detail' role.code %}">{% trans "İzinler" %}</a></td>
+        </tr>
+      {% empty %}<tr><td colspan="99" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

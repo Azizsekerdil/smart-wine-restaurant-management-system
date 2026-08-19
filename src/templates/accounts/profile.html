@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Profilim" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header"><div><h1 class="h3 mb-1">{% trans "Profilim" %}</h1>
+<p class="text-body-secondary mb-0">{{ profile_user.label }} · {{ profile_user.role_label }}</p></div></div>
+
+<div class="row g-3">
+  <div class="col-lg-5">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Hesap bilgileri" %}</strong></div>
+      <div class="wh-card__body">
+        <dl class="row mb-0">
+          <dt class="col-5">{% trans "Kullanıcı adı" %}</dt><dd class="col-7">{{ profile_user.username }}</dd>
+          <dt class="col-5">{% trans "Görünen ad" %}</dt><dd class="col-7">{{ profile_user.display_name }}</dd>
+          <dt class="col-5">{% trans "Rol" %}</dt><dd class="col-7">{{ profile_user.role_label }}</dd>
+          <dt class="col-5">{% trans "Personel kodu" %}</dt><dd class="col-7">{{ profile_user.employee_code|default:"—" }}</dd>
+          <dt class="col-5">{% trans "PIN girişi" %}</dt><dd class="col-7">{% if profile_user.pin_enabled %}{% trans "Açık" %}{% else %}{% trans "Kapalı" %}{% endif %}</dd>
+          <dt class="col-5">{% trans "İndirim yetkisi" %}</dt><dd class="col-7">%{{ profile_user.discount_limit_percent }}</dd>
+          <dt class="col-5">{% trans "Dil" %}</dt><dd class="col-7">{{ profile_user.get_preferred_language_display }}</dd>
+          <dt class="col-5">{% trans "Son giriş" %}</dt><dd class="col-7">{{ profile_user.last_login|date:"d.m.Y H:i"|default:"—" }}</dd>
+        </dl>
+      </div>
+    </div>
+    {% if role_profile %}
+    <div class="wh-card mt-3">
+      <div class="wh-card__header"><strong>{% trans "Rolüm" %}</strong></div>
+      <div class="wh-card__body">
+        <p class="mb-1"><strong>{{ role_profile.name_tr }}</strong> <span class="text-body-secondary">/ {{ role_profile.name_en }}</span></p>
+        <p class="mb-0 small text-body-secondary">{{ role_profile.description }}</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="col-lg-7">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Son giriş denemeleri" %}</strong></div>
+      <div class="wh-table-wrap">
+        <table class="table table-sm mb-0">
+          <thead><tr><th>{% trans "Zaman" %}</th><th>{% trans "Yöntem" %}</th><th>{% trans "Sonuç" %}</th><th>IP</th></tr></thead>
+          <tbody>
+          {% for attempt in recent_logins %}
+            <tr>
+              <td>{{ attempt.timestamp|date:"d.m.Y H:i" }}</td>
+              <td>{{ attempt.get_method_display }}</td>
+              <td>{% if attempt.successful %}<span class="badge bg-success">{% trans "Başarılı" %}</span>
+                  {% else %}<span class="badge bg-danger">{% trans "Başarısız" %}</span>{% endif %}</td>
+              <td class="small text-body-secondary">{{ attempt.ip_address|default:"—" }}</td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="4" class="text-center text-body-secondary py-3">{% trans "Kayıt yok." %}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

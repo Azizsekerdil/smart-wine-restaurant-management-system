@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Özellik durumu" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{% trans "Özellik durumu" %}</h1>
+    <p class="text-body-secondary mb-0">{% trans "Hazır / Deneysel / Planlandı dökümü" %}</p>
+  </div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-notice mb-3">
+  {% trans "Bu tablo hangi modülün hazır, hangisinin deneysel veya planlandı olduğunu açıkça gösterir. Tamamlanmamış bir özellik hiçbir ekranda tamamlanmış gibi sunulmaz." %}
+</div>
+{% for module, flags in grouped_flags.items %}
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{{ module }}</strong></div>
+  <div class="wh-table-wrap">
+    <table class="table table-sm mb-0">
+      <thead><tr><th>{% trans "Özellik" %}</th><th>{% trans "Durum" %}</th><th>{% trans "Açıklama" %}</th></tr></thead>
+      <tbody>
+      {% for flag in flags %}
+        <tr>
+          <td>{{ flag.name }}</td>
+          <td><span class="badge {{ flag.badge_class }}">{{ flag.get_status_display }}</span></td>
+          <td class="small text-body-secondary">{{ flag.description|default:"—" }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% empty %}
+<div class="wh-card"><div class="wh-card__body text-center text-body-secondary py-4">
+  {% trans "Henüz özellik bayrağı tanımlanmamış. 'python manage.py seed_demo' komutunu çalıştırın." %}
+</div></div>
+{% endfor %}
+{% endblock %}

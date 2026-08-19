@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Sommelier Asistanı" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Sommelier Asistanı" %}</h1><p class="text-body-secondary mb-0">{% trans "Öneriler yalnızca kavda stokta olan şaraplardan seçilir" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Yemek–şarap eşleştirmesi" %}</strong></div>
+      <div class="wh-card__body">
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label small">{% trans "Menüden seç" %}</label>
+            <select class="form-select" onchange="document.getElementById('dishInput').value = this.value">
+              <option value="">{% trans "— seçiniz —" %}</option>
+              {% for dish in dishes %}<option value="{{ dish.name_tr }}">{{ dish.name_tr }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small" for="dishInput">{% trans "Yemek tarifi" %}</label>
+            <textarea class="form-control" id="dishInput" name="dish" rows="3"
+              placeholder="{% trans 'Örn: kuzu tandır, közlenmiş patlıcan püresiyle' %}" required>{{ dish|default:"" }}</textarea>
+          </div>
+          <button class="btn btn-primary">{% trans "Öneri al" %}</button>
+        </form>
+      </div>
+    </div>
+    <div class="wh-notice mt-3">{{ responsible_notice }}</div>
+  </div>
+
+  <div class="col-lg-6">
+    {% if result %}
+    <div class="wh-card">
+      <div class="wh-card__header">
+        <strong>{% trans "Öneri" %}</strong>
+        <span>
+          <span class="badge bg-secondary">{{ result.response.provider }}</span>
+          {% if result.is_mock %}<span class="badge bg-warning text-dark">{% trans "Mock" %}</span>{% endif %}
+        </span>
+      </div>
+      <div class="wh-card__body"><div style="white-space:pre-wrap">{{ result.text }}</div></div>
+      <div class="wh-card__body border-top small text-body-secondary">
+        {% blocktrans %}{{ wines_considered }} şarap değerlendirildi.{% endblocktrans %}
+        {% trans "Bu öneri sommelier onayı olmadan eşleştirme kaydına işlenmez." %}<br>
+        {{ result.privacy_notice }}
+      </div>
+    </div>
+    {% else %}
+    <div class="wh-card"><div class="wh-card__body text-center text-body-secondary py-5">
+      {% trans "Bir yemek tarif edin; kavdaki şaraplardan öneri üretilecek." %}
+    </div></div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

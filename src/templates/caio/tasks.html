@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Geliştirme Görevleri" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Geliştirme Görevleri" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-notice mb-3">{% trans "Görevler yalnızca öneridir; hiçbiri insan onayı olmadan uygulanmaz." %}</div><div class="wh-card"><div class="wh-table-wrap">
+<table class="table mb-0 align-middle">
+  <thead><tr><th>{% trans "Öncelik" %}</th><th>{% trans "Görev" %}</th><th>{% trans "Durum" %}</th>
+    <th class="wh-num">{% trans "Bulgu" %}</th><th>{% trans "Hedef sürüm" %}</th></tr></thead>
+  <tbody>
+  {% for task in tasks %}
+    <tr>
+      <td><span class="badge bg-secondary">{{ task.get_priority_display }}</span></td>
+      <td><strong>{{ task.title }}</strong>
+        <div class="small text-body-secondary">{{ task.description|truncatechars:160 }}</div></td>
+      <td><span class="badge bg-secondary">{{ task.get_status_display }}</span></td>
+      <td class="wh-num">{{ task.findings.count }}</td>
+      <td class="small">{{ task.target_release|default:"—" }}</td>
+    </tr>
+  {% empty %}<tr><td colspan="5" class="text-center text-body-secondary py-4">{% trans "Görev yok." %}</td></tr>{% endfor %}
+  </tbody>
+</table></div></div>
+{% endblock %}

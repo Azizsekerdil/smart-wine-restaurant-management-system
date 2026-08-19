@@ -1,0 +1,20 @@
+# ---------------------------------------------------------------------------
+# Wine House - Windows paketleme araclari (OPSIYONEL)
+#
+# Bu dosya YALNIZCA tek dosyalik .exe veya masaustu kabugu uretmek isteyenler
+# icindir. Uygulamanin calismasi, testler ve CI icin GEREKLI DEGILDIR.
+#
+# DIKKAT - bilerek ayrilmistir:
+#   * pyinstaller ve pywebview, eski surumlere cozulebilen genis bir gecisli
+#     bagimlilik agaci getirir (bottle, lxml, filelock, eski pip). Bu paketler
+#     uretilen uygulamanin calisma zamaninda YER ALMAZ.
+#   * Bu dosyayi kurmadan once kendi ortaminizda bir zafiyet taramasi
+#     calistirin (ornegin: pip-audit).
+#   * pyinstaller GPL-2.0 + bootloader istisnasi ile gelir; uretilen .exe
+#     kapali kaynak kalabilir, ancak pyinstaller'in kendi kaynagi GPL'dir.
+# ---------------------------------------------------------------------------
+
+-r requirements.txt
+
+pyinstaller==6.16.0          # GPL-2.0 with bootloader exception
+pywebview==5.4               # BSD-3-Clause (masaustu kabugu)

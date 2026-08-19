@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Denetim kaydı" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{% trans "Denetim kaydı" %}</h1>
+    
+  </div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-notice mb-3">
+  {% trans "Denetim kayıtları değiştirilemez ve uygulama içinden silinemez. Saklama süresi dolan kayıtlar arşivlenir." %}
+</div>
+<form class="row g-2 mb-3" method="get">
+  <div class="col-sm-3">
+    <select class="form-select" name="action">
+      <option value="">{% trans "Tüm işlemler" %}</option>
+      {% for value, label in action_choices %}<option value="{{ value }}" {% if filters.action == value %}selected{% endif %}>{{ label }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="col-sm-3"><input class="form-control" name="actor" value="{{ filters.actor }}" placeholder="{% trans 'Kullanıcı' %}"></div>
+  <div class="col-sm-3 d-flex align-items-center">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="failed" value="1" id="onlyFailed" {% if filters.failed %}checked{% endif %}>
+      <label class="form-check-label" for="onlyFailed">{% trans "Yalnızca başarısız" %}</label>
+    </div>
+  </div>
+  <div class="col-sm-3 d-flex gap-2">
+    <button class="btn btn-primary">{% trans "Filtrele" %}</button>
+    <a class="btn btn-outline-secondary" href="{% url 'accounts:audit-log' %}">{% trans "Temizle" %}</a>
+  </div>
+</form>
+
+<div class="wh-card">
+  <div class="wh-table-wrap">
+    <table class="table table-sm mb-0">
+      <thead><tr>
+        <th>{% trans "Zaman" %}</th><th>{% trans "Kullanıcı" %}</th><th>{% trans "İşlem" %}</th>
+        <th>{% trans "Nesne" %}</th><th>{% trans "Açıklama" %}</th><th>IP</th>
+      </tr></thead>
+      <tbody>
+      {% for entry in entries %}
+        <tr class="{% if not entry.success %}table-danger{% elif entry.severity == 'critical' %}table-warning{% endif %}">
+          <td class="text-nowrap small">{{ entry.timestamp|date:"d.m.Y H:i:s" }}</td>
+          <td>{{ entry.actor_label|default:"sistem" }}</td>
+          <td><span class="badge bg-secondary">{{ entry.get_action_display }}</span></td>
+          <td class="small">{{ entry.object_repr|default:"—" }}</td>
+          <td class="small">{{ entry.message|truncatechars:120 }}</td>
+          <td class="small text-body-secondary">{{ entry.ip_address|default:"—" }}</td>
+        </tr>
+      {% empty %}<tr><td colspan="99" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% if is_paginated %}
+<nav class="mt-3" aria-label="{% trans 'Sayfalama' %}">
+  <ul class="pagination pagination-sm justify-content-center mb-0">
+    {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?{% if request.GET.urlencode %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% endif %}
+    <li class="page-item disabled"><span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>
+    {% if page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="?{% if request.GET.urlencode %}{{ request.GET.urlencode }}&{% endif %}page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+
+{% endblock %}

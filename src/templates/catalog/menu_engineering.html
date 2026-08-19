@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Menü Mühendisliği" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Menü Mühendisliği" %}</h1><p class="text-body-secondary mb-0">{% trans "Yıldız / At / Bilmece / Köpek kadranları" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+{% if has_data %}
+<div class="row g-3">
+  {% for quadrant, items in quadrants.items %}
+    <div class="col-md-6">
+      <div class="wh-card h-100">
+        <div class="wh-card__header"><strong>{{ quadrant_labels|default_if_none:"" }}{{ quadrant }}</strong>
+          <span class="badge bg-secondary">{{ items|length }}</span></div>
+        <ul class="list-group list-group-flush">
+          {% for snapshot in items %}
+            <li class="list-group-item d-flex justify-content-between">
+              <span>{{ snapshot.menu_item.name_tr }}</span>
+              <span class="text-body-secondary">{{ snapshot.units_sold }} {% trans "adet" %} · {{ snapshot.contribution_margin|floatformat:2 }} ₺</span>
+            </li>
+          {% empty %}<li class="list-group-item text-body-secondary">{% trans "Bu kadranda ürün yok." %}</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="wh-card"><div class="wh-card__body text-center py-5">
+  <p class="text-body-secondary mb-3">{% trans "Henüz kadran anlık görüntüsü üretilmemiş." %}</p>
+  <a class="btn btn-primary" href="{% url 'reporting:report-detail' 'menu-muhendisligi' %}">{% trans "Canlı menü mühendisliği raporunu aç" %}</a>
+</div></div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Kampanyalar" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Kampanyalar" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="alert alert-warning">
+  <strong>{% trans "Planlandı" %}:</strong> {{ dispatch_note }}
+</div>
+<div class="wh-card"><div class="wh-table-wrap">
+<table class="table table-hover mb-0 align-middle">
+  <thead><tr><th>{% trans "Kampanya" %}</th><th>{% trans "Kanal" %}</th><th>{% trans "Durum" %}</th>
+    <th>{% trans "Dönem" %}</th><th class="wh-num">{% trans "Uygun kitle" %}</th><th>{% trans "Rıza" %}</th></tr></thead>
+  <tbody>
+  {% for campaign in campaigns %}
+    <tr>
+      <td><strong>{{ campaign.name }}</strong><br><small class="text-body-secondary">{{ campaign.description|truncatechars:70 }}</small></td>
+      <td>{{ campaign.get_channel_display }}</td>
+      <td><span class="badge bg-secondary">{{ campaign.get_status_display }}</span></td>
+      <td class="small">{{ campaign.starts_on|date:"d.m.Y"|default:"—" }} – {{ campaign.ends_on|date:"d.m.Y"|default:"—" }}</td>
+      <td class="wh-num">{{ campaign.eligible_customers.count }}</td>
+      <td>{% if campaign.requires_consent %}<span class="badge bg-success">{% trans "Zorunlu" %}</span>{% else %}—{% endif %}</td>
+    </tr>
+  {% empty %}<tr><td colspan="99" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>{% endfor %}
+  </tbody>
+</table></div></div>
+{% endblock %}

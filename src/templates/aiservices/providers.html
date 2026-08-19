@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Yapay Zekâ Sağlayıcıları" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Yapay Zekâ Sağlayıcıları" %}</h1></div>
+  <div class="wh-page-actions"><form method="post" action="{% url 'aiservices:provider-test' %}">{% csrf_token %}
+      <button class="btn btn-primary">{% trans "Bağlantıları sına" %}</button></form></div>
+</div>
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{% trans "Genel ayarlar" %}</strong></div>
+  <div class="wh-card__body">
+    <dl class="row mb-0 small">
+      <dt class="col-md-3">{% trans "Varsayılan sağlayıcı" %}</dt><dd class="col-md-3"><code>{{ settings_summary.default_provider }}</code></dd>
+      <dt class="col-md-3">{% trans "Yerel öncelik" %}</dt><dd class="col-md-3">{{ settings_summary.prefer_local|yesno:"Açık,Kapalı" }}</dd>
+      <dt class="col-md-3">{% trans "Gizlilik modu" %}</dt><dd class="col-md-3">{{ settings_summary.privacy_mode|yesno:"Açık,Kapalı" }}</dd>
+      <dt class="col-md-3">{% trans "Yalnızca yerel" %}</dt><dd class="col-md-3">{{ settings_summary.local_only|yesno:"Evet,Hayır" }}</dd>
+      <dt class="col-md-3">{% trans "Aylık maliyet sınırı" %}</dt><dd class="col-md-3">{{ settings_summary.monthly_limit_usd }} USD</dd>
+      <dt class="col-md-3">{% trans "Yedekleme sırası" %}</dt><dd class="col-md-9"><code>{{ settings_summary.fallback_chain|join:" → " }}</code></dd>
+    </dl>
+  </div>
+</div>
+
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{% trans "Bu ayki bütçe" %}</strong></div>
+  <div class="wh-card__body">
+    <div class="progress mb-2" role="progressbar" aria-valuenow="{{ budget.usage_percent }}" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar {% if budget.is_exceeded %}bg-danger{% elif budget.should_warn %}bg-warning{% endif %}"
+           style="width: {{ budget.usage_percent }}%">%{{ budget.usage_percent }}</div>
+    </div>
+    <p class="small mb-0">{{ budget.spent_usd|floatformat:4 }} / {{ budget.limit_usd }} USD
+      {% if budget.is_hard_limit %}· <span class="badge bg-secondary">{% trans "Kesin sınır" %}</span>{% endif %}</p>
+  </div>
+</div>
+
+<div class="wh-card">
+  <div class="wh-card__header"><strong>{% trans "Sağlayıcılar" %}</strong></div>
+  <div class="wh-table-wrap">
+    <table class="table mb-0 align-middle">
+      <thead><tr><th>{% trans "Sağlayıcı" %}</th><th>{% trans "Adres" %}</th><th>{% trans "Model" %}</th>
+        <th class="wh-num">{% trans "Zaman aşımı" %}</th><th>{% trans "Tür" %}</th><th>{% trans "API anahtarı" %}</th></tr></thead>
+      <tbody>
+      {% for provider in providers %}
+        <tr>
+          <td><strong>{{ provider.label }}</strong><br><code class="small">{{ provider.code }}</code></td>
+          <td class="small"><code>{{ provider.base_url|default:"—" }}</code></td>
+          <td class="small">{{ provider.model }}</td>
+          <td class="wh-num">{{ provider.timeout }} sn</td>
+          <td>{% if provider.is_local %}<span class="badge bg-success">{% trans "Yerel" %}</span>
+              {% else %}<span class="badge bg-info text-dark">{% trans "Bulut" %}</span>{% endif %}</td>
+          <td class="small">
+            {% if provider.api_key_configured %}
+              <span class="badge bg-success">{% trans "Tanımlı" %}</span> <code>{{ provider.api_key_preview }}</code>
+            {% elif provider.api_key_env %}
+              <span class="badge bg-secondary">{% trans "Yok" %}</span> <code>{{ provider.api_key_env }}</code>
+            {% else %}—{% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="wh-card__body border-top">
+    <p class="small text-body-secondary mb-0">{{ key_entry_note }}</p>
+  </div>
+</div>
+{% endblock %}

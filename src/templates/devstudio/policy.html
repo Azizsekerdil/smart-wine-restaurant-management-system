@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Politika Motoru" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Politika Motoru" %}</h1><p class="text-body-secondary mb-0">{% trans "Yapay zekânın önerdiği her eylem bu kurallardan geçer" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Kural denemesi" %}</strong></div>
+      <div class="wh-card__body">
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label small">{% trans "Komut" %}</label>
+            <input class="form-control" name="command" value="{{ tested_command|default:'' }}" placeholder="git status">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small">{% trans "Dosya yolu" %}</label>
+            <input class="form-control" name="path" value="{{ tested_path|default:'' }}" placeholder="src/apps/core/models.py">
+          </div>
+          <button class="btn btn-primary">{% trans "Değerlendir" %}</button>
+        </form>
+
+        {% if command_result %}
+          <div class="alert alert-{% if command_result.decision.value == 'deny' %}danger{% elif command_result.decision.value == 'allow' %}success{% else %}warning{% endif %} mt-3 mb-0">
+            <strong>{{ command_result.decision.value|upper }}</strong> — {{ command_result.reason }}
+            {% if command_result.matched_rule %}<br><small>{% trans "Kural" %}: <code>{{ command_result.matched_rule }}</code></small>{% endif %}
+          </div>
+        {% endif %}
+        {% if path_result %}
+          <div class="alert alert-{% if path_result.decision.value == 'deny' %}danger{% elif path_result.decision.value == 'allow' %}success{% else %}warning{% endif %} mt-3 mb-0">
+            <strong>{{ path_result.decision.value|upper }}</strong> — {{ path_result.reason }}
+          </div>
+        {% endif %}
+        {% if dry_run_note %}<p class="small text-body-secondary mt-3 mb-0">{{ dry_run_note }}</p>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Onaysız çalışabilen komutlar" %}</strong></div>
+      <div class="wh-card__body"><div class="d-flex flex-wrap gap-1">
+        {% for command in policy.read_only_commands %}<code class="badge bg-success">{{ command }}</code>{% endfor %}
+      </div></div>
+    </div>
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Onay gerektiren komutlar" %}</strong></div>
+      <div class="wh-card__body"><div class="d-flex flex-wrap gap-1">
+        {% for command in policy.approval_commands %}<code class="badge bg-warning text-dark">{{ command }}</code>{% endfor %}
+      </div></div>
+    </div>
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Kesin yasak komutlar" %}</strong></div>
+      <div class="wh-card__body"><div class="d-flex flex-wrap gap-1">
+        {% for command in policy.forbidden_executables %}<code class="badge bg-danger">{{ command }}</code>{% endfor %}
+      </div></div>
+    </div>
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Korumalı dosyalar" %}</strong></div>
+      <div class="wh-card__body"><div class="d-flex flex-wrap gap-1">
+        {% for pattern in policy.protected_files %}<code class="badge bg-dark">{{ pattern }}</code>{% endfor %}
+      </div></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

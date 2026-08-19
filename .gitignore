@@ -1,0 +1,106 @@
+# ---------------------------------------------------------------------------
+# Wine House - .gitignore
+# Gizli anahtarlar, veritabanları ve yerel çıktılar asla depoya girmemelidir.
+# ---------------------------------------------------------------------------
+
+# --- Secrets / Gizli bilgiler ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+secrets.json
+credentials.json
+.secrets/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib60/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# --- Virtual environments ---
+.venv/
+venv/
+ENV/
+env/
+
+# --- Django ---
+*.log
+db.sqlite3
+db.sqlite3-journal
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+/media/
+/staticfiles/
+/src/winehouse/staticfiles/
+
+# --- Test / coverage ---
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.hypothesis/
+junit*.xml
+
+# --- Type checking / linting ---
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.ruff_cache/
+
+# --- PyInstaller ---
+*.manifest
+*.spec.bak
+/build/
+/dist/
+
+# --- Yedekler ve yerel veriler ---
+/backups/
+/var/
+/logs/
+/exports/
+/tmp/
+*.bak
+
+# --- AI Development Studio çalışma alanı ---
+/.devstudio/
+/.caio/
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Sunum ara ciktilari (uretilen dosyalar depoda tutulur, gecici olanlar tutulmaz) ---
+docs/presentation/*.ocr.txt
+
+# --- Ortam / gizli anahtar (yinelenen guvence) ---
+.env
+.env.*
+!.env.example

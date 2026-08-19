@@ -1,0 +1,34 @@
+# ---------------------------------------------------------------------------
+# Wine House - gitleaks yapilandirmasi
+#
+# Varsayilan kural setini genisletir. Tek istisna asagida gerekcesiyle
+# belgelenmistir; baska hicbir yol veya kural gevsetilmemistir.
+# ---------------------------------------------------------------------------
+[extend]
+useDefault = true
+
+[[rules]]
+id = "winehouse-placeholder-guard"
+description = "Ortak yer tutucu bir gercek anahtarla degistirilirse yakalar"
+regex = '''YOUR_[A-Z_]*API_KEY_HERE\s*=\s*\S'''
+tags = ["placeholder"]
+
+# ---------------------------------------------------------------------------
+# ISTISNA: gizli deger maskeleme testleri
+#
+# tests/test_security.py, `mask_secrets()` fonksiyonunun bilinen anahtar
+# bicimlerini gunluge yazmadan maskeledigini dogrular. Bunun icin SENTETIK
+# ornekler tasir:
+#   * alfabe dizisinden olusan sahte saglayici anahtarlari (abcdefghij...)
+#   * AWS'nin kendi belgelerinde yayimladigi ornek erisim kimligi
+#   * 24 karakterlik, gecerli olmayan bir PEM govde parcasi
+#   * "password=CokGizliParola123" duz metin ornegi
+#
+# Hicbiri gercek bir kimlik bilgisi degildir ve hicbir servise karsi
+# calismaz. Testler ürünün gizli-veri sizdirmama davranisini korudugu icin
+# KALDIRILMAZ veya ZAYIFLATILMAZ; bunun yerine tarama gurultusu bu dar
+# kapsamli istisnayla susturulur.
+# ---------------------------------------------------------------------------
+[allowlist]
+description = "Yalnizca maskeleme testlerindeki sentetik ornekler"
+paths = ['''^tests/test_security\.py$''']

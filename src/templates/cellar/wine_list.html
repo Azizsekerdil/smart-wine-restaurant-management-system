@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Şarap Kavı" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Şarap Kavı" %}</h1><p class="text-body-secondary mb-0">{% trans "Şişe ve kadeh stoğu, içim aralığı ve fiyatlandırma" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+
+<div class="wh-notice mb-3">{{ responsible_notice }}</div>
+
+<form class="row g-2 mb-3" method="get">
+  <div class="col-sm-4"><input class="form-control" name="q" value="{{ filters.q }}" placeholder="{% trans 'Şarap, üretici, SKU veya barkod' %}"></div>
+  <div class="col-sm-3">
+    <select class="form-select" name="type">
+      <option value="">{% trans "Tüm türler" %}</option>
+      {% for value, label in wine_types %}<option value="{{ value }}" {% if filters.type == value %}selected{% endif %}>{{ label }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="col-sm-5 d-flex gap-2 align-items-center flex-wrap">
+    <div class="form-check"><input class="form-check-input" type="checkbox" name="by_glass" value="1" id="byGlass" {% if filters.by_glass %}checked{% endif %}>
+      <label class="form-check-label" for="byGlass">{% trans "Kadeh satışı" %}</label></div>
+    <div class="form-check"><input class="form-check-input" type="checkbox" name="low_stock" value="1" id="lowStock" {% if filters.low_stock %}checked{% endif %}>
+      <label class="form-check-label" for="lowStock">{% trans "Kritik stok" %}</label></div>
+    <button class="btn btn-primary btn-sm">{% trans "Filtrele" %}</button>
+    <a class="btn btn-outline-secondary btn-sm" href="{% url 'cellar:wine-list' %}">{% trans "Temizle" %}</a>
+  </div>
+</form>
+
+<div class="wh-card">
+  <div class="wh-table-wrap">
+    <table class="table table-hover align-middle mb-0">
+      <thead><tr>
+        <th>{% trans "Şarap" %}</th><th>{% trans "Bölge / Üzüm" %}</th><th>{% trans "Tür" %}</th>
+        <th class="wh-num">{% trans "Şişe" %}</th><th class="wh-num">{% trans "Kadeh" %}</th>
+        <th class="wh-num">{% trans "Şişe ₺" %}</th><th class="wh-num">{% trans "Kadeh ₺" %}</th>
+        <th>{% trans "İçim" %}</th><th></th>
+      </tr></thead>
+      <tbody>
+      {% for wine in wines %}
+        <tr>
+          <td>
+            <strong>{{ wine.name }}</strong> <span class="badge bg-secondary">{{ wine.display_vintage }}</span>
+            {% if wine.is_below_minimum %}<span class="badge bg-danger">{% trans "Kritik" %}</span>{% endif %}
+            <br><small class="text-body-secondary">{{ wine.producer.name }} · {{ wine.sku }}</small>
+          </td>
+          <td class="small">{{ wine.region.full_path }}<br><span class="text-body-secondary">{{ wine.grape_summary }}</span></td>
+          <td><span class="badge bg-body-secondary text-body">{{ wine.get_wine_type_display }}</span></td>
+          <td class="wh-num">{{ wine.bottles_on_hand }}</td>
+          <td class="wh-num">{% if wine.sold_by_glass %}{{ wine.glasses_available }}{% else %}—{% endif %}</td>
+          <td class="wh-num">{{ wine.bottle_price|floatformat:2 }}</td>
+          <td class="wh-num">{% if wine.sold_by_glass %}{{ wine.glass_price|floatformat:2 }}{% else %}—{% endif %}</td>
+          <td class="small">{{ wine.drink_window_label }}</td>
+          <td class="text-end"><a class="btn btn-sm btn-outline-primary" href="{% url 'cellar:wine-detail' wine.pk %}">{% trans "Aç" %}</a></td>
+        </tr>
+      {% empty %}<tr><td colspan="99" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% if is_paginated %}
+<nav class="mt-3"><ul class="pagination pagination-sm justify-content-center mb-0">
+  {% if page_obj.has_previous %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>{% endif %}
+  <li class="page-item disabled"><span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>
+  {% if page_obj.has_next %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>{% endif %}
+</ul></nav>
+{% endif %}
+
+{% endblock %}

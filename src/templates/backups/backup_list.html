@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Yedekleme" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Yedekleme" %}</h1></div>
+  <div class="wh-page-actions">{% if can_backup %}<form method="post" action="{% url 'backups:backup-create' %}" class="d-flex gap-2 align-items-center">{% csrf_token %}
+      <div class="form-check"><input class="form-check-input" type="checkbox" name="encrypt" value="1" id="enc" checked>
+        <label class="form-check-label small" for="enc">{% trans "Şifrele" %}</label></div>
+      <button class="btn btn-primary">{% trans "Şimdi yedek al" %}</button></form>{% endif %}
+    {% if can_restore %}<a class="btn btn-outline-secondary" href="{% url 'backups:restore' %}">{% trans "Geri yükle" %}</a>{% endif %}</div>
+</div>
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{% trans "Yapılandırma" %}</strong></div>
+  <div class="wh-card__body">
+    <dl class="row mb-0 small">
+      <dt class="col-md-3">{% trans "Yedek klasörü" %}</dt><dd class="col-md-9"><code>{{ backup_dir }}</code></dd>
+      <dt class="col-md-3">{% trans "Şifreleme" %}</dt>
+      <dd class="col-md-9">{% if encryption_enabled %}<span class="badge bg-success">{% trans "Açık" %}</span>{% else %}<span class="badge bg-secondary">{% trans "Kapalı" %}</span>{% endif %}
+        {% if not encryption_key_present %}<span class="badge bg-danger">{% trans "Anahtar tanımsız" %}</span>{% endif %}</dd>
+      <dt class="col-md-3">{% trans "Saklama süresi" %}</dt><dd class="col-md-9">{{ retention_days }} {% trans "gün (en az 3 yedek daima korunur)" %}</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{% trans "Yedekler" %}</strong></div>
+  <div class="wh-table-wrap"><table class="table mb-0 align-middle">
+    <thead><tr><th>{% trans "Dosya" %}</th><th>{% trans "Tür" %}</th><th>{% trans "Durum" %}</th>
+      <th class="wh-num">{% trans "Boyut MB" %}</th><th>{% trans "Şifreli" %}</th>
+      <th>{% trans "Zaman" %}</th><th>{% trans "Alan" %}</th><th></th></tr></thead>
+    <tbody>
+    {% for backup in backups %}
+      <tr>
+        <td><code class="small">{{ backup.file_name }}</code></td>
+        <td class="small">{{ backup.get_kind_display }}</td>
+        <td><span class="badge bg-{% if backup.status == 'verified' %}success{% elif backup.status == 'corrupt' or backup.status == 'failed' %}danger{% else %}secondary{% endif %}">{{ backup.get_status_display }}</span></td>
+        <td class="wh-num">{{ backup.size_mb }}</td>
+        <td>{% if backup.is_encrypted %}🔒{% else %}—{% endif %}</td>
+        <td class="small">{{ backup.started_at|date:"d.m.Y H:i" }}</td>
+        <td class="small">{{ backup.created_by.label|default:"sistem" }}</td>
+        <td class="text-end">
+          <form method="post" action="{% url 'backups:backup-verify' backup.pk %}">{% csrf_token %}
+            <button class="btn btn-sm btn-outline-secondary">{% trans "Doğrula" %}</button></form>
+        </td>
+      </tr>
+    {% empty %}<tr><td colspan="8" class="text-center text-body-secondary py-4">{% trans "Henüz yedek alınmamış." %}</td></tr>{% endfor %}
+    </tbody></table></div>
+</div>
+
+{% if restores %}
+<div class="wh-card">
+  <div class="wh-card__header"><strong>{% trans "Son geri yüklemeler" %}</strong></div>
+  <div class="wh-table-wrap"><table class="table table-sm mb-0">
+    <thead><tr><th>{% trans "Yedek" %}</th><th>{% trans "Hedef" %}</th><th>{% trans "Durum" %}</th><th>{% trans "Talep eden" %}</th></tr></thead>
+    <tbody>
+    {% for restore in restores %}
+      <tr><td class="small"><code>{{ restore.backup.file_name }}</code></td>
+        <td>{{ restore.get_target_display }}</td>
+        <td><span class="badge bg-secondary">{{ restore.get_status_display }}</span></td>
+        <td class="small">{{ restore.requested_by.label }}</td></tr>
+    {% endfor %}
+    </tbody></table></div>
+</div>
+{% endif %}
+{% endblock %}

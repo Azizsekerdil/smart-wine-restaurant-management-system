@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Personel Performansı" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Personel Performansı" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+{% if has_data %}
+<div class="wh-card"><div class="wh-table-wrap">
+<table class="table table-hover mb-0 align-middle">
+  <thead><tr><th>{% trans "Personel" %}</th><th>{% trans "Dönem" %}</th><th class="wh-num">{% trans "Adisyon" %}</th>
+    <th class="wh-num">{% trans "Misafir" %}</th><th class="wh-num">{% trans "Ciro ₺" %}</th>
+    <th class="wh-num">{% trans "Şarap ₺" %}</th><th class="wh-num">{% trans "Şarap oranı" %}</th>
+    <th class="wh-num">{% trans "İptal" %}</th><th class="wh-num">{% trans "Yönetici puanı" %}</th></tr></thead>
+  <tbody>
+  {% for metric in metrics %}
+    <tr>
+      <td>{{ metric.employee.full_name }}</td>
+      <td class="small">{{ metric.period_start|date:"d.m" }}–{{ metric.period_end|date:"d.m.Y" }}</td>
+      <td class="wh-num">{{ metric.orders_served }}</td>
+      <td class="wh-num">{{ metric.guests_served }}</td>
+      <td class="wh-num">{{ metric.total_sales|floatformat:2 }}</td>
+      <td class="wh-num">{{ metric.wine_sales|floatformat:2 }}</td>
+      <td class="wh-num">%{{ metric.wine_attach_rate }}</td>
+      <td class="wh-num">{{ metric.void_count }}</td>
+      <td class="wh-num">{% if metric.manager_score %}{{ metric.manager_score }}/5{% else %}—{% endif %}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table></div></div>
+{% else %}
+<div class="wh-card"><div class="wh-card__body text-center py-5">
+  <p class="text-body-secondary mb-3">{% trans "Henüz performans göstergesi hesaplanmamış." %}</p>
+  <a class="btn btn-primary" href="{% url 'reporting:report-detail' 'personel-performans' %}">{% trans "Canlı personel raporunu aç" %}</a>
+</div></div>
+{% endif %}
+<p class="small text-body-secondary mt-3">{{ note }}</p>
+{% endblock %}

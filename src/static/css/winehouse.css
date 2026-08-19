@@ -1,0 +1,263 @@
+/* ==========================================================================
+   Wine House — arayüz teması
+
+   Tasarım notları:
+   - Palet şarap kavından türetilmiştir: koyu bordo, tanen kahvesi, kav taşı.
+   - Yalnızca renkle anlam taşınmaz; her durum rozeti metin de içerir
+     (renk körlüğü ve düşük ışıklı salon koşulları için).
+   - Dokunmatik POS terminalleri için hedef alanlar en az 44 px.
+   - Açık/koyu tema `prefers-color-scheme` ile desteklenir.
+   ========================================================================== */
+
+:root {
+  --wh-wine: #4a1c2e;
+  --wh-wine-dark: #35131f;
+  --wh-wine-light: #6d2c44;
+  --wh-gold: #c8a45c;
+  --wh-stone: #f7f3f4;
+  --wh-ink: #23181c;
+  --wh-muted: #6b5c62;
+  --wh-surface: #ffffff;
+  --wh-border: #e4dcdf;
+  --wh-radius: 10px;
+  --wh-shadow: 0 1px 2px rgba(35, 24, 28, .06), 0 4px 12px rgba(35, 24, 28, .05);
+  --wh-touch: 44px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wh-stone: #171114;
+    --wh-ink: #ece5e7;
+    --wh-muted: #a89aa0;
+    --wh-surface: #1f171b;
+    --wh-border: #33272c;
+    --wh-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 4px 12px rgba(0, 0, 0, .3);
+  }
+}
+
+/* --------------------------------------------------------------------- */
+/* Yerleşim                                                              */
+/* --------------------------------------------------------------------- */
+.wh-body {
+  background: var(--wh-stone);
+  color: var(--wh-ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-feature-settings: "tnum" 1; /* tablolarda hizalı rakamlar */
+}
+
+.wh-main { flex: 1 0 auto; padding: 1.25rem 0 2rem; }
+.wh-main--auth { display: grid; place-items: center; padding: 2rem 1rem; }
+
+.wh-envbar {
+  background: var(--wh-wine-dark);
+  padding: .35rem .75rem;
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: .78rem;
+}
+
+.wh-page-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: .75rem;
+  border-bottom: 1px solid var(--wh-border);
+}
+
+.wh-page-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.wh-messages { max-width: 1100px; margin: 0 auto 1rem; }
+
+/* --------------------------------------------------------------------- */
+/* Gezinme                                                               */
+/* --------------------------------------------------------------------- */
+.wh-navbar {
+  background: linear-gradient(180deg, var(--wh-wine) 0%, var(--wh-wine-dark) 100%);
+  box-shadow: var(--wh-shadow);
+}
+.wh-navbar .navbar-brand,
+.wh-navbar .nav-link { color: rgba(255, 255, 255, .88); }
+.wh-navbar .nav-link:hover,
+.wh-navbar .nav-link:focus-visible { color: #fff; }
+.wh-navbar .navbar-toggler { border-color: rgba(255, 255, 255, .3); }
+.wh-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.wh-brand-mark { font-size: 1.5rem; line-height: 1; }
+.wh-brand-sub { color: var(--wh-gold); font-size: .68rem; letter-spacing: .04em; }
+.wh-role { color: var(--wh-gold); font-size: .7rem; }
+
+.wh-avatar {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--wh-gold);
+  color: var(--wh-wine-dark);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------- */
+/* Kartlar ve tablolar                                                   */
+/* --------------------------------------------------------------------- */
+.wh-card {
+  background: var(--wh-surface);
+  border: 1px solid var(--wh-border);
+  border-radius: var(--wh-radius);
+  box-shadow: var(--wh-shadow);
+}
+.wh-card__header {
+  padding: .75rem 1rem;
+  border-bottom: 1px solid var(--wh-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+.wh-card__body { padding: 1rem; }
+
+.wh-stats { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.wh-stat {
+  background: var(--wh-surface);
+  border: 1px solid var(--wh-border);
+  border-left: 4px solid var(--wh-wine);
+  border-radius: var(--wh-radius);
+  padding: 1rem;
+  box-shadow: var(--wh-shadow);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.wh-stat:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(35, 24, 28, .12); }
+.wh-stat__icon { font-size: 1.4rem; }
+.wh-stat__value { font-size: 1.9rem; font-weight: 700; line-height: 1.1; }
+.wh-stat__label { color: var(--wh-muted); font-size: .82rem; }
+
+/* Geniş tablolar yalnızca kendi kabında yatay kayar */
+.wh-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.wh-table-wrap > table { margin-bottom: 0; }
+.table > :not(caption) > * > * { padding: .55rem .6rem; }
+.wh-num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* --------------------------------------------------------------------- */
+/* Masa planı                                                            */
+/* --------------------------------------------------------------------- */
+.wh-floor {
+  position: relative;
+  min-height: 320px;
+  background:
+    linear-gradient(var(--wh-border) 1px, transparent 1px) 0 0 / 100% 40px,
+    linear-gradient(90deg, var(--wh-border) 1px, transparent 1px) 0 0 / 40px 100%,
+    var(--wh-surface);
+  border: 1px solid var(--wh-border);
+  border-radius: var(--wh-radius);
+  padding: .5rem;
+}
+.wh-tables { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); }
+.wh-table-card {
+  min-height: 96px;
+  border: 2px solid var(--wh-border);
+  border-radius: var(--wh-radius);
+  background: var(--wh-surface);
+  padding: .6rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  text-decoration: none;
+  color: inherit;
+}
+.wh-table-card--round { border-radius: 50% / 22%; }
+.wh-table-card__no { font-weight: 700; font-size: 1.05rem; }
+.wh-table-card__meta { font-size: .74rem; color: var(--wh-muted); }
+
+/* --------------------------------------------------------------------- */
+/* Mutfak ekranı (KDS)                                                   */
+/* --------------------------------------------------------------------- */
+.wh-kds { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.wh-ticket {
+  background: var(--wh-surface);
+  border: 3px solid var(--wh-border);
+  border-radius: var(--wh-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.wh-ticket__head {
+  padding: .5rem .75rem;
+  background: rgba(0, 0, 0, .04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+}
+.wh-ticket__lines { list-style: none; margin: 0; padding: .5rem .75rem; flex: 1; }
+.wh-ticket__lines li { padding: .3rem 0; border-bottom: 1px dashed var(--wh-border); }
+.wh-ticket__lines li:last-child { border-bottom: 0; }
+.wh-ticket__foot { padding: .5rem .75rem; border-top: 1px solid var(--wh-border); }
+.wh-ticket .btn { min-height: var(--wh-touch); }
+.wh-allergen { color: #b3261e; font-weight: 600; font-size: .78rem; }
+
+/* Süresi aşan fişler dikkat çeker (yalnızca renkle değil, metinle de) */
+@media (prefers-reduced-motion: no-preference) {
+  .wh-ticket.border-danger { animation: wh-pulse 2.2s ease-in-out infinite; }
+}
+@keyframes wh-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(179, 38, 30, .35); }
+  50% { box-shadow: 0 0 0 6px rgba(179, 38, 30, 0); }
+}
+
+/* --------------------------------------------------------------------- */
+/* Şarap kartı                                                           */
+/* --------------------------------------------------------------------- */
+.wh-wine-profile { display: grid; gap: .4rem; }
+.wh-meter { display: grid; grid-template-columns: 6.5rem 1fr auto; gap: .5rem; align-items: center; }
+.wh-meter__track { height: 8px; background: var(--wh-border); border-radius: 99px; overflow: hidden; }
+.wh-meter__fill { height: 100%; background: var(--wh-wine); border-radius: 99px; }
+.wh-meter__value { font-size: .78rem; color: var(--wh-muted); min-width: 2.5rem; text-align: right; }
+
+.wh-notice {
+  border-left: 4px solid var(--wh-gold);
+  background: rgba(200, 164, 92, .12);
+  padding: .65rem .85rem;
+  border-radius: 0 var(--wh-radius) var(--wh-radius) 0;
+  font-size: .86rem;
+}
+
+/* Deneysel / planlandı rozetleri her zaman metin taşır */
+.wh-flag { font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; }
+
+/* --------------------------------------------------------------------- */
+/* QR menü (misafir görünümü)                                            */
+/* --------------------------------------------------------------------- */
+.wh-qr-menu { max-width: 720px; margin: 0 auto; }
+.wh-qr-menu h2 { border-bottom: 2px solid var(--wh-gold); padding-bottom: .3rem; margin-top: 2rem; }
+.wh-qr-item { display: flex; justify-content: space-between; gap: 1rem; padding: .6rem 0; border-bottom: 1px dashed var(--wh-border); }
+.wh-qr-item__price { white-space: nowrap; font-weight: 600; }
+
+/* --------------------------------------------------------------------- */
+/* Erişilebilirlik                                                       */
+/* --------------------------------------------------------------------- */
+:focus-visible { outline: 3px solid var(--wh-gold); outline-offset: 2px; }
+.btn, .form-control, .form-select { min-height: var(--wh-touch); }
+.btn-sm { min-height: 34px; }
+
+.wh-footer {
+  padding: .85rem 0;
+  border-top: 1px solid var(--wh-border);
+  background: var(--wh-surface);
+  font-size: .8rem;
+}
+
+@media print {
+  .wh-navbar, .wh-envbar, .wh-footer, .wh-page-actions, .btn { display: none !important; }
+  .wh-body { background: #fff; }
+  .wh-card { box-shadow: none; border-color: #999; }
+}

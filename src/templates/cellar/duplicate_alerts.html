@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Mükerrer Kayıt Uyarıları" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Mükerrer Kayıt Uyarıları" %}</h1></div>
+  <div class="wh-page-actions"><form method="post" action="{% url 'cellar:duplicate-scan' %}">{% csrf_token %}
+      <button class="btn btn-primary">{% trans "Taramayı çalıştır" %}</button></form></div>
+</div>
+
+<div class="wh-notice mb-3">{% trans "Sistem hiçbir kaydı kendiliğinden silmez veya birleştirmez; yalnızca inceleme için uyarı üretir." %}</div>
+<div class="wh-card">
+  <div class="wh-table-wrap">
+    <table class="table mb-0 align-middle">
+      <thead><tr><th>{% trans "Şarap" %}</th><th>{% trans "Karşılaştırılan" %}</th><th>{% trans "Gerekçe" %}</th>
+        <th>{% trans "Ayrıntı" %}</th><th class="wh-num">{% trans "Güven" %}</th></tr></thead>
+      <tbody>
+      {% for alert in alerts %}
+        <tr>
+          <td><a href="{% url 'cellar:wine-detail' alert.wine.pk %}">{{ alert.wine }}</a></td>
+          <td>{% if alert.other_wine %}<a href="{% url 'cellar:wine-detail' alert.other_wine.pk %}">{{ alert.other_wine }}</a>{% else %}—{% endif %}</td>
+          <td><span class="badge bg-warning text-dark">{{ alert.get_reason_display }}</span></td>
+          <td class="small">{{ alert.detail }}</td>
+          <td class="wh-num">%{{ alert.confidence|floatformat:0 }}</td>
+        </tr>
+      {% empty %}<tr><td colspan="5" class="text-center text-body-secondary py-4">{% trans "Açık uyarı yok." %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

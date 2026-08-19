@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Yapay Zekâ Öneri Kuyruğu" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Yapay Zekâ Öneri Kuyruğu" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<form class="mb-3" method="get">
+  <select class="form-select w-auto" name="status" onchange="this.form.submit()">
+    <option value="all">{% trans "Tümü" %}</option>
+    {% for value, label in status_choices %}<option value="{{ value }}" {% if selected_status == value %}selected{% endif %}>{{ label }}</option>{% endfor %}
+  </select>
+</form>
+
+<div class="wh-card"><div class="wh-table-wrap">
+<table class="table mb-0 align-middle">
+  <thead><tr><th>{% trans "Tür" %}</th><th>{% trans "Öneri" %}</th><th class="wh-num">{% trans "Güven" %}</th>
+    <th>{% trans "Durum" %}</th><th>{% trans "Oluşturulma" %}</th><th>{% trans "Karar" %}</th></tr></thead>
+  <tbody>
+  {% for suggestion in suggestions %}
+    <tr>
+      <td><span class="badge bg-secondary">{{ suggestion.get_kind_display }}</span></td>
+      <td><strong>{{ suggestion.title }}</strong>
+        {% if suggestion.summary %}<br><small class="text-body-secondary">{{ suggestion.summary|truncatechars:120 }}</small>{% endif %}</td>
+      <td class="wh-num">%{{ suggestion.confidence|floatformat:0 }}</td>
+      <td><span class="badge bg-secondary">{{ suggestion.get_status_display }}</span></td>
+      <td class="small">{{ suggestion.created_at|date:"d.m.Y H:i" }}</td>
+      <td class="small">{% if suggestion.reviewed_by %}{{ suggestion.reviewed_by.label }}<br>
+        <span class="text-body-secondary">{{ suggestion.reviewed_at|date:"d.m.Y H:i" }}</span>{% else %}—{% endif %}</td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="6" class="text-center text-body-secondary py-4">{% trans "Öneri yok." %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div></div>
+
+<p class="small text-body-secondary mt-3">{{ policy_note }}</p>
+{% endblock %}

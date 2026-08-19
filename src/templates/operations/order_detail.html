@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{{ order.number }}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{{ order.number }} <span class="badge bg-secondary align-middle">{{ order.get_status_display }}</span></h1>
+    <p class="text-body-secondary mb-0">
+      {% if order.table %}{{ order.table.section.name }} · {{ order.table.label }} · {% endif %}
+      {{ order.guest_count }} {% trans "kişi" %} · {{ order.server.label }} · {{ order.opened_at|date:"d.m.Y H:i" }}
+    </p>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-8">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Satırlar" %}</strong></div>
+      <div class="wh-table-wrap">
+        <table class="table table-sm mb-0 align-middle">
+          <thead><tr><th>{% trans "Ürün" %}</th><th class="wh-num">{% trans "Adet" %}</th><th class="wh-num">{% trans "Birim ₺" %}</th>
+            <th class="wh-num">{% trans "İndirim" %}</th><th class="wh-num">{% trans "Toplam ₺" %}</th><th>{% trans "Servis" %}</th></tr></thead>
+          <tbody>
+          {% for line in lines %}
+            <tr class="{% if line.is_voided %}table-secondary text-decoration-line-through{% endif %}">
+              <td>
+                {{ line.item_name }}
+                {% if line.is_comp %}<span class="badge bg-warning text-dark">{% trans "İkram" %}</span>{% endif %}
+                {% if line.seat_number %}<span class="badge bg-body-secondary text-body">{% trans "Koltuk" %} {{ line.seat_number }}</span>{% endif %}
+                {% if line.special_instructions %}<br><small class="text-body-secondary">{{ line.special_instructions }}</small>{% endif %}
+              </td>
+              <td class="wh-num">{{ line.quantity|floatformat:"-3" }}</td>
+              <td class="wh-num">{{ line.unit_price|floatformat:2 }}</td>
+              <td class="wh-num">{% if line.discount_percent %}%{{ line.discount_percent }}{% else %}—{% endif %}</td>
+              <td class="wh-num">{{ line.total_amount|floatformat:2 }}</td>
+              <td class="small">{{ line.get_service_unit_display }}</td>
+            </tr>
+          {% empty %}<tr><td colspan="6" class="text-center text-body-secondary py-3">{% trans "Satır yok." %}</td></tr>{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Hazırlık fişleri (KOT)" %}</strong></div>
+      <div class="wh-table-wrap">
+        <table class="table table-sm mb-0">
+          <thead><tr><th>{% trans "Fiş" %}</th><th>{% trans "İstasyon" %}</th><th>{% trans "Durum" %}</th>
+            <th class="wh-num">{% trans "Süre" %}</th><th>{% trans "Ürünler" %}</th></tr></thead>
+          <tbody>
+          {% for ticket in tickets %}
+            <tr class="{% if ticket.is_overdue %}table-danger{% endif %}">
+              <td class="small">{{ ticket.ticket_number }}</td>
+              <td>{{ ticket.get_station_display }}</td>
+              <td><span class="badge bg-secondary">{{ ticket.get_status_display }}</span></td>
+              <td class="wh-num">{{ ticket.elapsed_minutes }} / {{ ticket.target_minutes }} dk</td>
+              <td class="small">{% for line in ticket.lines.all %}{{ line.item_name }} ×{{ line.quantity|floatformat:"-3" }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+            </tr>
+          {% empty %}<tr><td colspan="5" class="text-center text-body-secondary py-3">{% trans "Fiş üretilmemiş." %}</td></tr>{% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Hesap" %}</strong></div>
+      <div class="wh-card__body">
+        <dl class="row mb-0">
+          <dt class="col-7">{% trans "Ara toplam" %}</dt><dd class="col-5 text-end">{{ order.subtotal|floatformat:2 }} ₺</dd>
+          <dt class="col-7">{% trans "İndirim" %}</dt><dd class="col-5 text-end">−{{ order.discount_total|floatformat:2 }} ₺</dd>
+          <dt class="col-7">{% trans "Servis bedeli" %}</dt><dd class="col-5 text-end">{{ order.service_charge|floatformat:2 }} ₺</dd>
+          <dt class="col-7">{% trans "KDV" %}</dt><dd class="col-5 text-end">{{ order.tax_total|floatformat:2 }} ₺</dd>
+          <dt class="col-7 fs-5">{% trans "Genel toplam" %}</dt><dd class="col-5 text-end fs-5"><strong>{{ order.grand_total|floatformat:2 }} ₺</strong></dd>
+          <dt class="col-7">{% trans "Ödenen" %}</dt><dd class="col-5 text-end">{{ order.amount_paid|floatformat:2 }} ₺</dd>
+          <dt class="col-7 text-danger">{% trans "Kalan" %}</dt><dd class="col-5 text-end text-danger"><strong>{{ order.amount_due|floatformat:2 }} ₺</strong></dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Ödemeler" %}</strong></div>
+      <ul class="list-group list-group-flush">
+        {% for payment in payments %}
+          <li class="list-group-item d-flex justify-content-between {% if payment.is_voided %}text-decoration-line-through{% endif %}">
+            <span>{{ payment.method.name }}<br><small class="text-body-secondary">{{ payment.received_at|date:"d.m H:i" }} ·
+              {% if payment.gateway_mode == 'sandbox' %}<span class="badge bg-secondary">{% trans "Sandbox" %}</span>{% endif %}</small></span>
+            <span>{{ payment.amount|floatformat:2 }} ₺</span>
+          </li>
+        {% empty %}<li class="list-group-item text-body-secondary">{% trans "Ödeme alınmamış." %}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

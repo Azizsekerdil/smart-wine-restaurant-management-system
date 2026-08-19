@@ -1,0 +1,167 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wine-house"
+version = "0.1.0"
+description = "Akıllı Şarap Restoranı Yönetim Sistemi / Smart Wine Restaurant Management System"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+authors = [{ name = "Aziz Şekerdil" }]
+license = { text = "MIT" }
+keywords = ["restaurant", "wine", "pos", "sommelier", "django", "management"]
+classifiers = [
+    "Private :: Do Not Upload",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: Django :: 5.2",
+    "Natural Language :: Turkish",
+    "Natural Language :: English",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# ---------------------------------------------------------------------------
+# Ruff - linting + import sorting
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+exclude = [
+    ".venv",
+    "migrations",
+    "build",
+    "dist",
+    "__pycache__",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "UP",   # pyupgrade
+    "DJ",   # flake8-django
+    "S",    # flake8-bandit (security)
+    "T20",  # flake8-print
+    "RET",  # flake8-return
+    "SIM",  # flake8-simplify
+]
+ignore = [
+    "E501",   # line length handled by black
+    "S101",   # assert kullanımı testlerde gerekli
+    "B008",   # function call in default argument (DRF/Django yaygın)
+    "RET504", # gereksiz atama - okunabilirlik için tercih ediliyor
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S", "T20"]
+"**/migrations/*" = ["E", "W", "F", "I", "B", "UP", "DJ", "S", "RET", "SIM"]
+"src/winehouse/settings/*" = ["S105", "S106"]
+"scripts/*" = ["T20", "S"]
+# Demo verisi bilerek `random` ile ve SABIT TOHUMLA uretilir: amac belirlenimci,
+# tekrar uretilebilir ornek veridir. Kriptografik bir kullanim yoktur.
+"src/apps/core/management/commands/seed_demo.py" = ["S311"]
+# Sabitin ADI "PASSWORD"/"MASK" iceriyor; degeri gizli bir sey degil.
+# (ortam degiskeni adi, sirasiyla maskeleme belirteci)
+"src/apps/accounts/management/commands/create_admin.py" = ["S105"]
+"src/apps/core/security.py" = ["S105"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["winehouse", "apps"]
+
+# ---------------------------------------------------------------------------
+# Black - formatting
+# ---------------------------------------------------------------------------
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+extend-exclude = '''
+(
+  /migrations/
+  | /\.venv/
+  | /build/
+  | /dist/
+)
+'''
+
+# ---------------------------------------------------------------------------
+# mypy - static typing
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "src"
+plugins = ["mypy_django_plugin.main"]
+ignore_missing_imports = true
+warn_unused_configs = true
+warn_redundant_casts = true
+no_implicit_optional = true
+check_untyped_defs = true
+exclude = ['migrations/', '\.venv/', 'build/', 'dist/']
+
+[[tool.mypy.overrides]]
+module = ["*.migrations.*", "tests.*"]
+ignore_errors = true
+
+[tool.django-stubs]
+django_settings_module = "winehouse.settings.dev"
+
+# ---------------------------------------------------------------------------
+# pytest
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "winehouse.settings.test"
+# Kaynak kod src/ altındadır; pytest bunu Python yoluna eklemelidir.
+pythonpath = ["src"]
+django_find_project = false
+python_files = ["test_*.py", "*_test.py"]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --disable-warnings"
+markers = [
+    "unit: birim testleri",
+    "integration: entegrasyon testleri",
+    "api: REST API testleri",
+    "rbac: yetkilendirme testleri",
+    "e2e: uçtan uca senaryolar",
+    "ai: yapay zekâ sağlayıcı testleri (mock)",
+    "network: gerçek ağ erişimi gerektirir (varsayılan olarak atlanır)",
+    "slow: uzun süren testler",
+]
+filterwarnings = ["ignore::DeprecationWarning"]
+
+# ---------------------------------------------------------------------------
+# coverage
+# ---------------------------------------------------------------------------
+[tool.coverage.run]
+branch = true
+source = ["src/apps", "src/winehouse"]
+omit = [
+    "*/migrations/*",
+    "*/tests/*",
+    "*/__init__.py",
+    "*/wsgi.py",
+    "*/asgi.py",
+    "*/settings/*",
+    "*/apps.py",
+]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+skip_covered = false
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "@abstractmethod",
+]

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{{ table.title }}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{{ table.title }}
+      {% if spec.is_experimental %}<span class="badge bg-warning text-dark align-middle wh-flag">{% trans "Deneysel" %}</span>{% endif %}
+    </h1>
+    <p class="text-body-secondary mb-0">{{ table.subtitle }}</p>
+  </div>
+  <div class="wh-page-actions">
+    <div class="btn-group btn-group-sm">
+      <a class="btn btn-outline-secondary" href="{% url 'reporting:report-export' spec.code 'pdf' %}?start={{ start|date:'Y-m-d' }}&end={{ end|date:'Y-m-d' }}">PDF</a>
+      <a class="btn btn-outline-secondary" href="{% url 'reporting:report-export' spec.code 'xlsx' %}?start={{ start|date:'Y-m-d' }}&end={{ end|date:'Y-m-d' }}">Excel</a>
+      <a class="btn btn-outline-secondary" href="{% url 'reporting:report-export' spec.code 'csv' %}?start={{ start|date:'Y-m-d' }}&end={{ end|date:'Y-m-d' }}">CSV</a>
+    </div>
+  </div>
+</div>
+
+<form class="row g-2 mb-3" method="get">
+  <div class="col-sm-3"><input type="date" class="form-control" name="start" value="{{ start|date:'Y-m-d' }}"></div>
+  <div class="col-sm-3"><input type="date" class="form-control" name="end" value="{{ end|date:'Y-m-d' }}"></div>
+  <div class="col-sm-3"><button class="btn btn-primary">{% trans "Uygula" %}</button></div>
+</form>
+
+<div class="wh-card">
+  <div class="wh-table-wrap">
+    <table class="table table-sm table-hover mb-0">
+      <thead><tr>{% for column in table.columns %}<th>{{ column }}</th>{% endfor %}</tr></thead>
+      <tbody>
+      {% for row in table.rows %}
+        <tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>
+      {% empty %}
+        <tr><td colspan="{{ table.columns|length }}" class="text-center text-body-secondary py-4">
+          {% trans "Bu dönemde veri yok." %}</td></tr>
+      {% endfor %}
+      </tbody>
+      {% if table.totals %}
+      <tfoot class="table-group-divider">
+        <tr class="fw-bold">{% for cell in table.totals %}<td>{{ cell }}</td>{% endfor %}</tr>
+      </tfoot>
+      {% endif %}
+    </table>
+  </div>
+</div>
+
+<p class="small text-body-secondary mt-3">
+  {% blocktrans %}{{ duration_ms }} ms içinde üretildi.{% endblocktrans %}
+</p>
+{% endblock %}

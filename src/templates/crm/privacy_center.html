@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "KVKK / GDPR Merkezi" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "KVKK / GDPR Merkezi" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-stats mb-4">
+  <div class="wh-stat"><div class="wh-stat__value">{% if encryption_enabled %}✓{% else %}✗{% endif %}</div>
+    <div class="wh-stat__label">{% trans "Hassas alan şifrelemesi" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{% if ai_privacy_mode %}✓{% else %}✗{% endif %}</div>
+    <div class="wh-stat__label">{% trans "Yapay zekâ gizlilik modu" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{% if ai_local_only %}✓{% else %}—{% endif %}</div>
+    <div class="wh-stat__label">{% trans "Yalnızca yerel yapay zekâ" %}</div></div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Rıza özeti" %}</strong></div>
+      <div class="wh-table-wrap"><table class="table table-sm mb-0">
+        <thead><tr><th>{% trans "Amaç" %}</th><th class="wh-num">{% trans "Rıza var" %}</th><th class="wh-num">{% trans "Geri çekilmiş" %}</th></tr></thead>
+        <tbody>
+        {% for row in consent_summary %}
+          <tr><td class="small">{{ row.purpose }}</td><td class="wh-num">{{ row.granted }}</td><td class="wh-num">{{ row.withdrawn }}</td></tr>
+        {% endfor %}
+        </tbody></table></div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Veri silme talepleri" %}</strong></div>
+      <div class="wh-table-wrap"><table class="table table-sm mb-0">
+        <thead><tr><th>{% trans "Müşteri" %}</th><th>{% trans "Talep" %}</th><th>{% trans "Durum" %}</th><th>{% trans "Onay" %}</th></tr></thead>
+        <tbody>
+        {% for request in erasure_requests %}
+          <tr><td class="small">{{ request.customer }}</td>
+            <td class="small">{{ request.requested_on|date:"d.m.Y" }}</td>
+            <td><span class="badge bg-secondary">{{ request.get_status_display }}</span></td>
+            <td class="small">{% if request.approval %}{{ request.approval.get_status_display }}{% else %}<span class="text-body-secondary">{% trans "Onay talebi yok" %}</span>{% endif %}</td></tr>
+        {% empty %}<tr><td colspan="4" class="text-center text-body-secondary py-3">{% trans "Talep yok." %}</td></tr>{% endfor %}
+        </tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<div class="wh-card mt-3">
+  <div class="wh-card__header"><strong>{% trans "Veri saklama politikası" %}</strong></div>
+  <div class="wh-card__body">
+    <ul class="mb-0 small">
+      <li>{% trans "Denetim kaydı" %}: {{ retention_policy.audit_log }} {% trans "gün" %}</li>
+      <li>{% trans "Yapay zekâ çağrı kaydı" %}: {{ retention_policy.ai_call_log }} {% trans "gün" %}</li>
+      <li>{% trans "Pasif müşteri verisi" %}: {{ retention_policy.customer_inactive }} {% trans "gün" %}</li>
+    </ul>
+    <p class="small text-body-secondary mt-2 mb-0">
+      {% trans "Silme talebi onaylandığında kişisel veriler anonimleştirilir; mali kayıtlar yasal saklama süresi boyunca kişi bağlantısı koparılarak korunur." %}
+    </p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Sayfa bulunamadı" %}{% endblock %}
+{% block container_class %}container{% endblock %}
+{% block content %}
+<div class="wh-card mx-auto" style="max-width:640px">
+  <div class="wh-card__body text-center py-5">
+    <div class="display-1 mb-2">404</div>
+    <h1 class="h4 mb-3">{% trans "Sayfa bulunamadı" %}</h1>
+    <p class="text-body-secondary">{% trans "Aradığınız sayfa taşınmış veya hiç var olmamış olabilir." %}</p>
+    {% if detail %}<pre class="text-start small bg-body-tertiary p-3 rounded">{{ detail }}</pre>{% endif %}
+    <p class="small text-body-secondary">{% trans "Adresi kontrol edin veya menüden ilerleyin." %}</p>
+    <a class="btn btn-primary mt-2" href="{% url 'core:dashboard' %}">{% trans "Ana panele dön" %}</a>
+  </div>
+</div>
+{% endblock %}

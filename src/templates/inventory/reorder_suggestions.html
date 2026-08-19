@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Sipariş Önerileri" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Sipariş Önerileri" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-notice mb-3">{% trans "Bunlar yalnızca öneridir; sistem hiçbir satın alma siparişini kendiliğinden oluşturmaz." %}</div><div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{% trans "Minimum seviyenin altındaki kalemler" %}</strong>
+    <span class="badge bg-secondary">{{ suggestions|length }}</span></div>
+  <div class="wh-table-wrap"><table class="table table-sm mb-0">
+    <thead><tr><th>{% trans "Kod" %}</th><th>{% trans "Kalem" %}</th><th class="wh-num">{% trans "Eldeki" %}</th>
+      <th class="wh-num">{% trans "Minimum" %}</th><th class="wh-num">{% trans "Eksik" %}</th>
+      <th class="wh-num">{% trans "Önerilen" %}</th><th class="wh-num">{% trans "Tahmini ₺" %}</th>
+      <th>{% trans "Tedarikçi" %}</th></tr></thead>
+    <tbody>
+    {% for row in suggestions %}
+      <tr>
+        <td><code>{{ row.code }}</code></td><td>{{ row.name }}</td>
+        <td class="wh-num">{{ row.on_hand }} {{ row.unit }}</td>
+        <td class="wh-num">{{ row.minimum }}</td>
+        <td class="wh-num text-danger">{{ row.shortfall }}</td>
+        <td class="wh-num"><strong>{{ row.suggested_quantity }}</strong></td>
+        <td class="wh-num">{{ row.estimated_cost }}</td>
+        <td class="small">{{ row.supplier|default:"—" }}{% if row.lead_time_days %}<br><span class="text-body-secondary">{{ row.lead_time_days }} {% trans "gün" %}</span>{% endif %}</td>
+      </tr>
+    {% empty %}<tr><td colspan="8" class="text-center text-body-secondary py-4">{% trans "Minimum seviyenin altında kalem yok." %}</td></tr>{% endfor %}
+    </tbody></table></div>
+</div>
+
+<div class="wh-card">
+  <div class="wh-card__header"><strong>{% trans "Son kullanma tarihi yaklaşan partiler" %}</strong></div>
+  <div class="wh-table-wrap"><table class="table table-sm mb-0">
+    <thead><tr><th>{% trans "Kalem" %}</th><th>{% trans "Parti" %}</th><th>{% trans "SKT" %}</th><th class="wh-num">{% trans "Kalan" %}</th></tr></thead>
+    <tbody>
+    {% for lot in expiring %}
+      <tr class="{% if lot.is_expired %}table-danger{% else %}table-warning{% endif %}">
+        <td>{{ lot.stock_item.name }}</td><td>{{ lot.lot_code }}</td>
+        <td>{{ lot.expires_on|date:"d.m.Y" }} <span class="text-body-secondary">({{ lot.days_to_expiry }} {% trans "gün" %})</span></td>
+        <td class="wh-num">{{ lot.quantity_remaining|floatformat:"-3" }}</td>
+      </tr>
+    {% empty %}<tr><td colspan="4" class="text-center text-body-secondary py-3">{% trans "Yaklaşan son kullanma tarihi yok." %}</td></tr>{% endfor %}
+    </tbody></table></div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Eğitim Modülü" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Eğitim Modülü" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{{ module.icon }} {{ title }}</strong>
+    <span class="badge bg-secondary">{{ module.get_level_display }}</span></div>
+  <div class="wh-card__body"><p class="mb-0">{{ summary }}</p></div>
+</div>
+
+<div class="wh-card">
+  <div class="wh-card__header"><strong>{% trans "Dersler" %}</strong></div>
+  <ul class="list-group list-group-flush">
+    {% for entry in lessons %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'training:lesson-detail' entry.lesson.pk %}">{{ entry.title }}</a>
+        {% if entry.is_completed %}<span class="badge bg-success">{% trans "Tamamlandı" %}</span>
+        {% else %}<span class="badge bg-secondary">{% trans "Bekliyor" %}</span>{% endif %}
+      </li>
+    {% empty %}<li class="list-group-item text-body-secondary">{% trans "Bu modülde ders yok." %}</li>{% endfor %}
+  </ul>
+</div>
+{% endblock %}

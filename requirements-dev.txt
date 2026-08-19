@@ -1,0 +1,42 @@
+# ---------------------------------------------------------------------------
+# Wine House - Gelistirme ve kalite araclari (development dependencies)
+# ---------------------------------------------------------------------------
+-r requirements.txt
+
+# --- Test (MIT) ---
+pytest==9.0.3                # PYSEC-2026-1845 yamasi
+pytest-django==4.11.1
+pytest-cov==7.0.0
+pytest-mock==3.15.0
+
+# --- Kod kalitesi ---
+ruff==0.13.1                 # MIT
+black==26.5.1                # MIT
+mypy==1.18.2                 # MIT
+django-stubs[compatible-mypy]==5.2.5   # MIT
+djangorestframework-stubs==3.16.4      # MIT
+
+# --- Git kancalari (MIT) ---
+pre-commit==4.3.0
+
+# --- Guvenlik ve lisans denetimi ---
+bandit==1.8.6                # Apache-2.0  (statik guvenlik analizi)
+pip-audit==2.9.0             # Apache-2.0  (bilinen zafiyet taramasi)
+pip-licenses==5.0.0          # MIT         (bagimlilik lisans dokumu)
+detect-secrets==1.5.0        # Apache-2.0  (secret scanning)
+
+# --- Sunum uretimi (MIT) ---
+python-pptx==1.0.2
+# lxml, python-pptx'in gecisli bagimligidir. GHSA-vfmq-68hx-4jfw (HIGH, XXE)
+# lxml < 6.1.0 surumlerini etkiledigi icin alt sinir acikca yukseltilir.
+lxml==6.1.2
+pypdf==6.16.1              # 71 DoS danismasi kapatildi (PYSEC-2026-1827..3656)
+
+# --- Windows paketleme ---
+# PyInstaller ve pywebview AYRI bir dosyaya tasindi: requirements-packaging.txt
+# Gerekce: bu iki arac genis ve eski bir gecisli bagimlilik agaci getirir
+# (bottle, lxml, filelock, eski pip). Bunlar ne uygulamanin calisma zamaninda
+# ne de testlerde kullanilir; yalnizca istege bagli .exe / masaustu kabugu
+# uretiminde gerekir. Ayirmak, gelistirici ve CI ortamlarinin temiz bir
+# zafiyet taramasi vermesini saglar.
+#   Kurulum:  pip install -r requirements-packaging.txt

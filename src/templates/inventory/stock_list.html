@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Stok Kalemleri" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Stok Kalemleri" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<form class="row g-2 mb-3" method="get">
+  <div class="col-sm-4"><input class="form-control" name="q" value="{{ filters.q }}" placeholder="{% trans 'Kalem adı, kodu veya barkod' %}"></div>
+  <div class="col-sm-3"><select class="form-select" name="category"><option value="">{% trans "Tüm kategoriler" %}</option>
+    {% for category in categories %}<option value="{{ category.code }}" {% if filters.category == category.code %}selected{% endif %}>{{ category.name }}</option>{% endfor %}</select></div>
+  <div class="col-sm-3 d-flex align-items-center"><div class="form-check">
+    <input class="form-check-input" type="checkbox" name="low_stock" value="1" id="low" {% if filters.low_stock %}checked{% endif %}>
+    <label class="form-check-label" for="low">{% trans "Minimum altı" %}</label></div></div>
+  <div class="col-sm-2"><button class="btn btn-primary w-100">{% trans "Filtrele" %}</button></div>
+</form>
+<div class="wh-card">
+  <div class="wh-table-wrap">
+    <table class="table table-hover mb-0 align-middle">
+      <thead><tr><th>{% trans "Kod" %}</th><th>{% trans "Kalem" %}</th><th>{% trans "Kategori" %}</th><th class="wh-num">{% trans "Eldeki" %}</th><th class="wh-num">{% trans "Minimum" %}</th><th class="wh-num">{% trans "Ort. maliyet" %}</th><th class="wh-num">{% trans "Değer ₺" %}</th><th>{% trans "Çıkış" %}</th><th>{% trans "" %}</th></tr></thead>
+      <tbody>
+      {% for item in items %}
+        <tr><td><code>{{ item.code }}</code></td><td><strong>{{ item.name }}</strong>{% if item.is_below_minimum %} <span class="badge bg-danger">{% trans "Kritik" %}</span>{% endif %}</td><td>{{ item.category.name }}</td><td class="wh-num">{{ item.quantity_on_hand|floatformat:'-3' }} {{ item.unit.code }}</td><td class="wh-num">{{ item.minimum_quantity|floatformat:'-3' }}</td><td class="wh-num">{{ item.average_unit_cost|floatformat:4 }}</td><td class="wh-num">{% if can_view_valuation %}{{ item.stock_value|floatformat:2 }}{% else %}—{% endif %}</td><td><span class="badge bg-body-secondary text-body">{{ item.get_tracking_mode_display }}</span></td><td><a class="btn btn-sm btn-outline-primary" href="{% url 'inventory:stock-detail' item.pk %}">{% trans "Aç" %}</a></td></tr>
+      {% empty %}
+        <tr><td colspan="9" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% if is_paginated %}
+<nav class="mt-3"><ul class="pagination pagination-sm justify-content-center mb-0">
+  {% if page_obj.has_previous %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>{% endif %}
+  <li class="page-item disabled"><span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>
+  {% if page_obj.has_next %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>{% endif %}
+</ul></nav>
+{% endif %}
+
+{% endblock %}

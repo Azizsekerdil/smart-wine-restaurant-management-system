@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Ana panel" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{% trans "Hoş geldiniz" %}, {{ user.label }}</h1>
+    <p class="text-body-secondary mb-0">{{ role_label }} · {{ today|date:"d F Y" }}</p>
+  </div>
+</div>
+
+{% for alert in alerts %}
+  <div class="alert alert-{{ alert.level }} d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <span>{{ alert.message }}</span>
+    {% if alert.url %}<a class="btn btn-sm btn-outline-dark" href="{% url alert.url %}">{% trans "İncele" %}</a>{% endif %}
+  </div>
+{% endfor %}
+
+{% if cards %}
+<div class="wh-stats mb-4">
+  {% for card in cards %}
+    <a class="wh-stat" href="{% url card.url %}">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <div class="wh-stat__value">{{ card.value }}</div>
+          <div class="wh-stat__label">{{ card.title }} · {{ card.subtitle }}</div>
+        </div>
+        <span class="wh-stat__icon">{{ card.icon }}</span>
+      </div>
+    </a>
+  {% endfor %}
+</div>
+{% else %}
+  <div class="wh-card"><div class="wh-card__body text-center text-body-secondary py-5">
+    {% trans "Rolünüz için gösterilecek özet bulunmuyor. Menüden ilgili bölüme geçebilirsiniz." %}
+  </div></div>
+{% endif %}
+
+{% if experimental_features %}
+<div class="wh-card">
+  <div class="wh-card__header">
+    <strong>{% trans "Deneysel ve planlanan özellikler" %}</strong>
+    <a class="btn btn-sm btn-outline-secondary" href="{% url 'core:feature-status' %}">{% trans "Tümü" %}</a>
+  </div>
+  <div class="wh-card__body">
+    <p class="small text-body-secondary">{% trans "Aşağıdaki özellikler henüz tamamlanmamıştır ve arayüzde bu şekilde işaretlenir." %}</p>
+    <div class="d-flex flex-wrap gap-2">
+      {% for flag in experimental_features %}
+        <span class="badge {{ flag.badge_class }} wh-flag">{{ flag.name }} · {{ flag.get_status_display }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

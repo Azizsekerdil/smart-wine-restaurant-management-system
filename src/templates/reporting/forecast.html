@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Satış Tahmini" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Satış Tahmini" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="alert alert-warning">
+  <strong>{% trans "Deneysel" %}:</strong> {{ method_note }}
+</div>
+<div class="wh-card"><div class="wh-table-wrap">
+<table class="table table-sm mb-0">
+  <thead><tr>{% for column in table.columns %}<th>{{ column }}</th>{% endfor %}</tr></thead>
+  <tbody>
+  {% for row in table.rows %}<tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>{% endfor %}
+  </tbody>
+</table></div></div>
+{% endblock %}

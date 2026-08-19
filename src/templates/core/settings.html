@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Uygulama ayarları" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{% trans "Uygulama ayarları" %}</h1>
+    
+  </div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-notice mb-3">
+  {% trans "Gizli değerler (API anahtarları) burada düz metin gösterilmez; yalnızca kısaltılmış biçimde görünür." %}
+</div>
+{% for category, items in grouped_settings.items %}
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{{ category }}</strong></div>
+  <div class="wh-table-wrap">
+    <table class="table table-sm mb-0">
+      <thead><tr><th>{% trans "Anahtar" %}</th><th>{% trans "Etiket" %}</th><th>{% trans "Değer" %}</th><th></th></tr></thead>
+      <tbody>
+      {% for setting in items %}
+        <tr>
+          <td><code>{{ setting.key }}</code></td>
+          <td>{{ setting.label|default:"—" }}</td>
+          <td>{{ setting.display_value }}</td>
+          <td>{% if setting.is_experimental %}<span class="badge bg-warning text-dark wh-flag">{% trans "Deneysel" %}</span>{% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% empty %}
+<div class="wh-card"><div class="wh-card__body text-center text-body-secondary py-4">
+  {% trans "Veritabanında ayar kaydı yok. Yapılandırma .env dosyasından okunuyor." %}
+</div></div>
+{% endfor %}
+{% endblock %}

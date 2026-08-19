@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Rol izinleri" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div>
+    <h1 class="h3 mb-1">{% trans "Rol izinleri" %}</h1>
+    
+  </div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-card mb-3">
+  <div class="wh-card__body">
+    <h2 class="h5 mb-1">{{ role.name_tr }} <span class="text-body-secondary">/ {{ role.name_en }}</span></h2>
+    <p class="mb-2">{{ role.description }}</p>
+    <p class="mb-0 small text-body-secondary">
+      {% trans "Toplam izin" %}: <strong>{{ permission_count }}</strong> ·
+      {% trans "Bu roldeki kullanıcı" %}: <strong>{{ members|length }}</strong>
+    </p>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-8">
+    {% for app_label, permissions in grouped_permissions.items %}
+      <div class="wh-card mb-3">
+        <div class="wh-card__header"><strong>{{ app_label }}</strong> <span class="badge bg-secondary">{{ permissions|length }}</span></div>
+        <div class="wh-card__body">
+          <div class="d-flex flex-wrap gap-1">
+            {% for permission in permissions %}<span class="badge bg-body-secondary text-body">{{ permission.codename }}</span>{% endfor %}
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="wh-card"><div class="wh-card__body text-body-secondary">{% trans "Bu role izin atanmamış." %}</div></div>
+    {% endfor %}
+  </div>
+  <div class="col-lg-4">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Bu roldeki kullanıcılar" %}</strong></div>
+      <ul class="list-group list-group-flush">
+        {% for member in members %}<li class="list-group-item">{{ member.label }} <small class="text-body-secondary">({{ member.username }})</small></li>
+        {% empty %}<li class="list-group-item text-body-secondary">{% trans "Kullanıcı yok." %}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

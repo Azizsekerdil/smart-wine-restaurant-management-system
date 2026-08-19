@@ -1,0 +1,226 @@
+{% load i18n static humanize %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE|default:'tr' }}" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>{% block title %}{{ APP_NAME }}{% endblock %} · {{ APP_NAME }}</title>
+  <link rel="icon" href="{% static 'img/favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/winehouse.css' %}">
+  {% block head_extra %}{% endblock %}
+</head>
+<body class="wh-body">
+
+{# ------------------------------------------------------------------ #}
+{# Ortam rozetleri — kullanıcı hangi modda çalıştığını her zaman görür  #}
+{# ------------------------------------------------------------------ #}
+{% if IS_DEBUG or PAYMENT_MODE != 'live' %}
+<div class="wh-envbar">
+  {% if IS_DEBUG %}<span class="badge bg-warning text-dark">{% trans "GELİŞTİRME MODU" %}</span>{% endif %}
+  {% if PAYMENT_MODE != 'live' %}<span class="badge bg-secondary">{% trans "Ödeme: Sandbox (gerçek işlem yok)" %}</span>{% endif %}
+  {% if EINVOICE_MODE != 'live' %}<span class="badge bg-secondary">{% trans "e-Fatura: Sandbox" %}</span>{% endif %}
+  {% if AI_LOCAL_ONLY %}<span class="badge bg-info text-dark">{% trans "Yapay zekâ: yalnızca yerel" %}</span>
+  {% elif AI_PRIVACY_MODE %}<span class="badge bg-info text-dark">{% trans "Gizlilik modu açık" %}</span>{% endif %}
+</div>
+{% endif %}
+
+{% if user.is_authenticated %}
+<nav class="navbar navbar-expand-lg wh-navbar sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="{% url 'core:dashboard' %}">
+      <span class="wh-brand-mark">🍷</span>
+      <span class="d-flex flex-column lh-1">
+        <strong>{{ APP_NAME }}</strong>
+        <small class="wh-brand-sub">{% trans "Şarap Restoranı Yönetimi" %}</small>
+      </span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#whNav"
+            aria-controls="whNav" aria-expanded="false" aria-label="{% trans 'Menüyü aç/kapat' %}">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="whNav">
+      <ul class="navbar-nav me-auto flex-wrap">
+        {% if nav.operations %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{% trans "Salon" %}</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'operations:table-map' %}">{% trans "Masa planı" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'operations:order-list' %}">{% trans "Adisyonlar" %}</a></li>
+            {% if nav.reservations %}<li><a class="dropdown-item" href="{% url 'operations:reservation-list' %}">{% trans "Rezervasyonlar" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'operations:waitlist' %}">{% trans "Bekleme listesi" %}</a></li>{% endif %}
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'operations:business-day' %}">{% trans "Gün sonu" %}</a></li>
+          </ul>
+        </li>
+        {% endif %}
+
+        {% if nav.kds %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{% trans "Hazırlık" %}</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'operations:kds-kitchen' %}">{% trans "Mutfak ekranı" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'operations:kds-bar' %}">{% trans "Bar ekranı" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'operations:kds-wine' %}">{% trans "Şarap ekranı" %}</a></li>
+          </ul>
+        </li>
+        {% endif %}
+
+        {% if nav.cellar %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{% trans "Kav" %}</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'cellar:wine-list' %}">{% trans "Şaraplar" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'cellar:open-bottles' %}">{% trans "Açık şişeler" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'cellar:storage-list' %}">{% trans "Kav konumları" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'cellar:valuation' %}">{% trans "Değerleme" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'cellar:duplicate-alerts' %}">{% trans "Mükerrer kayıtlar" %}</a></li>
+          </ul>
+        </li>
+        {% endif %}
+
+        {% if nav.catalog %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{% trans "Menü" %}</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'catalog:menuitem-list' %}">{% trans "Ürünler" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'catalog:menu-engineering' %}">{% trans "Menü mühendisliği" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'catalog:qr-menu' %}" target="_blank" rel="noopener">{% trans "QR menü ön izleme" %}</a></li>
+          </ul>
+        </li>
+        {% endif %}
+
+        {% if nav.inventory %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{% trans "Stok" %}</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'inventory:stock-list' %}">{% trans "Stok kalemleri" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'inventory:lot-list' %}">{% trans "Partiler / SKT" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'inventory:wastage-list' %}">{% trans "Fire" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'inventory:reorder-suggestions' %}">{% trans "Sipariş önerileri" %}</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'inventory:supplier-list' %}">{% trans "Tedarikçiler" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'inventory:purchaseorder-list' %}">{% trans "Satın alma" %}</a></li>
+          </ul>
+        </li>
+        {% endif %}
+
+        {% if nav.crm %}<li class="nav-item"><a class="nav-link" href="{% url 'crm:customer-list' %}">{% trans "Müşteriler" %}</a></li>{% endif %}
+        {% if nav.hr %}<li class="nav-item"><a class="nav-link" href="{% url 'hr:employee-list' %}">{% trans "Personel" %}</a></li>{% endif %}
+        {% if nav.reporting %}<li class="nav-item"><a class="nav-link" href="{% url 'reporting:report-list' %}">{% trans "Raporlar" %}</a></li>{% endif %}
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{% trans "Yapay Zekâ" %}</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'aiservices:console' %}">{% trans "Konsol" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'aiservices:sommelier' %}">{% trans "Sommelier asistanı" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'aiservices:suggestions' %}">{% trans "Öneri kuyruğu" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'aiservices:costs' %}">{% trans "Maliyet" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'aiservices:providers' %}">{% trans "Sağlayıcı ayarları" %}</a></li>
+            {% if DEVSTUDIO_ENABLED and user.can_use_devstudio %}
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'devstudio:home' %}">{% trans "AI Development Studio" %}
+              <span class="badge bg-warning text-dark ms-1">{% trans "Deneysel" %}</span></a></li>
+            <li><a class="dropdown-item" href="{% url 'caio:dashboard' %}">{% trans "CAIO ajanı" %}
+              <span class="badge bg-warning text-dark ms-1">{% trans "Deneysel" %}</span></a></li>
+            {% endif %}
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="{% url 'training:home' %}" title="{% trans 'Eğitim Merkezi' %}">📘</a></li>
+
+        {# Dil değiştirme — mevcut sayfadan ayrılmadan #}
+        <li class="nav-item">
+          <form method="post" action="{% url 'core:set-language' %}" class="d-flex gap-1 my-1 my-lg-0">
+            {% csrf_token %}
+            <button type="submit" name="language" value="tr"
+                    class="btn btn-sm {% if LANGUAGE_CODE == 'tr' %}btn-light{% else %}btn-outline-light{% endif %}">TR</button>
+            <button type="submit" name="language" value="en"
+                    class="btn btn-sm {% if LANGUAGE_CODE == 'en' %}btn-light{% else %}btn-outline-light{% endif %}">EN</button>
+          </form>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
+            <span class="wh-avatar">{{ user.label|slice:":1"|upper }}</span>
+            <span class="d-none d-lg-flex flex-column lh-1 text-start">
+              <span>{{ user.label }}</span>
+              <small class="wh-role">{{ user.role_label }}</small>
+            </span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">{% trans "Profilim" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'accounts:password-change' %}">{% trans "Parola değiştir" %}</a></li>
+            {% if nav.settings %}
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'accounts:user-list' %}">{% trans "Kullanıcılar" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'accounts:role-list' %}">{% trans "Roller ve yetkiler" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'accounts:approval-queue' %}">{% trans "Onay kuyruğu" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'backups:backup-list' %}">{% trans "Yedekleme" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'core:feature-status' %}">{% trans "Özellik durumu" %}</a></li>
+            {% endif %}
+            {% if nav.audit %}<li><a class="dropdown-item" href="{% url 'accounts:audit-log' %}">{% trans "Denetim kaydı" %}</a></li>{% endif %}
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <form method="post" action="{% url 'accounts:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="dropdown-item text-danger">{% trans "Çıkış yap" %}</button>
+              </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endif %}
+
+<main class="wh-main {% if not user.is_authenticated %}wh-main--auth{% endif %}">
+  <div class="{% block container_class %}container-fluid{% endblock %}">
+
+    {% if messages %}
+      <div class="wh-messages">
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{% trans 'Kapat' %}"></button>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% block page_header %}
+      {% if page_title %}
+        <header class="wh-page-header">
+          <div>
+            <h1 class="h3 mb-1">{{ page_title }}</h1>
+            {% if page_subtitle %}<p class="text-body-secondary mb-0">{{ page_subtitle }}</p>{% endif %}
+          </div>
+          <div class="wh-page-actions">{% block page_actions %}{% endblock %}</div>
+        </header>
+      {% endif %}
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+  </div>
+</main>
+
+<footer class="wh-footer">
+  <div class="container-fluid d-flex flex-wrap justify-content-between gap-2">
+    <span>{{ APP_NAME }} v{{ APP_VERSION }} · {{ APP_SUBTITLE_TR }}</span>
+    <span class="text-body-secondary">
+      {% trans "Yerel kurulum · çevrimdışı çalışabilir" %}
+      {% if user.is_authenticated %} · <a href="{% url 'core:feature-status' %}">{% trans "Özellik durumu" %}</a>{% endif %}
+    </span>
+  </div>
+</footer>
+
+<script src="{% static 'vendor/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendor/htmx.min.js' %}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

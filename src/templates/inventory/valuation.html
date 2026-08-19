@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Stok Değerlemesi" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Stok Değerlemesi" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-stats mb-4">
+  <div class="wh-stat"><div class="wh-stat__value">{{ valuation.total_value|floatformat:2 }}</div><div class="wh-stat__label">₺ {% trans "toplam stok değeri" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ valuation.lot_count }}</div><div class="wh-stat__label">{% trans "aktif parti" %}</div></div>
+</div>
+<div class="wh-card">
+  <div class="wh-card__header"><strong>{% trans "Kategoriye göre dağılım" %}</strong></div>
+  <div class="wh-table-wrap"><table class="table table-sm mb-0">
+    <thead><tr><th>{% trans "Kategori" %}</th><th class="wh-num">{% trans "Değer ₺" %}</th></tr></thead>
+    <tbody>
+    {% for category, value in valuation.by_category.items %}
+      <tr><td>{{ category }}</td><td class="wh-num">{{ value }}</td></tr>
+    {% empty %}<tr><td colspan="2" class="text-center text-body-secondary py-3">{% trans "Stok yok." %}</td></tr>{% endfor %}
+    </tbody></table></div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Bekleme Listesi" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Bekleme Listesi" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+
+<div class="wh-card">
+  <div class="wh-table-wrap">
+    <table class="table table-hover mb-0 align-middle">
+      <thead><tr><th>{% trans "Misafir" %}</th><th class="wh-num">{% trans "Kişi" %}</th><th>{% trans "Giriş" %}</th>
+        <th class="wh-num">{% trans "Bekleme" %}</th><th class="wh-num">{% trans "Tahmin" %}</th><th>{% trans "Durum" %}</th><th>{% trans "Not" %}</th></tr></thead>
+      <tbody>
+      {% for entry in entries %}
+        <tr class="{% if entry.waiting_minutes > entry.quoted_wait_minutes %}table-warning{% endif %}">
+          <td><strong>{{ entry.guest_name }}</strong></td>
+          <td class="wh-num">{{ entry.guest_count }}</td>
+          <td class="small">{{ entry.joined_at|date:"H:i" }}</td>
+          <td class="wh-num">{{ entry.waiting_minutes }} dk</td>
+          <td class="wh-num">{{ entry.quoted_wait_minutes }} dk</td>
+          <td><span class="badge bg-secondary">{{ entry.get_status_display }}</span></td>
+          <td class="small">{{ entry.note|default:"—" }}</td>
+        </tr>
+      {% empty %}<tr><td colspan="99" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

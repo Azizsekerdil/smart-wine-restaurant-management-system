@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Masa Planı" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Masa Planı" %}</h1><p class="text-body-secondary mb-0">{% trans "Masa durumları ve açık adisyonlar" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+
+{% for block in layout %}
+<div class="wh-card mb-3">
+  <div class="wh-card__header">
+    <strong>{{ block.section.name }}</strong>
+    <span class="badge bg-secondary">{{ block.free }} / {{ block.total }} {% trans "boş" %}</span>
+  </div>
+  <div class="wh-card__body">
+    <div class="wh-tables">
+      {% for entry in block.tables %}
+        {% if entry.order %}
+          <a class="wh-table-card {% if entry.table.shape == 'round' %}wh-table-card--round{% endif %}"
+             href="{% url 'operations:order-detail' entry.order.pk %}">
+        {% else %}
+          <div class="wh-table-card {% if entry.table.shape == 'round' %}wh-table-card--round{% endif %}">
+        {% endif %}
+            <span class="wh-table-card__no">{{ entry.table.label }}</span>
+            <span class="badge {{ entry.table.status_badge_class }}">{{ entry.table.get_status_display }}</span>
+            <span class="wh-table-card__meta">{{ entry.table.seats }} {% trans "kişilik" %}</span>
+            {% if entry.order %}
+              <span class="wh-table-card__meta">{{ entry.order.number }}<br>{{ entry.order.grand_total|floatformat:2 }} ₺</span>
+            {% endif %}
+        {% if entry.order %}</a>{% else %}</div>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% empty %}
+<div class="wh-card"><div class="wh-card__body text-center text-body-secondary py-5">
+  {% trans "Salon bölümü tanımlanmamış." %}</div></div>
+{% endfor %}
+{% endblock %}

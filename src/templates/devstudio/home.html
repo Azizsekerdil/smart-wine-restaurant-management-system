@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "AI Development Studio" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "AI Development Studio" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="alert alert-warning">
+  <strong>{% trans "Deneysel modül." %}</strong>
+  {% trans "Bu modül yalnızca sistem yöneticisi ve işletme sahibi rollerine açıktır ve üretim modunda varsayılan olarak kapalıdır." %}
+</div>
+
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{% trans "Güvenlik sınırları" %}</strong></div>
+  <div class="wh-card__body">
+    <ul class="mb-0 small">{% for note in safety_notes %}<li>{{ note }}</li>{% endfor %}</ul>
+  </div>
+</div>
+
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{% trans "Etkin politika" %}</strong>
+    <a class="btn btn-sm btn-outline-secondary" href="{% url 'devstudio:policy' %}">{% trans "Kuralları gör ve sına" %}</a></div>
+  <div class="wh-card__body">
+    <dl class="row mb-0 small">
+      <dt class="col-md-4">{% trans "Çalışma alanı" %}</dt><dd class="col-md-8"><code>{{ policy.workspace }}</code></dd>
+      <dt class="col-md-4">{% trans "Komut çalıştırma" %}</dt>
+      <dd class="col-md-8">{% if commands_allowed %}<span class="badge bg-warning text-dark">{% trans "Açık" %}</span>
+        {% else %}<span class="badge bg-success">{% trans "Kapalı (yalnızca öneri üretilir)" %}</span>{% endif %}</dd>
+      <dt class="col-md-4">{% trans "Yasak komut sayısı" %}</dt><dd class="col-md-8">{{ policy.forbidden_executables|length }}</dd>
+      <dt class="col-md-4">{% trans "Yasak desen sayısı" %}</dt><dd class="col-md-8">{{ policy.forbidden_pattern_count }}</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="wh-card">
+  <div class="wh-card__header"><strong>{% trans "Geliştirme oturumları" %}</strong></div>
+  <div class="wh-table-wrap"><table class="table mb-0 align-middle">
+    <thead><tr><th>{% trans "Başlık" %}</th><th>{% trans "Durum" %}</th><th>{% trans "Dal" %}</th>
+      <th>{% trans "Testler" %}</th><th>{% trans "Talep eden" %}</th><th></th></tr></thead>
+    <tbody>
+    {% for session in sessions %}
+      <tr>
+        <td><strong>{{ session.title }}</strong></td>
+        <td><span class="badge bg-secondary">{{ session.get_status_display }}</span></td>
+        <td class="small"><code>{{ session.work_branch|default:"—" }}</code></td>
+        <td>{% if session.tests_run %}
+              {% if session.tests_passed %}<span class="badge bg-success">{% trans "Geçti" %}</span>
+              {% else %}<span class="badge bg-danger">{% trans "Başarısız" %}</span>{% endif %}
+            {% else %}<span class="badge bg-secondary">{% trans "Çalıştırılmadı" %}</span>{% endif %}</td>
+        <td class="small">{{ session.requested_by.label }}</td>
+        <td class="text-end"><a class="btn btn-sm btn-outline-primary" href="{% url 'devstudio:session-detail' session.pk %}">{% trans "Aç" %}</a></td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="6" class="text-center text-body-secondary py-4">{% trans "Henüz geliştirme oturumu yok." %}</td></tr>
+    {% endfor %}
+    </tbody></table></div>
+</div>
+{% endblock %}

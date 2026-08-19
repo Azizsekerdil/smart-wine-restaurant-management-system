@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Kav Değerlemesi" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Kav Değerlemesi" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+
+<div class="wh-stats mb-4">
+  <div class="wh-stat"><div class="wh-stat__value">{{ valuation.closed_bottles }}</div><div class="wh-stat__label">{% trans "Kapalı şişe" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ valuation.cost_value|floatformat:2 }}</div><div class="wh-stat__label">{% trans "Maliyet değeri ₺" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ valuation.retail_value|floatformat:2 }}</div><div class="wh-stat__label">{% trans "Satış değeri ₺" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ valuation.potential_margin|floatformat:2 }}</div><div class="wh-stat__label">{% trans "Potansiyel kâr ₺" %}</div></div>
+</div>
+
+<div class="wh-notice mb-3">{% trans "Özel kav müşterilerine ait şişeler bu değerlemeye dâhil edilmez; müşteri mülkiyetindedir." %}</div>
+
+<div class="wh-card">
+  <div class="wh-card__header"><strong>{% trans "İçim aralığı uyarıları" %}</strong></div>
+  <div class="wh-table-wrap">
+    <table class="table table-sm mb-0">
+      <thead><tr><th>{% trans "Şarap" %}</th><th>{% trans "Durum" %}</th><th class="wh-num">{% trans "Şişe" %}</th><th class="wh-num">{% trans "Değer ₺" %}</th></tr></thead>
+      <tbody>
+      {% for item in drink_alerts %}
+        <tr class="{% if item.status == 'past_peak' %}table-danger{% elif item.status == 'drink_soon' %}table-warning{% endif %}">
+          <td>{{ item.wine }}</td>
+          <td>{{ item.label }}</td>
+          <td class="wh-num">{{ item.bottles }}</td>
+          <td class="wh-num">{{ item.value|floatformat:2 }}</td>
+        </tr>
+      {% empty %}<tr><td colspan="4" class="text-center text-body-secondary py-3">{% trans "Uyarı gerektiren şarap yok." %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Geri Yükleme" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Geri Yükleme" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="alert alert-warning">
+  <strong>{% trans "Dikkat" %}:</strong>
+  <ul class="mb-0 mt-2">{% for note in safety_notes %}<li>{{ note }}</li>{% endfor %}</ul>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Geri yükleme talebi" %}</strong></div>
+      <div class="wh-card__body">
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label small">{% trans "Yedek" %}</label>
+            <select class="form-select" name="backup" required>
+              {% for backup in backups %}
+                <option value="{{ backup.pk }}">{{ backup.file_name }} · {{ backup.size_mb }} MB · {{ backup.started_at|date:"d.m.Y H:i" }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small">{% trans "Hedef" %}</label>
+            <select class="form-select" name="target">
+              {% for value, label in target_choices %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small">{% trans "Gerekçe" %}</label>
+            <textarea class="form-control" name="reason" rows="2" required></textarea>
+          </div>
+          <button class="btn btn-danger">{% trans "Onay talebi oluştur" %}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Geri yükleme kayıtları" %}</strong></div>
+      <div class="wh-table-wrap"><table class="table table-sm mb-0">
+        <thead><tr><th>{% trans "Yedek" %}</th><th>{% trans "Hedef" %}</th><th>{% trans "Durum" %}</th><th>{% trans "Onay" %}</th></tr></thead>
+        <tbody>
+        {% for restore in restores %}
+          <tr><td class="small"><code>{{ restore.backup.file_name|truncatechars:28 }}</code></td>
+            <td class="small">{{ restore.get_target_display }}</td>
+            <td><span class="badge bg-secondary">{{ restore.get_status_display }}</span></td>
+            <td class="small">{% if restore.approval %}{{ restore.approval.get_status_display }}{% else %}—{% endif %}</td></tr>
+        {% empty %}<tr><td colspan="4" class="text-center text-body-secondary py-3">{% trans "Kayıt yok." %}</td></tr>{% endfor %}
+        </tbody></table></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

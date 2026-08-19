@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Partiler ve Son Kullanma" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Partiler ve Son Kullanma" %}</h1><p class="text-body-secondary mb-0">{% trans "FEFO sıralaması: en erken tüketilmesi gereken parti önce çıkar" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+<form class="mb-3" method="get"><div class="form-check">
+  <input class="form-check-input" type="checkbox" name="expiring" value="1" id="exp" {% if expiring_only %}checked{% endif %} onchange="this.form.submit()">
+  <label class="form-check-label" for="exp">{% trans "Yalnızca 14 gün içinde tükenecekler" %}</label></div></form>
+<div class="wh-card">
+  <div class="wh-table-wrap">
+    <table class="table table-hover mb-0 align-middle">
+      <thead><tr><th>{% trans "Kalem" %}</th><th>{% trans "Parti" %}</th><th>{% trans "Depo" %}</th><th>{% trans "Giriş" %}</th><th>{% trans "SKT" %}</th><th class="wh-num">{% trans "Kalan gün" %}</th><th class="wh-num">{% trans "Kalan" %}</th><th>{% trans "Durum" %}</th></tr></thead>
+      <tbody>
+      {% for lot in lots %}
+        <tr class="{% if lot.is_expired %}table-danger{% elif lot.is_expiring_soon %}table-warning{% endif %}"><td><strong>{{ lot.stock_item.name }}</strong><br><small class="text-body-secondary">{{ lot.stock_item.code }}</small></td><td>{{ lot.lot_code }}</td><td>{{ lot.warehouse.code }}</td><td>{{ lot.received_on|date:'d.m.Y' }}</td><td>{{ lot.expires_on|date:'d.m.Y'|default:'—' }}</td><td class="wh-num">{% if lot.days_to_expiry != None %}{{ lot.days_to_expiry }}{% else %}—{% endif %}</td><td class="wh-num">{{ lot.quantity_remaining|floatformat:'-3' }} {{ lot.stock_item.unit.code }}</td><td>{% if lot.is_expired %}<span class="badge bg-danger">{% trans "Süresi geçti" %}</span>{% elif lot.is_expiring_soon %}<span class="badge bg-warning text-dark">{% trans "Yaklaşıyor" %}</span>{% else %}<span class="badge bg-success">{% trans "Uygun" %}</span>{% endif %}</td></tr>
+      {% empty %}
+        <tr><td colspan="8" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% if is_paginated %}
+<nav class="mt-3"><ul class="pagination pagination-sm justify-content-center mb-0">
+  {% if page_obj.has_previous %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>{% endif %}
+  <li class="page-item disabled"><span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>
+  {% if page_obj.has_next %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>{% endif %}
+</ul></nav>
+{% endif %}
+
+{% endblock %}

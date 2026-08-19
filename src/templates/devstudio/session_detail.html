@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Geliştirme Oturumu" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Geliştirme Oturumu" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-card mb-3">
+  <div class="wh-card__header">
+    <strong>{{ session.title }}</strong>
+    <span class="badge bg-secondary">{{ session.get_status_display }}</span>
+  </div>
+  <div class="wh-card__body">
+    <p class="small mb-2"><strong>{% trans "İstek" %}:</strong> {{ session.request_text }}</p>
+    {% if session.plan_text %}<pre class="bg-body-tertiary p-3 rounded small" style="white-space:pre-wrap">{{ session.plan_text }}</pre>{% endif %}
+    <dl class="row mb-0 small">
+      <dt class="col-md-3">{% trans "Kaynak dal" %}</dt><dd class="col-md-3"><code>{{ session.base_branch|default:"—" }}</code></dd>
+      <dt class="col-md-3">{% trans "Çalışma dalı" %}</dt><dd class="col-md-3"><code>{{ session.work_branch|default:"—" }}</code></dd>
+      <dt class="col-md-3">{% trans "Geri alma noktası" %}</dt><dd class="col-md-3"><code>{{ session.rollback_sha|default:"—" }}</code></dd>
+      <dt class="col-md-3">{% trans "Belirteç" %}</dt><dd class="col-md-3">{{ session.total_prompt_tokens }} + {{ session.total_completion_tokens }}</dd>
+    </dl>
+  </div>
+</div>
+
+{% if merge_blockers %}
+<div class="alert alert-danger">
+  <strong>{% trans "Birleştirme engelli" %}:</strong>
+  <ul class="mb-0">{% for blocker in merge_blockers %}<li>{{ blocker }}</li>{% endfor %}</ul>
+</div>
+{% elif can_merge %}
+<div class="alert alert-success">{% trans "Birleştirme koşulları sağlandı. Birleştirme yine de açık kullanıcı onayı gerektirir." %}</div>
+{% endif %}
+
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{% trans "Önerilen eylemler" %}</strong></div>
+  <div class="wh-table-wrap"><table class="table table-sm mb-0">
+    <thead><tr><th>#</th><th>{% trans "Eylem" %}</th><th>{% trans "Hedef" %}</th>
+      <th>{% trans "Politika" %}</th><th>{% trans "Durum" %}</th></tr></thead>
+    <tbody>
+    {% for action in actions %}
+      <tr class="{% if action.is_blocked %}table-danger{% endif %}">
+        <td>{{ action.sequence }}</td>
+        <td>{{ action.get_action_type_display }}</td>
+        <td class="small"><code>{{ action.target_path|default:action.command|truncatechars:60 }}</code></td>
+        <td class="small">{{ action.policy_decision|default:"—" }}{% if action.policy_rule %}<br><code>{{ action.policy_rule }}</code>{% endif %}</td>
+        <td><span class="badge bg-secondary">{{ action.get_status_display }}</span></td>
+      </tr>
+    {% empty %}<tr><td colspan="5" class="text-center text-body-secondary py-3">{% trans "Eylem önerilmemiş." %}</td></tr>{% endfor %}
+    </tbody></table></div>
+</div>
+
+{% if session.test_output %}
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{% trans "Test çıktısı" %}</strong></div>
+  <div class="wh-card__body"><pre class="bg-body-tertiary p-3 rounded small" style="white-space:pre-wrap">{{ session.test_output }}</pre></div>
+</div>
+{% endif %}
+
+<div class="wh-card">
+  <div class="wh-card__header"><strong>{% trans "Denetim kaydı" %}</strong></div>
+  <ul class="list-group list-group-flush">
+    {% for entry in audit_entries %}
+      <li class="list-group-item small {% if entry.is_security_relevant %}list-group-item-warning{% endif %}">
+        <code>{{ entry.timestamp|date:"d.m.Y H:i:s" }}</code> · <strong>{{ entry.event }}</strong>
+        {% if entry.actor %}· {{ entry.actor.label }}{% endif %}
+        {% if entry.detail %}<br>{{ entry.detail }}{% endif %}
+      </li>
+    {% empty %}<li class="list-group-item text-body-secondary small">{% trans "Kayıt yok." %}</li>{% endfor %}
+  </ul>
+</div>
+{% endblock %}

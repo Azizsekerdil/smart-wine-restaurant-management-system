@@ -1,0 +1,33 @@
+version: 2
+
+updates:
+  # --- Runtime dependencies: shipped to users, highest priority ---
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 10
+    labels: ["dependencies", "runtime"]
+    commit-message:
+      prefix: "deps"
+    groups:
+      # Group patch/minor bumps so review effort goes to the majors.
+      runtime-minor-patch:
+        update-types: ["minor", "patch"]
+
+  # --- GitHub Actions used by CI ---
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    labels: ["dependencies", "ci"]
+    commit-message:
+      prefix: "ci"
+
+# Note: requirements-dev.txt, requirements-postgres.txt and
+# requirements-packaging.txt are picked up by the "/" pip entry above because
+# Dependabot scans every requirements file in the directory. The packaging set
+# is intentionally optional and carries an older transitive tree - review those
+# PRs on their own merits rather than auto-merging them.

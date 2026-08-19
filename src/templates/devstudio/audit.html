@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Stüdyo Denetim Kaydı" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Stüdyo Denetim Kaydı" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<form class="mb-3" method="get"><div class="form-check">
+  <input class="form-check-input" type="checkbox" name="security" value="1" id="secOnly" {% if security_only %}checked{% endif %} onchange="this.form.submit()">
+  <label class="form-check-label" for="secOnly">{% trans "Yalnızca güvenlikle ilgili kayıtlar" %}</label></div></form>
+
+<p class="small text-body-secondary">{% trans "Çalışma alanı" %}: <code>{{ workspace }}</code></p>
+
+<div class="wh-card"><div class="wh-table-wrap">
+<table class="table table-sm mb-0">
+  <thead><tr><th>{% trans "Zaman" %}</th><th>{% trans "Olay" %}</th><th>{% trans "Kullanıcı" %}</th>
+    <th>{% trans "Oturum" %}</th><th>{% trans "Ayrıntı" %}</th></tr></thead>
+  <tbody>
+  {% for entry in entries %}
+    <tr class="{% if entry.is_security_relevant %}table-warning{% endif %}">
+      <td class="small text-nowrap">{{ entry.timestamp|date:"d.m.Y H:i:s" }}</td>
+      <td><strong>{{ entry.event }}</strong></td>
+      <td class="small">{{ entry.actor.label|default:"—" }}</td>
+      <td class="small">{{ entry.session.title|default:"—"|truncatechars:30 }}</td>
+      <td class="small">{{ entry.detail|truncatechars:100 }}</td>
+    </tr>
+  {% empty %}<tr><td colspan="5" class="text-center text-body-secondary py-4">{% trans "Kayıt yok." %}</td></tr>{% endfor %}
+  </tbody>
+</table></div></div>
+{% endblock %}

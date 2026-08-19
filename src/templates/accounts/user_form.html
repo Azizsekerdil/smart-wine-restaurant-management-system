@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Kullanıcı" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header"><div><h1 class="h3 mb-0">
+  {% if object %}{% trans "Kullanıcı düzenle" %}{% else %}{% trans "Yeni kullanıcı" %}{% endif %}
+</h1></div></div>
+
+<div class="wh-card mx-auto" style="max-width:760px">
+  <div class="wh-card__body">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+      <div class="row g-3">
+        {% for field in form %}
+          <div class="col-md-6">
+            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+            {% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="d-flex gap-2 mt-4">
+        <button type="submit" class="btn btn-primary">{% trans "Kaydet" %}</button>
+        <a class="btn btn-outline-secondary" href="{% url 'accounts:user-list' %}">{% trans "Vazgeç" %}</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

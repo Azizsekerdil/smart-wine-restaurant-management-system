@@ -1,0 +1,56 @@
+# ---------------------------------------------------------------------------
+# Wine House - Calisma zamani bagimliliklari (runtime dependencies)
+#
+# Tum bagimliliklar izin verici (permissive) lisanslidir: BSD / MIT / Apache-2.0.
+# Ayrintili lisans dokumu: docs/DEPENDENCY_LICENSES.md
+# ---------------------------------------------------------------------------
+
+# --- Cekirdek cati (BSD-3-Clause) ---
+Django==5.2.16          # PYSEC-2026-2091/2092/2448/2449 yamalari
+
+# --- REST API (BSD-3-Clause) ---
+djangorestframework==3.16.1
+
+# --- Ortam degiskenleri (BSD-3-Clause) ---
+python-dotenv==1.2.2    # PYSEC-2026-2270 yamasi
+
+# --- Statik dosya sunumu, tek makine kurulumu icin (MIT) ---
+whitenoise==6.9.0
+
+# --- HTMX entegrasyonu (MIT) ---
+django-htmx==1.23.2
+
+# --- HTTP istemcisi: LM Studio / Claude / NVIDIA saglayicilari (BSD-3-Clause) ---
+httpx==0.28.1
+
+# --- Sifreleme: yedek sifreleme + hassas alan korumasi (Apache-2.0 / BSD-3-Clause) ---
+cryptography==50.0.0      # PYSEC-2026-35/36/2141/3552-3554 yamalari
+
+# --- Parola karmasi: Argon2id (MIT) ---
+argon2-cffi==25.1.0
+
+# --- Raporlama: PDF (BSD-3-Clause) ---
+reportlab==4.4.3
+
+# --- Raporlama: Excel (MIT) ---
+openpyxl==3.1.5
+
+# --- Gorseller: sarap etiketi fotografi (MIT-CMU / HPND) ---
+pillow==12.3.0          # PYSEC-2026-165 ve 19 ek zafiyet yamasi
+
+# --- Barkod / QR uretimi (BSD-3-Clause) ---
+qrcode==8.2
+
+# --- Gecisli bagimlilik tabani: httpx -> idna ---
+#     idna < 3.10 GHSA-65pc-fj4g-8rjx (DoS) tasir; alt sinir acikca sabitlenir.
+idna==3.19
+
+# --- Tarih islemleri (Apache-2.0 / BSD-3-Clause) ---
+python-dateutil==2.9.0.post0
+
+# --- Zaman dilimi verisi (Windows'ta zorunlu) (Apache-2.0) ---
+tzdata==2025.2
+
+# --- PostgreSQL surucusu (istege bagli, cok kullanicili kurulum) (LGPL-3.0 -> ayrik kullanim)
+#     NOT: psycopg yalnizca PostgreSQL secildiginde kurulur; varsayilan SQLite'tir.
+#     Kurulum: pip install -r requirements-postgres.txt

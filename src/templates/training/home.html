@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Eğitim Merkezi" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Eğitim Merkezi" %}</h1><p class="text-body-secondary mb-0">{% trans "Rolünüze uygun dersler" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+{% if mandatory_pending %}
+<div class="alert alert-warning">
+  {% trans "Tamamlanmamış zorunlu eğitimleriniz var:" %}
+  {% for row in mandatory_pending %}<a href="{% url 'training:module-detail' row.module.code %}">{{ row.title }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+</div>
+{% endif %}
+
+<div class="row g-3">
+  {% for row in modules %}
+    <div class="col-md-6 col-xl-4">
+      <div class="wh-card h-100">
+        <div class="wh-card__header">
+          <strong>{{ row.module.icon }} {{ row.title }}</strong>
+          {% if row.module.is_mandatory %}<span class="badge bg-danger">{% trans "Zorunlu" %}</span>{% endif %}
+        </div>
+        <div class="wh-card__body d-flex flex-column h-100">
+          <p class="small text-body-secondary flex-grow-1">{{ row.summary }}</p>
+          <div class="progress mb-2" style="height:6px" role="progressbar" aria-valuenow="{{ row.percent }}" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" style="width: {{ row.percent }}%"></div>
+          </div>
+          <p class="small text-body-secondary mb-2">
+            {{ row.completed }} / {{ row.lesson_count }} {% trans "ders" %} ·
+            {{ row.module.estimated_minutes }} {% trans "dk" %} ·
+            {{ row.module.get_level_display }}
+          </p>
+          <a class="btn btn-sm btn-primary" href="{% url 'training:module-detail' row.module.code %}">{% trans "Başla" %}</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="col-12"><div class="wh-card"><div class="wh-card__body text-center text-body-secondary py-5">
+      {% trans "Rolünüz için yayınlanmış eğitim modülü bulunmuyor." %}
+    </div></div></div>
+  {% endfor %}
+</div>
+{% endblock %}

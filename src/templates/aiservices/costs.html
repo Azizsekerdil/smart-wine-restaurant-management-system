@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Yapay Zekâ Maliyeti" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Yapay Zekâ Maliyeti" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-stats mb-4">
+  <div class="wh-stat"><div class="wh-stat__value">{{ budget.spent_usd|floatformat:4 }}</div>
+    <div class="wh-stat__label">USD {% trans "bu ay harcanan" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ budget.limit_usd }}</div>
+    <div class="wh-stat__label">USD {% trans "aylık sınır" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ total_calls }}</div>
+    <div class="wh-stat__label">{% trans "toplam çağrı" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">%{{ failure_rate }}</div>
+    <div class="wh-stat__label">{% trans "başarısızlık oranı" %}</div></div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Sağlayıcıya göre" %}</strong></div>
+      <div class="wh-table-wrap"><table class="table table-sm mb-0">
+        <thead><tr><th>{% trans "Sağlayıcı" %}</th><th>{% trans "Tür" %}</th><th class="wh-num">{% trans "Çağrı" %}</th>
+          <th class="wh-num">{% trans "Belirteç" %}</th><th class="wh-num">{% trans "USD" %}</th></tr></thead>
+        <tbody>
+        {% for row in by_provider %}
+          <tr><td>{{ row.provider }}</td>
+            <td>{% if row.is_local_provider %}<span class="badge bg-success">{% trans "Yerel" %}</span>{% else %}<span class="badge bg-info text-dark">{% trans "Bulut" %}</span>{% endif %}</td>
+            <td class="wh-num">{{ row.calls }}</td>
+            <td class="wh-num">{{ row.tokens|default:0 }}</td>
+            <td class="wh-num">{{ row.cost|floatformat:6 }}</td></tr>
+        {% empty %}<tr><td colspan="5" class="text-center text-body-secondary py-3">{% trans "Veri yok." %}</td></tr>{% endfor %}
+        </tbody></table></div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "İşleve göre" %}</strong></div>
+      <div class="wh-table-wrap"><table class="table table-sm mb-0">
+        <thead><tr><th>{% trans "İşlev" %}</th><th class="wh-num">{% trans "Çağrı" %}</th>
+          <th class="wh-num">{% trans "Belirteç" %}</th><th class="wh-num">{% trans "USD" %}</th></tr></thead>
+        <tbody>
+        {% for row in by_feature %}
+          <tr><td class="small">{{ feature_labels|default_if_none:"" }}{{ row.feature }}</td>
+            <td class="wh-num">{{ row.calls }}</td>
+            <td class="wh-num">{{ row.tokens|default:0 }}</td>
+            <td class="wh-num">{{ row.cost|floatformat:6 }}</td></tr>
+        {% empty %}<tr><td colspan="4" class="text-center text-body-secondary py-3">{% trans "Veri yok." %}</td></tr>{% endfor %}
+        </tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<div class="wh-card mt-3">
+  <div class="wh-card__header"><strong>{% trans "Çağrı sonuçları" %}</strong></div>
+  <div class="wh-card__body">
+    <div class="d-flex flex-wrap gap-2">
+      {% for row in outcomes %}
+        <span class="badge bg-secondary">{{ row.outcome }}: {{ row.count }}</span>
+      {% empty %}<span class="text-body-secondary">{% trans "Veri yok." %}</span>{% endfor %}
+    </div>
+  </div>
+</div>
+
+<p class="small text-body-secondary mt-3">{{ pricing_note }}</p>
+{% endblock %}

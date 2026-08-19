@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Kav Konumları" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Kav Konumları" %}</h1><p class="text-body-secondary mb-0">{% trans "Sıcaklık ve nem takibi" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+
+<div class="wh-card mb-3">
+  <div class="wh-table-wrap">
+    <table class="table table-hover mb-0 align-middle">
+      <thead><tr><th>{% trans "Konum" %}</th><th>{% trans "Tür" %}</th><th class="wh-num">{% trans "Şişe" %}</th>
+        <th class="wh-num">{% trans "Doluluk" %}</th><th class="wh-num">{% trans "Hedef °C" %}</th>
+        <th class="wh-num">{% trans "Son ölçüm" %}</th><th>{% trans "Durum" %}</th></tr></thead>
+      <tbody>
+      {% for row in rows %}
+        <tr class="{% if row.has_alert %}table-danger{% endif %}">
+          <td><strong>{{ row.location.code }}</strong><br><small class="text-body-secondary">{{ row.location.name }}</small></td>
+          <td class="small">{{ row.location.get_location_type_display }}</td>
+          <td class="wh-num">{{ row.location.bottles_stored }} / {{ row.location.capacity_bottles }}</td>
+          <td class="wh-num">%{{ row.location.occupancy_percent }}</td>
+          <td class="wh-num">{{ row.location.target_temp_c }} ±{{ row.location.temp_tolerance_c }}</td>
+          <td class="wh-num">{% if row.reading %}{{ row.reading.temperature_c }} °C{% if row.reading.humidity_percent %} / %{{ row.reading.humidity_percent }}{% endif %}{% else %}—{% endif %}</td>
+          <td>{% if row.has_alert %}<span class="badge bg-danger">{% trans "Aralık dışı" %}</span>
+              {% elif row.reading %}<span class="badge bg-success">{% trans "Uygun" %}</span>
+              {% else %}<span class="badge bg-secondary">{% trans "Ölçüm yok" %}</span>{% endif %}</td>
+        </tr>
+      {% empty %}<tr><td colspan="99" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="wh-card">
+  <div class="wh-card__header"><strong>{% trans "Son ölçümler" %}</strong></div>
+  <div class="wh-table-wrap">
+    <table class="table table-sm mb-0">
+      <thead><tr><th>{% trans "Zaman" %}</th><th>{% trans "Konum" %}</th><th class="wh-num">{% trans "Sıcaklık" %}</th>
+        <th class="wh-num">{% trans "Nem" %}</th><th>{% trans "Kaynak" %}</th></tr></thead>
+      <tbody>
+      {% for reading in recent_readings %}
+        <tr class="{% if reading.has_alert %}table-warning{% endif %}">
+          <td class="small">{{ reading.recorded_at|date:"d.m.Y H:i" }}</td>
+          <td class="small">{{ reading.location.code }}</td>
+          <td class="wh-num">{{ reading.temperature_c }} °C</td>
+          <td class="wh-num">{% if reading.humidity_percent %}%{{ reading.humidity_percent }}{% else %}—{% endif %}</td>
+          <td class="small">{{ reading.get_source_display }}</td>
+        </tr>
+      {% empty %}<tr><td colspan="99" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>{% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

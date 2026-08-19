@@ -1,0 +1,48 @@
+{% load i18n %}<!doctype html>
+<html lang="{{ language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>{% trans "Menü" %} · Wine House</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/winehouse.css' %}">
+</head>
+<body class="wh-body">
+<main class="container py-4 wh-qr-menu">
+  <header class="text-center mb-4">
+    <div style="font-size:2.5rem">🍷</div>
+    <h1 class="h3 mb-1">Wine House</h1>
+    {% if table %}<p class="text-body-secondary mb-0">{{ table.section.name }} · {% trans "Masa" %} {{ table.label }}</p>{% endif %}
+  </header>
+
+  {% for block in menu %}
+    <h2 class="h5">{{ block.category.name_tr }}</h2>
+    {% for item in block.items %}
+      <div class="wh-qr-item">
+        <div>
+          <div><strong>{{ item.name_tr }}</strong>
+            {% for tag in item.dietary_tags.all %}<span class="badge {{ tag.badge_class }}">{{ tag.name_tr }}</span>{% endfor %}
+          </div>
+          {% if item.description_tr %}<div class="small text-body-secondary">{{ item.description_tr }}</div>{% endif %}
+          {% if item.wine %}<div class="small text-body-secondary">{{ item.wine.producer.name }} · {{ item.wine.region.full_path }} · {{ item.wine.display_vintage }}</div>{% endif %}
+          {% if item.allergens.all %}
+            <div class="small text-danger">{% trans "Alerjen" %}:
+              {% for allergen in item.allergens.all %}{{ allergen.name_tr }}{% if not forloop.last %}, {% endif %}{% endfor %}</div>
+          {% endif %}
+        </div>
+        <div class="wh-qr-item__price">{{ item.price_with_tax|floatformat:2 }} ₺</div>
+      </div>
+    {% endfor %}
+  {% empty %}
+    <p class="text-center text-body-secondary py-5">{% trans "Menü henüz hazırlanmadı." %}</p>
+  {% endfor %}
+
+  <div class="wh-notice mt-4">{{ responsible_notice }}</div>
+  <p class="small text-body-secondary text-center mt-3">
+    {% trans "Alerjen bilgisi işletme beyanına dayanır. Alerjiniz varsa lütfen servis personelini bilgilendirin." %}
+  </p>
+</main>
+</body>
+</html>

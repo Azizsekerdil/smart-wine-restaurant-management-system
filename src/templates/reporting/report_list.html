@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "Raporlar" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Raporlar" %}</h1><p class="text-body-secondary mb-0">{% trans "PDF, Excel ve CSV olarak dışa aktarılabilir" %}</p></div>
+  <div class="wh-page-actions"></div>
+</div>
+<form class="row g-2 mb-4" method="get">
+  <div class="col-sm-3"><label class="form-label small">{% trans "Başlangıç" %}</label>
+    <input type="date" class="form-control" name="start" value="{{ start|date:'Y-m-d' }}"></div>
+  <div class="col-sm-3"><label class="form-label small">{% trans "Bitiş" %}</label>
+    <input type="date" class="form-control" name="end" value="{{ end|date:'Y-m-d' }}"></div>
+  <div class="col-sm-3 d-flex align-items-end"><button class="btn btn-primary">{% trans "Dönemi uygula" %}</button></div>
+</form>
+
+{% for category, specs in grouped_reports.items %}
+<div class="wh-card mb-3">
+  <div class="wh-card__header"><strong>{{ category_labels|default_if_none:"" }}{{ category }}</strong></div>
+  <ul class="list-group list-group-flush">
+    {% for spec in specs %}
+      <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <div>
+          <a href="{% url 'reporting:report-detail' spec.code %}"><strong>{{ spec.name_tr }}</strong></a>
+          {% if spec.is_experimental %}<span class="badge bg-warning text-dark wh-flag">{% trans "Deneysel" %}</span>{% endif %}
+          {% if spec.description %}<div class="small text-body-secondary">{{ spec.description }}</div>{% endif %}
+        </div>
+        <div class="btn-group btn-group-sm">
+          <a class="btn btn-outline-secondary" href="{% url 'reporting:report-export' spec.code 'pdf' %}?start={{ start|date:'Y-m-d' }}&end={{ end|date:'Y-m-d' }}">PDF</a>
+          <a class="btn btn-outline-secondary" href="{% url 'reporting:report-export' spec.code 'xlsx' %}?start={{ start|date:'Y-m-d' }}&end={{ end|date:'Y-m-d' }}">Excel</a>
+          <a class="btn btn-outline-secondary" href="{% url 'reporting:report-export' spec.code 'csv' %}?start={{ start|date:'Y-m-d' }}&end={{ end|date:'Y-m-d' }}">CSV</a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% empty %}
+<div class="wh-card"><div class="wh-card__body text-center text-body-secondary py-5">
+  {% trans "Rolünüzün erişebileceği rapor bulunmuyor." %}</div></div>
+{% endfor %}
+{% endblock %}

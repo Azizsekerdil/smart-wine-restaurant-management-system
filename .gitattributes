@@ -1,0 +1,17 @@
+# Metin dosyalarında satır sonu normalizasyonu (depoda LF, Windows'ta CRLF)
+* text=auto eol=lf
+
+# Windows betikleri CRLF olmalıdır; aksi hâlde cmd.exe çalıştıramaz.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# İkili dosyalar
+*.png binary
+*.jpg binary
+*.ico binary
+*.ttf binary
+*.pdf binary
+*.xlsx binary
+*.zip binary
+*.mo binary

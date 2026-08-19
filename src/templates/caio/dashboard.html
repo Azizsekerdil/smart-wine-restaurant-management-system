@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{% trans "CAIO Ajanı" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "CAIO Ajanı" %}</h1></div>
+  <div class="wh-page-actions">{% if can_run %}<form method="post" action="{% url 'caio:run' %}" class="d-flex gap-2">{% csrf_token %}
+      <input type="number" class="form-control form-control-sm" name="days" value="7" min="1" max="90" style="width:80px">
+      <button class="btn btn-primary">{% trans "Gözlem çalıştır" %}</button></form>{% endif %}</div>
+</div>
+<div class="alert alert-warning">
+  <strong>{% trans "Deneysel modül." %}</strong>
+  <ul class="mb-0 mt-2">{% for boundary in boundaries %}<li>{{ boundary }}</li>{% endfor %}</ul>
+</div>
+
+{% if latest_run %}
+<div class="wh-stats mb-4">
+  <div class="wh-stat"><div class="wh-stat__value">{{ latest_run.ai_calls_examined }}</div><div class="wh-stat__label">{% trans "incelenen çağrı" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">%{{ latest_run.failure_rate }}</div><div class="wh-stat__label">{% trans "başarısızlık oranı" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ latest_run.total_tokens }}</div><div class="wh-stat__label">{% trans "toplam belirteç" %}</div></div>
+  <div class="wh-stat"><div class="wh-stat__value">{{ latest_run.findings_count }}</div><div class="wh-stat__label">{% trans "bulgu" %}</div></div>
+</div>
+<p class="small text-body-secondary">{{ latest_run.summary }}</p>
+{% endif %}
+
+<div class="row g-3">
+  <div class="col-lg-7">
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Açık bulgular" %}</strong>
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'caio:findings' %}">{% trans "Tümü" %}</a></div>
+      <ul class="list-group list-group-flush">
+        {% for finding in open_findings %}
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between align-items-start gap-2">
+              <div>
+                <strong>{{ finding.title }}</strong>
+                <div class="small text-body-secondary">{{ finding.description|truncatechars:140 }}</div>
+                {% if finding.recommendation %}<div class="small mt-1">↳ {{ finding.recommendation|truncatechars:140 }}</div>{% endif %}
+              </div>
+              <span class="badge {{ finding.severity_badge_class }}">{{ finding.get_severity_display }}</span>
+            </div>
+          </li>
+        {% empty %}<li class="list-group-item text-body-secondary">{% trans "Açık bulgu yok." %}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Görev taslakları" %}</strong>
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'caio:tasks' %}">{% trans "Tümü" %}</a></div>
+      <ul class="list-group list-group-flush">
+        {% for task in open_tasks %}
+          <li class="list-group-item small d-flex justify-content-between">
+            <span>{{ task.title }}</span>
+            <span class="badge bg-secondary">{{ task.get_priority_display }}</span>
+          </li>
+        {% empty %}<li class="list-group-item text-body-secondary small">{% trans "Görev yok." %}</li>{% endfor %}
+      </ul>
+    </div>
+
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Son koşumlar" %}</strong></div>
+      <ul class="list-group list-group-flush">
+        {% for run in runs %}
+          <li class="list-group-item small d-flex justify-content-between">
+            <span>{{ run.created_at|date:"d.m.Y H:i" }}</span>
+            <span>{{ run.findings_count }} {% trans "bulgu" %} · <span class="badge bg-secondary">{{ run.get_status_display }}</span></span>
+          </li>
+        {% empty %}<li class="list-group-item text-body-secondary small">{% trans "Koşum yok." %}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

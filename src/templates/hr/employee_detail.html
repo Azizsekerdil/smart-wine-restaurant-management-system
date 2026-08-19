@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load i18n humanize %}
+{% block title %}{{ employee.full_name }}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{{ employee.full_name }}</h1>
+    <p class="text-body-secondary mb-0">{{ employee.employee_code }} · {{ employee.job_title }} · {{ employee.get_department_display }}</p></div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-5">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Görev bilgileri" %}</strong></div>
+      <div class="wh-card__body"><dl class="row mb-0 small">
+        <dt class="col-6">{% trans "Çalışma şekli" %}</dt><dd class="col-6">{{ employee.get_employment_type_display }}</dd>
+        <dt class="col-6">{% trans "Durum" %}</dt><dd class="col-6">{{ employee.get_status_display }}</dd>
+        <dt class="col-6">{% trans "İşe giriş" %}</dt><dd class="col-6">{{ employee.hired_on|date:"d.m.Y" }}</dd>
+        <dt class="col-6">{% trans "Yıllık izin" %}</dt><dd class="col-6">{{ employee.annual_leave_days }} {% trans "gün" %}</dd>
+        <dt class="col-6">{% trans "Kullanılan" %}</dt><dd class="col-6">{{ employee.leave_days_used }} {% trans "gün" %}</dd>
+        <dt class="col-6">{% trans "Kalan" %}</dt><dd class="col-6"><strong>{{ employee.leave_days_remaining }}</strong> {% trans "gün" %}</dd>
+        <dt class="col-6">{% trans "Sistem kullanıcısı" %}</dt><dd class="col-6">{{ employee.user.username|default:"—" }}</dd>
+      </dl></div>
+    </div>
+
+    {% if can_view_sensitive %}
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Hassas bilgiler" %}</strong>
+        <span class="badge bg-danger">{% trans "Şifreli" %}</span></div>
+      <div class="wh-card__body"><dl class="row mb-0 small">
+        <dt class="col-5">{% trans "Kimlik no" %}</dt><dd class="col-7">{{ employee.national_id|default:"—" }}</dd>
+        <dt class="col-5">{% trans "Telefon" %}</dt><dd class="col-7">{{ employee.phone|default:"—" }}</dd>
+        <dt class="col-5">{% trans "E-posta" %}</dt><dd class="col-7">{{ employee.email|default:"—" }}</dd>
+        <dt class="col-5">{% trans "Acil durum" %}</dt><dd class="col-7">{{ employee.emergency_contact|default:"—" }}</dd>
+        <dt class="col-5">IBAN</dt><dd class="col-7">{{ employee.iban|default:"—" }}</dd>
+      </dl></div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="col-lg-7">
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Performans" %}</strong></div>
+      <div class="wh-table-wrap"><table class="table table-sm mb-0">
+        <thead><tr><th>{% trans "Dönem" %}</th><th class="wh-num">{% trans "Adisyon" %}</th><th class="wh-num">{% trans "Ciro ₺" %}</th>
+          <th class="wh-num">{% trans "Ort. adisyon" %}</th><th class="wh-num">{% trans "Şarap oranı" %}</th></tr></thead>
+        <tbody>
+        {% for metric in metrics %}
+          <tr><td class="small">{{ metric.period_start|date:"d.m" }}–{{ metric.period_end|date:"d.m.Y" }}</td>
+            <td class="wh-num">{{ metric.orders_served }}</td>
+            <td class="wh-num">{{ metric.total_sales|floatformat:2 }}</td>
+            <td class="wh-num">{{ metric.average_check|floatformat:2 }}</td>
+            <td class="wh-num">%{{ metric.wine_attach_rate }}</td></tr>
+        {% empty %}<tr><td colspan="5" class="text-center text-body-secondary py-3">{% trans "Performans kaydı yok." %}</td></tr>{% endfor %}
+        </tbody></table></div>
+    </div>
+
+    <div class="wh-card mb-3">
+      <div class="wh-card__header"><strong>{% trans "Son vardiyalar" %}</strong></div>
+      <div class="wh-table-wrap"><table class="table table-sm mb-0">
+        <thead><tr><th>{% trans "Tarih" %}</th><th>{% trans "Bölge" %}</th><th>{% trans "Giriş" %}</th><th>{% trans "Çıkış" %}</th><th class="wh-num">{% trans "Saat" %}</th></tr></thead>
+        <tbody>
+        {% for assignment in assignments %}
+          <tr><td class="small">{{ assignment.shift.shift_date|date:"d.m.Y" }}</td>
+            <td class="small">{{ assignment.section.name|default:"—" }}</td>
+            <td class="small">{{ assignment.clock_in_at|date:"H:i"|default:"—" }}</td>
+            <td class="small">{{ assignment.clock_out_at|date:"H:i"|default:"—" }}</td>
+            <td class="wh-num">{{ assignment.worked_hours }}</td></tr>
+        {% empty %}<tr><td colspan="5" class="text-center text-body-secondary py-3">{% trans "Vardiya kaydı yok." %}</td></tr>{% endfor %}
+        </tbody></table></div>
+    </div>
+
+    <div class="wh-card">
+      <div class="wh-card__header"><strong>{% trans "Eğitim kayıtları" %}</strong></div>
+      <ul class="list-group list-group-flush">
+        {% for record in training %}
+          <li class="list-group-item d-flex justify-content-between small">
+            <span>{{ record.module.title_tr }}</span>
+            <span><span class="badge bg-secondary">{{ record.get_result_display }}</span>
+              {% if record.score %} {{ record.score }}/100{% endif %}</span>
+          </li>
+        {% empty %}<li class="list-group-item text-body-secondary small">{% trans "Eğitim kaydı yok." %}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

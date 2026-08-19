@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n humanize wh_privacy %}
+{% block title %}{% trans "Müşteriler" %}{% endblock %}
+{% block content %}
+<div class="wh-page-header">
+  <div><h1 class="h3 mb-1">{% trans "Müşteriler" %}</h1></div>
+  <div class="wh-page-actions"></div>
+</div>
+<div class="wh-notice mb-3">{% trans "Müşteri telefon ve e-posta bilgileri şifreli saklanır. Listede yalnızca son iki hane gösterilir; tam numarayı görmek için yetkili rolle kaydı açın." %}</div><form class="row g-2 mb-3" method="get">
+  <div class="col-sm-3"><input class="form-control" name="q" value="{{ filters.q }}" placeholder="{% trans 'Ad, firma veya kod' %}"></div>
+  <div class="col-sm-3"><input class="form-control" name="phone" value="{{ filters.phone }}" placeholder="{% trans 'Telefon (tam eşleşme)' %}"></div>
+  <div class="col-sm-3"><select class="form-select" name="segment"><option value="">{% trans "Tüm segmentler" %}</option>
+    {% for value, label in segments %}<option value="{{ value }}" {% if filters.segment == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>
+  <div class="col-sm-3"><button class="btn btn-primary w-100">{% trans "Filtrele" %}</button></div>
+</form>
+
+<div class="wh-card"><div class="wh-table-wrap">
+<table class="table table-hover mb-0 align-middle">
+  <thead><tr><th>{% trans "Kod" %}</th><th>{% trans "Müşteri" %}</th><th>{% trans "Segment" %}</th>
+    <th class="wh-num">{% trans "Ziyaret" %}</th><th class="wh-num">{% trans "Yaşam boyu ₺" %}</th>
+    <th>{% trans "Son ziyaret" %}</th><th>{% trans "İletişim" %}</th><th></th></tr></thead>
+  <tbody>
+  {% for customer in customers %}
+    <tr>
+      <td><code>{{ customer.code }}</code></td>
+      <td><strong>{{ customer.full_name }}</strong>
+        {% if customer.is_vip %}<span class="badge bg-warning text-dark">VIP</span>{% endif %}
+        {% if customer.is_blacklisted %}<span class="badge bg-danger">{% trans "Kara liste" %}</span>{% endif %}
+        {% if customer.company_name %}<br><small class="text-body-secondary">{{ customer.company_name }}</small>{% endif %}</td>
+      <td><span class="badge bg-secondary">{{ customer.get_segment_display }}</span></td>
+      <td class="wh-num">{{ customer.visit_count }}</td>
+      <td class="wh-num">{{ customer.lifetime_value|floatformat:2 }}</td>
+      <td class="small">{{ customer.last_visit_on|date:"d.m.Y"|default:"—" }}</td>
+      <td class="small">{% if can_view_contact %}{{ customer.phone|mask_identifier|default:"—" }}{% else %}<span class="text-body-secondary">{% trans "gizli" %}</span>{% endif %}</td>
+      <td class="text-end"><a class="btn btn-sm btn-outline-primary" href="{% url 'crm:customer-detail' customer.pk %}">{% trans "Aç" %}</a></td>
+    </tr>
+  {% empty %}<tr><td colspan="99" class="text-center text-body-secondary py-4">{% trans "Kayıt bulunamadı." %}</td></tr>{% endfor %}
+  </tbody>
+</table></div></div>
+{% if is_paginated %}
+<nav class="mt-3"><ul class="pagination pagination-sm justify-content-center mb-0">
+  {% if page_obj.has_previous %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>{% endif %}
+  <li class="page-item disabled"><span class="page-link">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span></li>
+  {% if page_obj.has_next %}<li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>{% endif %}
+</ul></nav>
+{% endif %}
+
+{% endblock %}
