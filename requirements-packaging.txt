@@ -16,5 +16,5 @@
 
 -r requirements.txt
 
-pyinstaller==6.16.0          # GPL-2.0 with bootloader exception
+pyinstaller==6.22.1          # GPL-2.0 with bootloader exception
 pywebview==5.4               # BSD-3-Clause (masaustu kabugu)

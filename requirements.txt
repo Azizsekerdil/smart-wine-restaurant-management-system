@@ -9,16 +9,16 @@
 Django==5.2.16          # PYSEC-2026-2091/2092/2448/2449 yamalari
 
 # --- REST API (BSD-3-Clause) ---
-djangorestframework==3.16.1
+djangorestframework==3.18.0
 
 # --- Ortam degiskenleri (BSD-3-Clause) ---
 python-dotenv==1.2.2    # PYSEC-2026-2270 yamasi
 
 # --- Statik dosya sunumu, tek makine kurulumu icin (MIT) ---
-whitenoise==6.9.0
+whitenoise==6.12.0
 
 # --- HTMX entegrasyonu (MIT) ---
-django-htmx==1.23.2
+django-htmx==1.29.0
 
 # --- HTTP istemcisi: LM Studio / Claude / NVIDIA saglayicilari (BSD-3-Clause) ---
 httpx==0.28.1
