@@ -49,7 +49,7 @@ idna==3.19
 python-dateutil==2.9.0.post0
 
 # --- Zaman dilimi verisi (Windows'ta zorunlu) (Apache-2.0) ---
-tzdata==2025.2
+tzdata==2026.3
 
 # --- PostgreSQL surucusu (istege bagli, cok kullanicili kurulum) (LGPL-3.0 -> ayrik kullanim)
 #     NOT: psycopg yalnizca PostgreSQL secildiginde kurulur; varsayilan SQLite'tir.
