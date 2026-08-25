@@ -12,7 +12,7 @@ pytest-mock==3.15.0
 # --- Kod kalitesi ---
 ruff==0.13.1                 # MIT
 black==26.5.1                # MIT
-mypy==1.18.2                 # MIT
+mypy==2.3.1                 # MIT
 django-stubs[compatible-mypy]==5.2.5   # MIT
 djangorestframework-stubs==3.16.4      # MIT
 
