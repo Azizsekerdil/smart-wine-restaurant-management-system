@@ -169,7 +169,7 @@ jobs:
           artifact-name: sbom.spdx.json
 
       - name: Scan SBOM for vulnerabilities (Grype)
-        uses: anchore/scan-action@v6
+        uses: anchore/scan-action@v7
         with:
           path: .
           fail-build: true
