@@ -560,6 +560,18 @@ TR: dict[str, Any] = {
                 ["Kurulum", "Tek PowerShell betiği · çift tıklanan .bat dosyaları"],
             ],
         },
+        # 40a — Platformlar & İndirme
+        {
+            "type": "bullets",
+            "title": "Platformlar & İndirme",
+            "subtitle": "Herkese açık GitHub deposu ve hazır paketler",
+            "items": [
+                "**Windows 10/11 (x64)** + **macOS (Apple Silicon)** — İndirme: github.com/Azizsekerdil/smart-wine-restaurant-management-system/releases (v0.1.0)",
+                "GitHub deposu **herkese açık**: github.com/Azizsekerdil/smart-wine-restaurant-management-system",
+                "v0.1.0 sürümü iki paketle yayında: **Windows ZIP** + **macOS ZIP**",
+            ],
+            "note": "macOS paketi Apple Silicon (arm64) içindir ve notarize edilmemiştir — ilk açılışta sağ tık → Aç.",
+        },
         # 41
         {
             "type": "compare",
@@ -1075,6 +1087,17 @@ EN: dict[str, Any] = {
                 ["Artificial intelligence", "Custom httpx-based adapter layer"],
                 ["Installation", "A single PowerShell script · double-clickable .bat files"],
             ],
+        },
+        {
+            "type": "bullets",
+            "title": "Platforms & Download",
+            "subtitle": "Public GitHub repository and ready-made packages",
+            "items": [
+                "**Windows 10/11 (x64)** & **macOS (Apple Silicon)** — Download: GitHub Releases (v0.1.0)",
+                "**Public** GitHub repository: github.com/Azizsekerdil/smart-wine-restaurant-management-system",
+                "Release v0.1.0 ships two packages: **Windows ZIP** + **macOS ZIP**",
+            ],
+            "note": "The macOS package targets Apple Silicon (arm64) and is not notarized — on first launch: right-click → Open.",
         },
         {
             "type": "compare",
