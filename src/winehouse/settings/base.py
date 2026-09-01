@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import os
 import secrets
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -18,11 +19,39 @@ from dotenv import load_dotenv
 # ---------------------------------------------------------------------------
 # Yollar
 # ---------------------------------------------------------------------------
-# base.py -> settings -> winehouse -> src -> PROJE KÖKÜ
-SRC_DIR = Path(__file__).resolve().parent.parent.parent
-BASE_DIR = SRC_DIR.parent
+# İki ayrı kök vardır ve paketlenmiş (PyInstaller) uygulamada AYRIŞIRLAR:
+#
+#   BASE_DIR / SRC_DIR : salt okunur kaynaklar (şablon, statik, kod).
+#       Paketlenmiş uygulamada bu, geçici açılma dizinidir (sys._MEIPASS);
+#       program her kapanışta silinir, bu yüzden buraya ASLA yazılmaz.
+#   DATA_DIR : yazılabilir veri (veritabanı, medya, günlük, yedek).
+#       Paketlenmiş uygulamada exe'nin yanındaki klasördür; normal
+#       (geliştirme) kurulumunda proje köküyle aynıdır.
+#
+# KRİTİK: Bu ayrım olmadan SQLite veritabanı sys._MEIPASS içine yazılır ve
+# uygulama her kapanışta TÜM VERİ KAYBOLUR.
+if getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS"):
+    IS_FROZEN = True
+    SRC_DIR = Path(sys._MEIPASS)  # şablon/statik/locale paket köküne açılır
+    BASE_DIR = Path(sys._MEIPASS)
+    _DEFAULT_DATA_DIR = Path(sys.executable).resolve().parent
+else:
+    IS_FROZEN = False
+    # base.py -> settings -> winehouse -> src -> PROJE KÖKÜ
+    SRC_DIR = Path(__file__).resolve().parent.parent.parent
+    BASE_DIR = SRC_DIR.parent
+    _DEFAULT_DATA_DIR = BASE_DIR
 
-load_dotenv(BASE_DIR / ".env", override=False)
+_data_override = os.environ.get("WINEHOUSE_DATA_DIR", "").strip()
+DATA_DIR = Path(_data_override).resolve() if _data_override else _DEFAULT_DATA_DIR
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+# .env önce yazılabilir dizinde aranır (paketlenmiş uygulamada exe'nin
+# yanında durur), yoksa kaynak kökünde. Geliştirmede ikisi aynı yerdir.
+for _env_candidate in (DATA_DIR / ".env", BASE_DIR / ".env"):
+    if _env_candidate.is_file():
+        load_dotenv(_env_candidate, override=False)
+        break
 
 
 # ---------------------------------------------------------------------------
@@ -196,7 +225,7 @@ if DB_ENGINE == "postgres":
 else:
     sqlite_path = Path(env("WINEHOUSE_SQLITE_PATH", "var/winehouse.sqlite3"))
     if not sqlite_path.is_absolute():
-        sqlite_path = BASE_DIR / sqlite_path
+        sqlite_path = DATA_DIR / sqlite_path
     sqlite_path.parent.mkdir(parents=True, exist_ok=True)
     DATABASES = {
         "default": {
@@ -277,7 +306,7 @@ STATICFILES_DIRS = [SRC_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = DATA_DIR / "media"
 
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
@@ -320,7 +349,7 @@ FIELD_ENCRYPTION_KEY = env("WINEHOUSE_FIELD_ENCRYPTION_KEY")
 
 BACKUP_DIR = Path(env("WINEHOUSE_BACKUP_DIR", "backups"))
 if not BACKUP_DIR.is_absolute():
-    BACKUP_DIR = BASE_DIR / BACKUP_DIR
+    BACKUP_DIR = DATA_DIR / BACKUP_DIR
 
 BACKUP_ENCRYPTION = env_bool("WINEHOUSE_BACKUP_ENCRYPTION", default=True)
 BACKUP_RETENTION_DAYS = env_int("WINEHOUSE_BACKUP_RETENTION_DAYS", 30)
@@ -392,7 +421,7 @@ EINVOICE_MODE = env("WINEHOUSE_EINVOICE_MODE", "sandbox")
 # ---------------------------------------------------------------------------
 # Günlükleme
 # ---------------------------------------------------------------------------
-LOG_DIR = BASE_DIR / "logs"
+LOG_DIR = DATA_DIR / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 LOGGING = {

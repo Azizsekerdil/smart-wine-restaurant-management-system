@@ -376,7 +376,7 @@ def restore_backup(*, restore: RestoreRecord, user: Any) -> RestoreRecord:
             or (
                 settings.DATABASES["default"]["NAME"]
                 if restore.target == RestoreRecord.Target.PRODUCTION
-                else Path(settings.BASE_DIR) / "var" / "restore-test.sqlite3"
+                else Path(settings.DATA_DIR) / "var" / "restore-test.sqlite3"
             )
         )
 

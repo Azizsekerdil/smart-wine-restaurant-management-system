@@ -41,7 +41,7 @@ class Command(BaseCommand):
             )
             return
 
-        archive_dir = Path(settings.BASE_DIR) / "var" / "audit-archive"
+        archive_dir = Path(settings.DATA_DIR) / "var" / "audit-archive"
         archive_dir.mkdir(parents=True, exist_ok=True)
         archive_path = archive_dir / f"audit-{timezone.now():%Y%m%d-%H%M%S}.jsonl"
 
