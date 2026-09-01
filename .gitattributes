@@ -1,6 +1,9 @@
 # Metin dosyalarında satır sonu normalizasyonu (depoda LF, Windows'ta CRLF)
 * text=auto eol=lf
 
+# Kabuk betikleri LF olmalıdır; CRLF giderse macOS runner "bad interpreter ^M" verir.
+*.sh text eol=lf
+
 # Windows betikleri CRLF olmalıdır; aksi hâlde cmd.exe çalıştıramaz.
 *.bat text eol=crlf
 *.cmd text eol=crlf
