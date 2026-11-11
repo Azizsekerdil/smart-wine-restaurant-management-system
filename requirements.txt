@@ -30,7 +30,7 @@ cryptography==50.0.0      # PYSEC-2026-35/36/2141/3552-3554 yamalari
 argon2-cffi==25.1.0
 
 # --- Raporlama: PDF (BSD-3-Clause) ---
-reportlab==4.4.3
+reportlab==5.0.0
 
 # --- Raporlama: Excel (MIT) ---
 openpyxl==3.1.5
