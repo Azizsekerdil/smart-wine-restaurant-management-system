@@ -13,7 +13,7 @@ pytest-mock==3.15.0
 ruff==0.13.1                 # MIT
 black==26.5.1                # MIT
 mypy==1.18.2                 # MIT
-django-stubs[compatible-mypy]==5.2.5   # MIT
+django-stubs[compatible-mypy]==6.1.0   # MIT
 djangorestframework-stubs==3.16.4      # MIT
 
 # --- Git kancalari (MIT) ---
